@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[第一篇博客]]></title>
-    <url>%2F2019%2F10%2F04%2F%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%2F</url>
-    <content type="text"><![CDATA[第一篇我将在此平台分享我的心得，力争在春招时期得到中大厂的offer]]></content>
-      <categories>
-        <category>java</category>
-      </categories>
+    <title><![CDATA[第二篇博客]]></title>
+    <url>%2F2019%2F10%2F04%2F%E7%AC%AC%E4%BA%8C%E7%AF%87%E5%8D%9A%E5%AE%A2%2F</url>
+    <content type="text"><![CDATA[第一次写博客，希望能记录学习的点点滴滴 来年春招力争大厂offer上岸 第二篇博客]]></content>
       <tags>
-        <tag>博客</tag>
-        <tag>心得</tag>
-        <tag>hexo</tag>
+        <tag>-hexo</tag>
       </tags>
   </entry>
   <entry>
