@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="-swagger,">
+  <meta name="keywords" content="-Hive,">
 
 
 
@@ -79,20 +79,22 @@
 
 
 
-<meta name="description" content="一、Swagger简介背景​        在现在的开发流程中，为了最大程度实现前后端的分离，通常后端接口只提供数据接口，由前端通过Ajax请求从后端获取数据并进行渲染再展示给用户。我们用的最多的方式就是后端会返回给前端一个JSON字符串，前端解析JSON字符串生成JavaScript的对象，然后再做处理。 演化非Restful接口的支持 一个方法对应于一个端口方法映射，通常只有GET/POST方">
-<meta name="keywords" content="-swagger">
+<meta name="description" content="数据仓库Hive产生背景MapReduce编程门槛高，无法及时应对需求的变更 传统RDBMS（关系型数据库）人员的需求，HDFS上的文件并没有schema的概念 可通过Hive进行大数据的处理 Hive概述有Facebook开源，用于解决海量结构化日志的数据统计问题 构建在Hadoop之上的数据仓库（计算能力，存储能力，可应付数据的暴增） Hive提供的SQL查询语言：HQL 底层支撑多种不同的执">
+<meta name="keywords" content="-Hive">
 <meta property="og:type" content="article">
-<meta property="og:title" content="swagger2学习">
-<meta property="og:url" content="http://yoursite.com/2019/10/16/swagger2学习/index.html">
+<meta property="og:title" content="Hive数据仓库基础知识">
+<meta property="og:url" content="http://yoursite.com/2019/10/22/Hive数据仓库基础知识/index.html">
 <meta property="og:site_name" content="ZKaiKing-blog">
-<meta property="og:description" content="一、Swagger简介背景​        在现在的开发流程中，为了最大程度实现前后端的分离，通常后端接口只提供数据接口，由前端通过Ajax请求从后端获取数据并进行渲染再展示给用户。我们用的最多的方式就是后端会返回给前端一个JSON字符串，前端解析JSON字符串生成JavaScript的对象，然后再做处理。 演化非Restful接口的支持 一个方法对应于一个端口方法映射，通常只有GET/POST方">
+<meta property="og:description" content="数据仓库Hive产生背景MapReduce编程门槛高，无法及时应对需求的变更 传统RDBMS（关系型数据库）人员的需求，HDFS上的文件并没有schema的概念 可通过Hive进行大数据的处理 Hive概述有Facebook开源，用于解决海量结构化日志的数据统计问题 构建在Hadoop之上的数据仓库（计算能力，存储能力，可应付数据的暴增） Hive提供的SQL查询语言：HQL 底层支撑多种不同的执">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://yoursite.com/img/05_first.png">
-<meta property="og:updated_time" content="2019-10-16T02:56:45.299Z">
+<meta property="og:image" content="http://yoursite.com/img/06_first.PNG">
+<meta property="og:image" content="http://yoursite.com/img/06_second.PNG">
+<meta property="og:image" content="http://yoursite.com/img/06_three.PNG">
+<meta property="og:updated_time" content="2019-10-22T03:01:40.036Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="swagger2学习">
-<meta name="twitter:description" content="一、Swagger简介背景​        在现在的开发流程中，为了最大程度实现前后端的分离，通常后端接口只提供数据接口，由前端通过Ajax请求从后端获取数据并进行渲染再展示给用户。我们用的最多的方式就是后端会返回给前端一个JSON字符串，前端解析JSON字符串生成JavaScript的对象，然后再做处理。 演化非Restful接口的支持 一个方法对应于一个端口方法映射，通常只有GET/POST方">
-<meta name="twitter:image" content="http://yoursite.com/img/05_first.png">
+<meta name="twitter:title" content="Hive数据仓库基础知识">
+<meta name="twitter:description" content="数据仓库Hive产生背景MapReduce编程门槛高，无法及时应对需求的变更 传统RDBMS（关系型数据库）人员的需求，HDFS上的文件并没有schema的概念 可通过Hive进行大数据的处理 Hive概述有Facebook开源，用于解决海量结构化日志的数据统计问题 构建在Hadoop之上的数据仓库（计算能力，存储能力，可应付数据的暴增） Hive提供的SQL查询语言：HQL 底层支撑多种不同的执">
+<meta name="twitter:image" content="http://yoursite.com/img/06_first.PNG">
 
 
 
@@ -122,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/10/16/swagger2学习/">
+  <link rel="canonical" href="http://yoursite.com/2019/10/22/Hive数据仓库基础知识/">
 
 
 
 
 
-  <title>swagger2学习 | ZKaiKing-blog</title>
+  <title>Hive数据仓库基础知识 | ZKaiKing-blog</title>
   
 
 
@@ -302,7 +304,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/16/swagger2学习/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/22/Hive数据仓库基础知识/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ZKaiKing">
@@ -319,7 +321,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">swagger2学习</h1>
+          <h1 class="post-title" itemprop="name headline">Hive数据仓库基础知识</h1>
         
 
         <div class="post-meta">
@@ -331,8 +333,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-16T09:41:11+08:00">
-                2019-10-16
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-22T11:01:10+08:00">
+                2019-10-22
               </time>
             
 
@@ -347,8 +349,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-10-16T10:56:45+08:00">
-                2019-10-16
+              <time title="Post modified" itemprop="dateModified" datetime="2019-10-22T11:01:40+08:00">
+                2019-10-22
               </time>
             
           </span>
@@ -381,83 +383,142 @@
       
 
       
-        <h3 id="一、Swagger简介"><a href="#一、Swagger简介" class="headerlink" title="一、Swagger简介"></a>一、Swagger简介</h3><h5 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h5><p>​        在现在的开发流程中，为了最大程度实现前后端的分离，通常后端接口只提供数据接口，由前端<strong>通过Ajax请求</strong>从后端获取数据并进行渲染再展示给用户。我们用的最多的方式就是后端会<strong>返回给前端一个JSON字符串</strong>，前端解析JSON字符串生成JavaScript的对象，然后再做处理。</p>
-<h5 id="演化"><a href="#演化" class="headerlink" title="演化"></a>演化</h5><p><strong>非Restful接口的支持</strong></p>
-<p>一个方法对应于一个端口方法映射，通常只有GET/POST方法对应CRUD，后期维护成本大，通常标签有：</p>
-<p>​       <em>@Controller 标识一个类为控制器。</em></p>
-<p>　　<em>@RequestMapping URL的映射。</em></p>
-<p>　　<em>@ResponseBody 返回结果转换为JSON字符串。</em></p>
-<p>　　<em>@RequestBody 表示接收JSON格式字符串参数。</em></p>
-<p><strong>Restful API设计</strong></p>
-<p>Restful API是一种编程风格，比起传统的通过get/post方法的接口设计，Restful API的设计则通过HTTP的方法来表示CRUD相关的操作。</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">接口URL | HTTP方法 | 接口说明</span><br><span class="line">-------| -------- |-------</span><br><span class="line">/article | POST   | 保存文章</span><br><span class="line">/article/&#123;id&#125; | GET | 查询文章列表</span><br><span class="line">/article/&#123;id&#125; | DELETE | 删除文章</span><br><span class="line">/article/&#123;id&#125; |  PUT  | 修改文章</span><br></pre></td></tr></table></figure>
+        <h1 id="数据仓库Hive"><a href="#数据仓库Hive" class="headerlink" title="数据仓库Hive"></a>数据仓库Hive</h1><h2 id="产生背景"><a href="#产生背景" class="headerlink" title="产生背景"></a>产生背景</h2><p>MapReduce编程门槛高，无法及时应对需求的变更</p>
+<p>传统RDBMS（关系型数据库）人员的需求，HDFS上的文件并没有schema的概念</p>
+<p>可通过Hive进行大数据的处理</p>
+<h2 id="Hive概述"><a href="#Hive概述" class="headerlink" title="Hive概述"></a>Hive概述</h2><p>有Facebook开源，用于解决<strong>海量结构化日志</strong>的<strong>数据统计</strong>问题</p>
+<p>构建在Hadoop之上的数据仓库（计算能力，存储能力，可应付数据的暴增）</p>
+<p>Hive提供的SQL查询语言：HQL</p>
+<p>底层支撑多种不同的执行引擎</p>
+<p> Hive底层执行引擎支持：MR/Tez/Spark（用户不感知）</p>
+<p>###为什么要使用Hive</p>
+<ul>
+<li><p>简单，容易上手</p>
+</li>
+<li><p>为超大数据集设计的计算/扩展能力</p>
+</li>
+<li><p>同一的元数据管理：Hive数据是存放在HDFS上，元数据信息（记录数据(HDFS数据)的数据）是存放在MySQL中</p>
+<ul>
+<li>SQL  on Hadoop:Hive,Spark,SQL,impala…</li>
+</ul>
+</li>
+</ul>
+<h2 id="Hive体系架构"><a href="#Hive体系架构" class="headerlink" title="Hive体系架构"></a>Hive体系架构</h2><h3 id="Hive-在Hadoop生态中的位置"><a href="#Hive-在Hadoop生态中的位置" class="headerlink" title="Hive 在Hadoop生态中的位置"></a>Hive 在Hadoop生态中的位置</h3><p><img src="/img/06_first.PNG" alt="Hive 在Hadoop生态中的位置"></p>
+<p>体系架构图：</p>
+<p><img src="/img/06_second.PNG" alt></p>
+<p>client：shell、<strong>thrift/jdbc(server/jdbc)</strong>、webUI(HUE/Zeppelin)</p>
+<p>metastore:==&gt;MySQL</p>
+<pre><code>database:name/location/owner...
 
-<p>区别：</p>
-<p>​     ①类上通常使用@RestController注解（spring4提供），表示返回Json数据的注解，支持Restful控制器。</p>
-<p>​     ②/article/{id}具有三个相同的URL映射，这在@Controller标识的类中是不允许出现的，而这通过method来进行区分，produces的作用是表示返回结果的类型是JSON。</p>
-<p>   ③@PathVariable这个注解（Spring MVC提供），作用是表示该变量的值是从访问路径中获取。</p>
+table:name、location、owner、column、name/type...</code></pre><p>Hive：写SQL翻译成MapReduce，放入到Hadoop</p>
+<h2 id="Hive部署架构"><a href="#Hive部署架构" class="headerlink" title="Hive部署架构"></a>Hive部署架构</h2><ul>
+<li><p>测试环境</p>
+<p>客户端把SQL提交Hive引擎，<em>元数据信息可存放在Derby中（只能进行单客户端的操作，就是单session）即使是测试环境也不推荐使用</em>，因此只能选择MySQL</p>
+</li>
+<li><p>生产环境：为了防止MySQL错误导致无法进行获取元数据信息，因此得有主备MySQL，主备MySQL会进行切换。（解决MySQL单点问题）</p>
+<p>Hadoop集群：DN、NM、NN、RM</p>
+<p>Hive提交到RM上，Hadpoop集群有很多节点，Hive是一个客户端，并不涉及集群的概念</p>
+<p><img src="/img/06_three.PNG" alt></p>
+</li>
+</ul>
+<h2 id="Hive与RDBMS的区别"><a href="#Hive与RDBMS的区别" class="headerlink" title="Hive与RDBMS的区别"></a>Hive与RDBMS的区别</h2><ul>
+<li>支持的：都支持分布式</li>
+<li>区别的：Hive不适合立马进行查询</li>
+</ul>
+<h2 id="Hive部署及快速入门"><a href="#Hive部署及快速入门" class="headerlink" title="Hive部署及快速入门"></a>Hive部署及快速入门</h2><p>包：hive-1.*.0cdh.5 *. *tar-gz</p>
+<p>*bin目录：脚本</p>
+<p>*conf目录：配置</p>
+<p>1 下载</p>
+<p>2解压的 ~/app</p>
+<p>3添加Hive-HOME到系统环境变量</p>
+<p>4修改配置</p>
+<p>5拷贝MySQL驱动包</p>
+<p>6预先下载MySQL数据库</p>
+<h2 id="Hive-DDL详解"><a href="#Hive-DDL详解" class="headerlink" title="Hive DDL详解"></a>Hive DDL详解</h2><p><em>可以创建一张表，把数据加入到表中，对数据的各种维度的分析</em></p>
+<p>create/delete/alter…</p>
+<p>Hive数据抽象/结构</p>
+<ul>
+<li><p>database   HDFS一个目录</p>
+</li>
+<li><p>table   HDFS一个目录</p>
+<ul>
+<li>data文件</li>
+<li>partition分区表 HDFS一个目录</li>
+<li>bucket分桶   HDFS一个文件</li>
+</ul>
+</li>
+</ul>
 <hr>
-<h5 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h5><p>Swagger 是一个规范和完整的框架，用于生成、描述、调用和可视化 <em>RESTful 风格的 Web 服务</em>。总体目标是使客户端和文件系统作为服务器以同样的速度来更新。文件的方法，参数和模型紧密集成到服务器端的代码，允许API来始终保持同步。Swagger 让部署管理和使用功能强大的API从未如此简单。</p>
-<h3 id="二、Swagger与Spring-boot集成"><a href="#二、Swagger与Spring-boot集成" class="headerlink" title="二、Swagger与Spring boot集成"></a>二、Swagger与Spring boot集成</h3><h5 id="①、导入相应jar包"><a href="#①、导入相应jar包" class="headerlink" title="①、导入相应jar包"></a>①、导入相应jar包</h5><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.springfox<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>springfox-swagger2<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.6.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.springfox<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>springfox-swagger-ui<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.6.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>创建数据库：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">CREATE  (DATABASE|SCHEMA)  [IF NOT EXISTS] database_name</span><br><span class="line"> [COMMENT database_comment]</span><br><span class="line"> [LOCATIO hdfs_path]</span><br><span class="line"> [WITH DBPROPERTIES  (property_name=property_value,...)];</span><br></pre></td></tr></table></figure>
 
-<h5 id="②、基本信息配置"><a href="#②、基本信息配置" class="headerlink" title="②、基本信息配置"></a>②、基本信息配置</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableSwagger</span>2</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SwaggerConfig</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Docket <span class="title">docket</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Docket(DocumentationType.SWAGGER_2)</span><br><span class="line">                .apiInfo(apiInfo())</span><br><span class="line">                .select()</span><br><span class="line">                <span class="comment">//当前包路径</span></span><br><span class="line">                .apis(RequestHandlerSelectors.basePackage(<span class="string">"com.bmsoft.dc.dodp"</span>))</span><br><span class="line">                .paths(PathSelectors.any()).build();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Docket <span class="title">docket1</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Docket(DocumentationType.SWAGGER_2)</span><br><span class="line">                .apiInfo(apiInfo())</span><br><span class="line">                .groupName(<span class="string">"caozifu"</span>)</span><br><span class="line">                .select()</span><br><span class="line">                .apis(RequestHandlerSelectors.basePackage(<span class="string">"com.bmsoft.dc.dodp"</span>))</span><br><span class="line">                .paths(PathSelectors.any()).build();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 构建api文档的详细信息函数</span></span><br><span class="line"><span class="comment">     * */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> ApiInfo <span class="title">apiInfo</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ApiInfoBuilder()</span><br><span class="line">                <span class="comment">//页面标题</span></span><br><span class="line">                .title(<span class="string">"离线开发平台Restful接口管理"</span>)</span><br><span class="line">                <span class="comment">//版本号</span></span><br><span class="line">                .version(<span class="string">"1.0"</span>)</span><br><span class="line">                <span class="comment">//描述</span></span><br><span class="line">                .description(<span class="string">"API 描述"</span>)</span><br><span class="line">                .build();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p> 标签说明：</p>
-<p>@Configuration是表示这是一个配置类，是JDK自带的注解</p>
-<p>@EnableSwagger2的作用是启用Swagger2相关功能。</p>
-<p>​    <em>配置类里面我么实例化了一个Docket对象，这个对象主要包括三个方面的信息：</em></p>
-<p>​              （1）整个API的描述信息，即ApiInfo对象包括的信息，这     部分信息会在页面上展示。</p>
-<p>　　　　（2）指定生成API文档的包名。</p>
-<p>　　　　（3）指定生成API的路径。按路径生成API可支持四种模式：任何路径都生成(any)、任何路径都不生成  (none)以及正则匹配(regex)和ant 模式匹配四种方式</p>
-<h5 id="③、编写方法及其参数描述"><a href="#③、编写方法及其参数描述" class="headerlink" title="③、编写方法及其参数描述"></a>③、编写方法及其参数描述</h5><p>​       编写相应的方法，并应方法中做出相应的参数描述，具体标签有：</p>
-<blockquote>
-<p><code>@ApiOperation</code> 用在方法上，说明方法的作用，每一个url资源的定义,使用方式：</p>
-<blockquote>
-<p><strong>属性名称                 备注</strong><br>   <em>value                   url的路径值</em></p>
-<p>​    *tags                    接口的标签，相同标签的接口会在一个标签页下展示。</p>
-<p>　notes                 接口详细说明，展示在接口的详情页。</p>
-<p> httpMethod        支持的HTTP的方法。</p>
-</blockquote>
-<p><code>@ApiImplicitParams</code>，<code>@ApiImplicitParam</code>的容器，可包含多个<code>@ApiImplicitParam</code>注解</p>
-<p><code>@ApiImplicitParam</code>，请求参数属性配置：</p>
-<blockquote>
-<p><strong>属性名称                 备注</strong></p>
-<p>name                   参数名称</p>
-<p>value                     参数说明</p>
-<p>required               是否必须</p>
-<p>dataType             数据类型　</p>
-</blockquote>
-<p><code>@ApiResponse</code>，返回结果属性配置：</p>
-<blockquote>
-<p><strong>属性名称                 备注</strong></p>
-<p>code                 返回结果的编码</p>
-<p>message          返回结果的说明</p>
-<p>response         返回结果对应的类</p>
-</blockquote>
-</blockquote>
-<p>示例</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">@ApiOperation(value = &quot;更新文章&quot;, notes = &quot;更新文章内容&quot;, tags = &quot;Article&quot;,httpMethod = &quot;PUT&quot;)</span><br><span class="line">   @ApiImplicitParams(&#123;</span><br><span class="line">           @ApiImplicitParam(name = &quot;id&quot;, value = &quot;文章ID&quot;, required = true, dataType = &quot;Long&quot;),</span><br><span class="line">           @ApiImplicitParam(name = &quot;title&quot;, value = &quot;文章标题&quot;, required = false, dataType = &quot;String&quot;),</span><br><span class="line">           @ApiImplicitParam(name = &quot;summary&quot;, value = &quot;文章摘要&quot;, required = false, dataType = &quot;String&quot;),</span><br><span class="line">           @ApiImplicitParam(name = &quot;status&quot;, value = &quot;发布状态&quot;, required = false, dataType = &quot;Integer&quot;)</span><br><span class="line">   &#125;)</span><br><span class="line">   @RequestMapping(value = &quot;/article/&#123;id&#125;&quot;, method = PUT, produces = &quot;application/json&quot;)</span><br><span class="line">   public WebResponse&lt;?&gt; updateArticle(@PathVariable Long id,@RequestBody Article article)&#123;</span><br><span class="line">       article.setId(id);</span><br><span class="line">       articleService.updateArticle(article);</span><br><span class="line">       return WebResponse.getSuccessResponse(new HashMap&lt;&gt;());</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-
-<p>启动Spring boot，然后访问：<a href="http://127.0.0.1:8080/swagger-ui.html即可看到如下结果" target="_blank" rel="noopener">http://127.0.0.1:8080/swagger-ui.html即可看到如下结果</a></p>
-<p>页面显示：</p>
-<p><img src="/img/05_first.png" alt="页面显示"></p>
 <hr>
+<p>创建表：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">CREATE [EXTERNAL] TABLE [IF NOT EXISTS] table_name</span><br><span class="line">  [(col_name data_type[COMMENT col_comment], ... [constraint_specification])]</span><br><span class="line">  [COMMENT table_comment]</span><br><span class="line">  [PARTITIONED BY (col_name data_type [COMMENT col_comment], ...)]</span><br><span class="line">  [CLUSTERED BY (col_name, col_name, ...) [SORTED BY (col_name [ASC|DESC], ...)] INTO num_buckets BUCKETS]</span><br><span class="line">   [ROW FORMAT row_format] 	</span><br><span class="line">   [STORED AS file_format]</span><br><span class="line">  [LOCATION hdfs_path]</span><br><span class="line">  [TBLPROPERTIES (property_name=property_value, ...)] </span><br><span class="line">  [AS select_statement];</span><br><span class="line">CREATE [TEMPORARY] [EXTERNAL] TABLE [IF NOT EXISTS] [db_name.]table_name</span><br><span class="line">  LIKE existing_table_or_view_name</span><br><span class="line">  [LOCATION hdfs_path];</span><br></pre></td></tr></table></figure>
+
+<p>各项参数说明：</p>
+<ul>
+<li>1<strong>CREATE TABLE 创建一个指定名字的表。如果相同名字的表已经存在，则抛出异常；用户可以用 IF NOT EXISTS 选项来忽略这个异常，一般也可以不加这个IF NOT EXISTS语句，最多抛出错误。</strong></li>
+<li>2 [constraint_specification]可选项： [ PRIMARY KEY|UNIQUE|NOT NULL|DEFAULT [default_value]</li>
+<li>3 [COMMENT table_comment] 可选项：COMMENT 后面跟的字符串是给表字段或者表内容添加注释说明的</li>
+<li>4  [PARTITIONED BY ] 可选项：<strong>PARTITIONED BY其实是给表做分区，决定了表是否是分区表。（Hive中所谓分区表就是将表里新增加一个字段，就是分区的名字，这样你在操作表中的数据时，可以按分区字段进行过滤）</strong></li>
+<li>5 [CLUSTERED BY ]可选项：<strong>CLUSTERED BY对于每一个表（table）或者分区， Hive可以进一步组织成桶，也就是说桶是更为细粒度的数据范围划分。Hive也针对某一列进行桶的组织。Hive采用对列值哈希，然后除以桶的个数求余的方式决定该条记录存放在哪个桶当中</strong></li>
+<li>6  [ROW FORMAT]可选项：存储表格式</li>
+<li>7   [STORED AS] 可选项：hive存储的三种文件格式</li>
+<li>8  [LOCATION AS] 可选项：LOCATION 其实是定义hive表的数据在hdfs上的存储路径，一般管理表（内部表不不要自定义），但是如果定义的是外部表，则需要直接指定一个路径。实际上不指定也没事，会使用默认路径</li>
+</ul>
+<p>部分详解：</p>
+<ul>
+<li><p>使用PARTITIONED BY子句创建分区表。一个表可以具有一个或多个分区列，并为分区列中的每个不同值组合创建一个单独的数据目录。此外，可以使用CLUSTERED BY列对表或分区进行存储，并且可以通过SORT BY列在该存储区中对数据进行排序。这样可以提高某些查询的性能。</p>
+<p>eg:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE page_view(viewTime INT, userid BIGINT,</span><br><span class="line">     page_url STRING, referrer_url STRING,</span><br><span class="line">     ip STRING COMMENT &apos;IP Address of the User&apos;)</span><br><span class="line"> COMMENT &apos;This is the page view table&apos;</span><br><span class="line"> PARTITIONED BY(dt STRING, country STRING)</span><br><span class="line"> ROW FORMAT DELIMITED</span><br><span class="line">   FIELDS TERMINATED BY &apos;\001&apos;</span><br><span class="line">STORED AS SEQUENCEFILE;</span><br></pre></td></tr></table></figure>
+
+<pre><code>上面的语句创建带有viewTime，userid，page_url，referrer_url和ip列（包括注释）的page_view表。该表也被分区，数据存储在序列文件中,文件中的数据格式由ctrl-A分隔字段，由换行分隔行。</code></pre></li>
+</ul>
 <hr>
-<h5 id="其他常用标签"><a href="#其他常用标签" class="headerlink" title="其他常用标签"></a><strong>其他常用标签</strong></h5><blockquote>
-<p><code>@API</code>注解:用在类上，说明该类的作用。可以标记一个Controller类做为swagger 文档资源</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="meta">@Api</span>(value = <span class="string">"/user"</span>, description = <span class="string">"Operations about user"</span>)</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<blockquote>
-<blockquote>
-<p><strong>属性名称                 备注</strong></p>
-<p><em>value                  url的路径值</em></p>
-<p> <em>tags                   如果设置这个值、value的值会被覆盖</em></p>
-<p><em>description            对api资源的描述</em></p>
-<p><em>description            对api资源的描述</em></p>
-</blockquote>
-<p><code>@ApiModel</code>：描述一个Model的信息（这种一般用在post创建的时候，使用<code>@RequestBody</code>这样的场景，请求参数无法使用</p>
-<p><code>@ApiModelProperty</code>：描述一个model的属性</p>
-</blockquote>
+<p>重命名表：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE table_name RENAME TO new_table_name;</span><br></pre></td></tr></table></figure>
+
+<p>更改表属性：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`ALTER TABLE table_name SET TBLPROPERTIES table_properties;` `table_properties:``  ``: (property_name = property_value, property_name = property_value, ... )`</span><br></pre></td></tr></table></figure>
+
+<p><code>table_properties</code>  : (property_name = property_value, property_name = property_value, … )</p>
+<p><code>TBLPROPERTIES</code>:允许您使用自己的<strong>元数据键/值</strong>对标记表定义;还存在一些预定义的表属性，由Hive自动添加和管理的last_modified_user和last_modified_time。</p>
+<p>修改表注释：要更改表的注释，您必须更改的<code>comment</code>属性<code>TBLPROPERTIES</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`ALTER TABLE table_name SET TBLPROPERTIES (``&apos;comment&apos;` `= new_comment);`</span><br></pre></td></tr></table></figure>
+
+<p>重命名现有表的列：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`ALTER TABLE old_table_name REPLACE COLUMNS (col1 TYPE, ...);`</span><br></pre></td></tr></table></figure>
+
+<p>将列添加到现有表：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE tab1 ADD COLUMNS (c1 INT COMMENT &apos;a new int column&apos;, c2 STRING DEFAULT &apos;def val&apos;);</span><br></pre></td></tr></table></figure>
+
+<p>删除表：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`DROP TABLE pv_users;`</span><br></pre></td></tr></table></figure>
+
+<p>删除表分区(更改表以删除分区)：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`ALTER TABLE pv_users DROP PARTITION (ds=``&apos;2008-08-08&apos;``)`</span><br></pre></td></tr></table></figure>
+
+<p>加载数据—–略</p>
+<h2 id="Hive-DML详解"><a href="#Hive-DML详解" class="headerlink" title="Hive DML详解"></a>Hive DML详解</h2><p>Hive查询操作记录在<a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Select" target="_blank" rel="noopener">Select中</a>，而插入操作记录在<a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DML#LanguageManualDML-InsertingdataintoHiveTablesfromqueries" target="_blank" rel="noopener">将数据从查询插入Hive表</a>和<a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DML#LanguageManualDML-InsertingdataintoHiveTablesfromqueries" target="_blank" rel="noopener">从查询</a><a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DML#LanguageManualDML-Writingdataintothefilesystemfromqueries" target="_blank" rel="noopener">将数据写入文件系统中</a>。</p>
+<h4 id="简单查询"><a href="#简单查询" class="headerlink" title="简单查询"></a>简单查询</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`INSERT OVERWRITE TABLE user_active``SELECT user.*``FROM user``WHERE user.active = ``1``;`</span><br></pre></td></tr></table></figure>
+
+<p>请注意，与SQL不同，我们总是将结果插入表中。也可以将其转储到本地文件中。</p>
+<p>也可以在<a href="https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline–NewCommandLineShell" target="_blank" rel="noopener">Beeline</a>  或Hive  <a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Cli" target="_blank" rel="noopener">CLI中</a>运行以下查询  ：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT user.*</span><br><span class="line">FROM user</span><br><span class="line">WHERE user.active = ``1``;</span><br></pre></td></tr></table></figure>
+
+<h4 id="基于分区的查询"><a href="#基于分区的查询" class="headerlink" title="基于分区的查询"></a>基于分区的查询</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`INSERT OVERWRITE TABLE xyz_com_page_views``SELECT page_views.*``FROM page_views``WHERE page_views.date &gt;= ``&apos;2008-03-01&apos;` `AND page_views.date &lt;= ``&apos;2008-03-31&apos;` `AND``      ``page_views.referrer_url like ``&apos;%xyz.com&apos;``;`</span><br></pre></td></tr></table></figure>
+
+<p>系统根据分区列上的where子句条件自动确定要在查询中使用的分区。例如，为了获取域xyz.com引用的03/2008月份的所有page_views</p>
+<p><em>请注意，此处使用page_views.date，因为该表（上面）是使用PARTITIONED BY（date DATETIME，country STRING）定义的；如果您给分区命名不同，请不要期望.date发挥您的想法！</em></p>
+<h4 id="连接查询"><a href="#连接查询" class="headerlink" title="连接查询"></a>连接查询</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">INSERT OVERWRITE TABLE pv_users</span><br><span class="line">SELECT pv.*, u.gender, u.age</span><br><span class="line">FROM user u JOIN page_view pv ON (pv.userid = u.id)</span><br><span class="line">WHERE pv.date = &apos;2008-03-03&apos;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>可以使用LEFT OUTER，RIGHT OUTER或FULL OUTER关键字限定联接，以指示外部联接的类型（保留的左侧，保留的右侧或两侧保留）</p>
+</li>
+<li><p>检查另一个表中是否存在键，用户可以使用LEFT SEMI JOIN</p>
+</li>
+</ul>
 
       
     </div>
@@ -475,7 +536,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/swagger/" rel="tag"># -swagger</a>
+            <a href="/tags/Hive/" rel="tag"># -Hive</a>
           
         </div>
       
@@ -488,8 +549,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/10/14/mybatis-plus个人见解/" rel="next" title="mybatis-plus学习">
-                <i class="fa fa-chevron-left"></i> mybatis-plus学习
+              <a href="/2019/10/16/swagger2学习/" rel="next" title="swagger2学习">
+                <i class="fa fa-chevron-left"></i> swagger2学习
               </a>
             
           </div>
@@ -497,10 +558,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/10/22/Hive数据仓库基础知识/" rel="prev" title="Hive数据仓库基础知识">
-                Hive数据仓库基础知识 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -685,7 +742,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、Swagger简介"><span class="nav-number">1.</span> <span class="nav-text">一、Swagger简介</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#背景"><span class="nav-number">1.0.1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#演化"><span class="nav-number">1.0.2.</span> <span class="nav-text">演化</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#简介"><span class="nav-number">1.0.3.</span> <span class="nav-text">简介</span></a></li></ol></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#二、Swagger与Spring-boot集成"><span class="nav-number">2.</span> <span class="nav-text">二、Swagger与Spring boot集成</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#①、导入相应jar包"><span class="nav-number">2.0.1.</span> <span class="nav-text">①、导入相应jar包</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#②、基本信息配置"><span class="nav-number">2.0.2.</span> <span class="nav-text">②、基本信息配置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#③、编写方法及其参数描述"><span class="nav-number">2.0.3.</span> <span class="nav-text">③、编写方法及其参数描述</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#其他常用标签"><span class="nav-number">2.0.4.</span> <span class="nav-text">其他常用标签</span></a></li></ol></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数据仓库Hive"><span class="nav-number">1.</span> <span class="nav-text">数据仓库Hive</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#产生背景"><span class="nav-number">1.1.</span> <span class="nav-text">产生背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hive概述"><span class="nav-number">1.2.</span> <span class="nav-text">Hive概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hive体系架构"><span class="nav-number">1.3.</span> <span class="nav-text">Hive体系架构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hive-在Hadoop生态中的位置"><span class="nav-number">1.3.1.</span> <span class="nav-text">Hive 在Hadoop生态中的位置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hive部署架构"><span class="nav-number">1.4.</span> <span class="nav-text">Hive部署架构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hive与RDBMS的区别"><span class="nav-number">1.5.</span> <span class="nav-text">Hive与RDBMS的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hive部署及快速入门"><span class="nav-number">1.6.</span> <span class="nav-text">Hive部署及快速入门</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hive-DDL详解"><span class="nav-number">1.7.</span> <span class="nav-text">Hive DDL详解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hive-DML详解"><span class="nav-number">1.8.</span> <span class="nav-text">Hive DML详解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#简单查询"><span class="nav-number">1.8.0.1.</span> <span class="nav-text">简单查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基于分区的查询"><span class="nav-number">1.8.0.2.</span> <span class="nav-text">基于分区的查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#连接查询"><span class="nav-number">1.8.0.3.</span> <span class="nav-text">连接查询</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
