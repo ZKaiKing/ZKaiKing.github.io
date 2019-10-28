@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="-hexo,">
+  <meta name="keywords" content="-注解,">
 
 
 
@@ -79,21 +79,18 @@
 
 
 
-<meta name="description" content="第一次写博客，希望能记录学习的点点滴滴 来年春招力争大厂offer上岸  第二篇博客">
-<meta name="keywords" content="-hexo">
+<meta name="description" content="Annotation的概念与作用元数据（MeteData）也就是Annotation，这是一种代码里的特殊标志，可在编译，类加载，运行时被读取。 Annotation就像修饰符一样，可用于修饰包，类，构造器，方法， 成员变量，参数，局部变量的声明，这些信息被存储到Annotation的“name=value”对中 Annotation是一个接口，程序通过反射来获取指定程序元素的Annotation">
+<meta name="keywords" content="-注解">
 <meta property="og:type" content="article">
-<meta property="og:title" content="第二篇博客">
-<meta property="og:url" content="http://yoursite.com/2019/10/04/第二篇博客/index.html">
+<meta property="og:title" content="Java基本注解">
+<meta property="og:url" content="http://yoursite.com/2019/10/28/Java基本注解/index.html">
 <meta property="og:site_name" content="ZKaiKing-blog">
-<meta property="og:description" content="第一次写博客，希望能记录学习的点点滴滴 来年春招力争大厂offer上岸  第二篇博客">
+<meta property="og:description" content="Annotation的概念与作用元数据（MeteData）也就是Annotation，这是一种代码里的特殊标志，可在编译，类加载，运行时被读取。 Annotation就像修饰符一样，可用于修饰包，类，构造器，方法， 成员变量，参数，局部变量的声明，这些信息被存储到Annotation的“name=value”对中 Annotation是一个接口，程序通过反射来获取指定程序元素的Annotation">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://yoursite.com/img/first.jpg">
-<meta property="og:image" content="http://yoursite.com/2019/10/04/第二篇博客/first.jpg">
-<meta property="og:updated_time" content="2019-10-04T13:49:23.998Z">
+<meta property="og:updated_time" content="2019-10-28T06:57:37.958Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="第二篇博客">
-<meta name="twitter:description" content="第一次写博客，希望能记录学习的点点滴滴 来年春招力争大厂offer上岸  第二篇博客">
-<meta name="twitter:image" content="http://yoursite.com/img/first.jpg">
+<meta name="twitter:title" content="Java基本注解">
+<meta name="twitter:description" content="Annotation的概念与作用元数据（MeteData）也就是Annotation，这是一种代码里的特殊标志，可在编译，类加载，运行时被读取。 Annotation就像修饰符一样，可用于修饰包，类，构造器，方法， 成员变量，参数，局部变量的声明，这些信息被存储到Annotation的“name=value”对中 Annotation是一个接口，程序通过反射来获取指定程序元素的Annotation">
 
 
 
@@ -123,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/10/04/第二篇博客/">
+  <link rel="canonical" href="http://yoursite.com/2019/10/28/Java基本注解/">
 
 
 
 
 
-  <title>第二篇博客 | ZKaiKing-blog</title>
+  <title>Java基本注解 | ZKaiKing-blog</title>
   
 
 
@@ -303,7 +300,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/04/第二篇博客/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/28/Java基本注解/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ZKaiKing">
@@ -320,7 +317,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">第二篇博客</h1>
+          <h1 class="post-title" itemprop="name headline">Java基本注解</h1>
         
 
         <div class="post-meta">
@@ -332,8 +329,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-04T21:44:21+08:00">
-                2019-10-04
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-28T14:01:22+08:00">
+                2019-10-28
               </time>
             
 
@@ -348,8 +345,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-10-04T21:49:23+08:00">
-                2019-10-04
+              <time title="Post modified" itemprop="dateModified" datetime="2019-10-28T14:57:37+08:00">
+                2019-10-28
               </time>
             
           </span>
@@ -382,11 +379,76 @@
       
 
       
-        <p>第一次写博客，希望能记录学习的点点滴滴</p>
-<p>来年春招力争大厂offer上岸</p>
-<p><img src="/img/first.jpg" alt="女装大佬"></p>
-<p>第二篇博客</p>
-<img src="/2019/10/04/第二篇博客/first.jpg" title="this is a img">
+        <h2 id="Annotation的概念与作用"><a href="#Annotation的概念与作用" class="headerlink" title="Annotation的概念与作用"></a>Annotation的概念与作用</h2><p>元数据（MeteData）也就是Annotation，这是一种代码里的特殊标志，可在编译，类加载，运行时被读取。</p>
+<p>Annotation就像修饰符一样，可用于修饰包，类，构造器，方法， 成员变量，参数，局部变量的<strong>声明</strong>，这些信息被存储到Annotation的“name=value”对中</p>
+<p><strong>Annotation是一个接口，程序通过反射来获取指定程序元素的Annotation对象，然后通过Annotation对象来获取注释里的元数据</strong></p>
+<h2 id="基本Annotation"><a href="#基本Annotation" class="headerlink" title="基本Annotation"></a>基本Annotation</h2><p>  四种基本的Annotation如下：</p>
+<p>@Override</p>
+<p>@Deprecated</p>
+<p>@SuppressWarinings</p>
+<p>@SafeVarargs</p>
+<h3 id="Override注解的功能与用法"><a href="#Override注解的功能与用法" class="headerlink" title="@Override注解的功能与用法"></a>@Override注解的功能与用法</h3><p>@Override用来制定方法覆盖度，强制一个子类必须覆盖父类的方法；用于避免普通子类没覆盖父类抽象方法，方法名写错</p>
+<h3 id="Deprecated注解的功能与用法"><a href="#Deprecated注解的功能与用法" class="headerlink" title="@Deprecated注解的功能与用法"></a>@Deprecated注解的功能与用法</h3><p>@Deprecated用于表示某个程序元素（方法，类等）已过时，当使用过时类，方法时，会发出警告信息</p>
+<h3 id="SuppressWarinings注解的功能与用法"><a href="#SuppressWarinings注解的功能与用法" class="headerlink" title="@SuppressWarinings注解的功能与用法"></a>@SuppressWarinings注解的功能与用法</h3><p>@SuppressWarinings指示被该Annotation修饰的程序元素（以及该程序元素的所有子元素）取消显示指定的编译器错误</p>
+<h3 id="SafeVarargs注解的功能与用法"><a href="#SafeVarargs注解的功能与用法" class="headerlink" title="@SafeVarargs注解的功能与用法"></a>@SafeVarargs注解的功能与用法</h3><p>@SafeVarargs用于解决“堆污染”警告</p>
+<p>“堆污染”：当把一个不带泛型的对象赋值给一个带泛型的变量时，往往会产生堆污染</p>
+<h2 id="JDK的元Annotation"><a href="#JDK的元Annotation" class="headerlink" title="JDK的元Annotation"></a>JDK的元Annotation</h2><p>上面四个基本注解是在java.lang包下的， 此外还在java.lang.annotation包下提供4个Meta Annotation，<strong>这四个Annotation都用于修饰其他的Annotation的定义</strong></p>
+<p>@Retention</p>
+<p>@Target</p>
+<p>@Document</p>
+<p>@Inherited</p>
+<h3 id="Retention注解的功能与用法"><a href="#Retention注解的功能与用法" class="headerlink" title="@Retention注解的功能与用法"></a>@Retention注解的功能与用法</h3><p>@Retention只能用于修饰一个Annotation定义，指定被修饰的Annotation可以保留多长时间</p>
+<p>@Retention包含一个RetentionPolicy类型的value成员变量，使用@Retention必须为改对象指定值</p>
+<p>value值分别有：</p>
+<ul>
+<li><p>RetentionPolicy.CLASS:默认值，记录在class文件中</p>
+</li>
+<li><p>RetentionPolicy.RUNTIME:JVM保留该Annotation，<strong>程序可以通过反射获取该Annotation信息</strong></p>
+</li>
+<li><p>RetentionPolicy.SOURCE:保留源代码中，编译器丢弃该Annotation</p>
+</li>
+</ul>
+<h3 id="Target注解的功能与用法"><a href="#Target注解的功能与用法" class="headerlink" title="@Target注解的功能与用法"></a>@Target注解的功能与用法</h3><p>@Target用于修饰一个Annotation定义，用于指定被修饰的Annotation能用于修饰哪些程序单元</p>
+<p>value值分别有：</p>
+<ul>
+<li><p>ElementType.ANNOTATION_TYPE:指定该策略的Annotation只能用于修饰Annotation</p>
+</li>
+<li><p>ElementType.CONSTRUCTOR:只能修饰构造器</p>
+</li>
+<li><p>ElementType.FIFLD:只能修饰成员变量</p>
+</li>
+<li><p>ElementType.LOCAL_VARIABLE:只能修饰局部变量</p>
+</li>
+<li><p>ElementType.METHOD:修饰方法定义</p>
+</li>
+<li><p><em>ElementType.PACKAGE:修饰包的定义</em></p>
+</li>
+<li><p>ElementType.PARAETER:修饰参数</p>
+</li>
+<li><p>ElementType.TYPE:可以修饰<strong>类、接口（包括注解类型）或枚举定义</strong></p>
+</li>
+</ul>
+<h3 id="Document注解的功能与用法"><a href="#Document注解的功能与用法" class="headerlink" title="@Document注解的功能与用法"></a>@Document注解的功能与用法</h3><p>@Document用于该Annotation将被javadoc工具提取成文档</p>
+<h3 id="Inherited注解的功能与用法"><a href="#Inherited注解的功能与用法" class="headerlink" title="@Inherited注解的功能与用法"></a>@Inherited注解的功能与用法</h3><p>@Inherited元Annotation指定被它修饰的Annotation将具有继承性。</p>
+<p>如果某个类用包含@Inherited的Annotation，则该子类将自动也使用该Annotation</p>
+<h2 id="自定义Annotation"><a href="#自定义Annotation" class="headerlink" title="自定义Annotation"></a>自定义Annotation</h2><p>定义一个新的Annotation类型使用@interface关键字。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> TESTAnnotation</span><br><span class="line">&#123;</span><br><span class="line"> ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可定义Annotation的成员变量，并且该变量可以指定初始值，用关键字default</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> MyTag</span><br><span class="line">&#123;</span><br><span class="line">    <span class="function">String <span class="title">name</span><span class="params">()</span> <span class="keyword">default</span> "zhengkai"</span>;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">age</span><span class="params">()</span> <span class="keyword">default</span> 18</span>;        </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>该Annotation定义俩个成员变量，并且已经有初始值</p>
+<p>**当开发者使用Annotation修饰类，方法，Filed等成员之后，这些Annotation并不会生效，必须有开发者提供相应的工具来提取并处理Annotation信息</p>
+<h3 id="运行时Annotation"><a href="#运行时Annotation" class="headerlink" title="运行时Annotation"></a>运行时Annotation</h3><p>java.lang.reflect包下提供了获取Annotation的AnnotationElenment接口，程序可调用如下三个方法获取Annotation信息</p>
+<ul>
+<li><p>getAnnotation(Class<t> annotationClass)：获得程序元素的注解，不存在返回null</t></p>
+</li>
+<li><p>Annotations[]：获取程序元素上所有的注解</p>
+</li>
+<li><p>isAnnotationPresent(Class&lt;? extends Annotation&gt; annotationClass):判断该程序元素是否存在注解</p>
+</li>
+</ul>
+
       
     </div>
     
@@ -403,7 +465,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/hexo/" rel="tag"># -hexo</a>
+            <a href="/tags/注解/" rel="tag"># -注解</a>
           
         </div>
       
@@ -416,8 +478,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/10/04/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2019/10/22/Hive数据仓库基础知识/" rel="next" title="Hive数据仓库基础知识">
+                <i class="fa fa-chevron-left"></i> Hive数据仓库基础知识
               </a>
             
           </div>
@@ -425,10 +487,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/10/04/Leecodede-139单词拆分/" rel="prev" title="Leecodede_139单词拆分">
-                Leecodede_139单词拆分 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -518,8 +576,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -594,6 +661,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Annotation的概念与作用"><span class="nav-number">1.</span> <span class="nav-text">Annotation的概念与作用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本Annotation"><span class="nav-number">2.</span> <span class="nav-text">基本Annotation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Override注解的功能与用法"><span class="nav-number">2.1.</span> <span class="nav-text">@Override注解的功能与用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deprecated注解的功能与用法"><span class="nav-number">2.2.</span> <span class="nav-text">@Deprecated注解的功能与用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SuppressWarinings注解的功能与用法"><span class="nav-number">2.3.</span> <span class="nav-text">@SuppressWarinings注解的功能与用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SafeVarargs注解的功能与用法"><span class="nav-number">2.4.</span> <span class="nav-text">@SafeVarargs注解的功能与用法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JDK的元Annotation"><span class="nav-number">3.</span> <span class="nav-text">JDK的元Annotation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Retention注解的功能与用法"><span class="nav-number">3.1.</span> <span class="nav-text">@Retention注解的功能与用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Target注解的功能与用法"><span class="nav-number">3.2.</span> <span class="nav-text">@Target注解的功能与用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Document注解的功能与用法"><span class="nav-number">3.3.</span> <span class="nav-text">@Document注解的功能与用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Inherited注解的功能与用法"><span class="nav-number">3.4.</span> <span class="nav-text">@Inherited注解的功能与用法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义Annotation"><span class="nav-number">4.</span> <span class="nav-text">自定义Annotation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#运行时Annotation"><span class="nav-number">4.1.</span> <span class="nav-text">运行时Annotation</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
