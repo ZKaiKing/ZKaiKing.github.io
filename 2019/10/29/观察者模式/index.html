@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="-Leecode -算法思路,">
+  <meta name="keywords" content="-设计模式,">
 
 
 
@@ -79,18 +79,22 @@
 
 
 
-<meta name="description" content="给定一个非空字符串 s 和一个包含非空单词列表的字典 wordDict*，判定 *s 是否可以被空格拆分为一个或多个在字典中出现的单词。  说明：  拆分时可以重复使用字典中的单词。  你可以假设字典中没有重复的单词。  示例 1： 输入: s = “leetcode”, wordDict = [“leet”, “code”]输出: true*解释: 返回 true 因为 “leetcode” 可">
-<meta name="keywords" content="-Leecode -算法思路">
+<meta name="description" content="模式定义观察者模式是对象行为模式，又叫发布-订阅模式（publish/subscribe）模式，源-监视器模式（source/Listener)模式。 观察者模式定义了一种一对多的依赖关系，让多个观察者对象同事监听某一个主题对象，这个主题对象在状态上发生变化时，会通知所有观察者对象，使他们能够做出相应的操作。 模式结构软件系统中，常常因为一个对象的状态发生改变时，某些其他对象做出相应的改变，做到这">
+<meta name="keywords" content="-设计模式">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Leecodede_139单词拆分">
-<meta property="og:url" content="http://yoursite.com/2019/10/04/Leecodede-139单词拆分/index.html">
+<meta property="og:title" content="观察者模式">
+<meta property="og:url" content="http://yoursite.com/2019/10/29/观察者模式/index.html">
 <meta property="og:site_name" content="ZKaiKing-blog">
-<meta property="og:description" content="给定一个非空字符串 s 和一个包含非空单词列表的字典 wordDict*，判定 *s 是否可以被空格拆分为一个或多个在字典中出现的单词。  说明：  拆分时可以重复使用字典中的单词。  你可以假设字典中没有重复的单词。  示例 1： 输入: s = “leetcode”, wordDict = [“leet”, “code”]输出: true*解释: 返回 true 因为 “leetcode” 可">
+<meta property="og:description" content="模式定义观察者模式是对象行为模式，又叫发布-订阅模式（publish/subscribe）模式，源-监视器模式（source/Listener)模式。 观察者模式定义了一种一对多的依赖关系，让多个观察者对象同事监听某一个主题对象，这个主题对象在状态上发生变化时，会通知所有观察者对象，使他们能够做出相应的操作。 模式结构软件系统中，常常因为一个对象的状态发生改变时，某些其他对象做出相应的改变，做到这">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-04T15:09:31.625Z">
+<meta property="og:image" content="http://yoursite.com/img/07_first.jpg">
+<meta property="og:image" content="http://yoursite.com/img/07_second.png">
+<meta property="og:image" content="http://yoursite.com/img/07_three.png">
+<meta property="og:updated_time" content="2019-10-29T08:30:55.984Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Leecodede_139单词拆分">
-<meta name="twitter:description" content="给定一个非空字符串 s 和一个包含非空单词列表的字典 wordDict*，判定 *s 是否可以被空格拆分为一个或多个在字典中出现的单词。  说明：  拆分时可以重复使用字典中的单词。  你可以假设字典中没有重复的单词。  示例 1： 输入: s = “leetcode”, wordDict = [“leet”, “code”]输出: true*解释: 返回 true 因为 “leetcode” 可">
+<meta name="twitter:title" content="观察者模式">
+<meta name="twitter:description" content="模式定义观察者模式是对象行为模式，又叫发布-订阅模式（publish/subscribe）模式，源-监视器模式（source/Listener)模式。 观察者模式定义了一种一对多的依赖关系，让多个观察者对象同事监听某一个主题对象，这个主题对象在状态上发生变化时，会通知所有观察者对象，使他们能够做出相应的操作。 模式结构软件系统中，常常因为一个对象的状态发生改变时，某些其他对象做出相应的改变，做到这">
+<meta name="twitter:image" content="http://yoursite.com/img/07_first.jpg">
 
 
 
@@ -120,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/10/04/Leecodede-139单词拆分/">
+  <link rel="canonical" href="http://yoursite.com/2019/10/29/观察者模式/">
 
 
 
 
 
-  <title>Leecodede_139单词拆分 | ZKaiKing-blog</title>
+  <title>观察者模式 | ZKaiKing-blog</title>
   
 
 
@@ -300,7 +304,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/04/Leecodede-139单词拆分/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/29/观察者模式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ZKaiKing">
@@ -317,7 +321,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Leecodede_139单词拆分</h1>
+          <h1 class="post-title" itemprop="name headline">观察者模式</h1>
         
 
         <div class="post-meta">
@@ -329,8 +333,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-04T22:48:23+08:00">
-                2019-10-04
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-29T15:13:51+08:00">
+                2019-10-29
               </time>
             
 
@@ -345,8 +349,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-10-04T23:09:31+08:00">
-                2019-10-04
+              <time title="Post modified" itemprop="dateModified" datetime="2019-10-29T16:30:55+08:00">
+                2019-10-29
               </time>
             
           </span>
@@ -379,41 +383,57 @@
       
 
       
-        <p>给定一个<strong>非空</strong>字符串 <em>s</em> 和一个包含<strong>非空</strong>单词列表的字典 <em>wordDict*，判定 *s</em> 是否可以被空格拆分为一个或多个在字典中出现的单词。</p>
-<hr>
-<p><strong>说明：</strong></p>
+        <h2 id="模式定义"><a href="#模式定义" class="headerlink" title="模式定义"></a>模式定义</h2><p>观察者模式是对象<strong>行为模式</strong>，又叫发布-订阅模式（publish/subscribe）模式，源-监视器模式（source/Listener)模式。</p>
+<p><em>观察者模式定义了一种一对多的依赖关系，让多个观察者对象同事监听某一个主题对象，这个主题对象在状态上发生变化时，会通知所有观察者对象，使他们能够做出相应的操作。</em></p>
+<h2 id="模式结构"><a href="#模式结构" class="headerlink" title="模式结构"></a>模式结构</h2><p>软件系统中，常常因为一个对象的状态发生改变时，某些其他对象做出相应的改变，做到这一点的设计方案有很多，但为了系统稳定性，选择低耦合的观察者模式，有助于系统的复用，保证高度协作。</p>
+<h2 id="模式描述"><a href="#模式描述" class="headerlink" title="模式描述"></a>模式描述</h2><p><strong>意图：</strong>定义对象间的一种一对多的依赖关系，当一个对象的状态发生改变时，所有依赖于它的对象都得到通知并被自动更新。</p>
+<p><strong>主要解决：</strong>一个对象状态改变给其他对象通知的问题，而且要考虑到易用和低耦合，保证高度的协作。</p>
+<p><strong>何时使用：</strong>一个对象（目标对象）的状态发生改变，所有的依赖对象（观察者对象）都将得到通知，进行广播通知。</p>
+<p><strong>如何解决：</strong>使用面向对象技术，可以将这种依赖关系弱化。</p>
+<p><strong>关键代码：</strong>在抽象类里有一个 ArrayList 存放观察者们。</p>
+<p><strong>使用场景：</strong></p>
 <ul>
-<li><p>拆分时可以重复使用字典中的单词。</p>
-</li>
-<li><p>你可以假设字典中没有重复的单词。</p>
-<hr>
-<p>示例 1：</p>
-<p><em>输入: s = “leetcode”, wordDict = [“leet”, “code”]</em><br><em>输出: true</em><br>*解释: 返回 true 因为 “leetcode” 可以被拆分成 “leet code”</p>
-<hr>
-<p>示例 2：</p>
-<p>输入: s = “applepenapple”, wordDict = [“apple”, “pen”]<br>输出: true<br>解释: 返回 true 因为 “applepenapple” 可以被拆分成 “apple pen apple”。</p>
-<pre><code>注意你可以重复使用字典中的单词。</code></pre><hr>
-<p>示例 3：</p>
-<p>输入: s = “catsandog”, wordDict = [“cats”, “dog”, “sand”, “and”, “cat”]<br>输出: false-*</p>
-</li>
+<li>一个抽象模型有两个方面，其中一个方面依赖于另一个方面。将这些方面封装在独立的对象中使它们可以各自独立地改变和复用。</li>
+<li>一个对象的改变将导致其他一个或多个对象也发生改变，而不知道具体有多少对象将发生改变，可以降低对象之间的耦合度。</li>
+<li>一个对象必须通知其他对象，而并不知道这些对象是谁。</li>
+<li>需要在系统中创建一个触发链，A对象的行为将影响B对象，B对象的行为将影响C对象……，可以使用观察者模式创建一种链式触发机制。</li>
+</ul>
+<h2 id="角色"><a href="#角色" class="headerlink" title="角色"></a>角色</h2><p><img src="/img/07_first.jpg" alt="结构图"></p>
+<ul>
+<li><strong>抽象主题（Subject)角色</strong>：抽象主题角色把所有<strong>对观察者对象的引用保存在一个聚集（比如ArrayList)里</strong>，每一个主题都可以有任何数量的观察者。<strong>抽象主题提供一个接口（抽象类)</strong>，可以<strong>增加</strong>和<strong>删除</strong>观察者，抽象主题角色又叫抽象被观察者（Observable)角色。</li>
+<li><strong>具体主题（ConcreteSubject)角色</strong>：将有关状态存入具体的观察者对象；在具体主题的内部状态改变时，给所有登录订阅过的观察者发送通知。具体主题对象又叫具体被观察者（Concrete Observable）角色。</li>
+<li><strong>抽象观察者(Observer)角色</strong>：给所有的具体观察者定义一个<strong>接口</strong>，在得到主题的通知时更新自己，这个接口叫做更新接口。</li>
+<li><strong>具体观察者（Concrete Observer）角色</strong>：存储与主题的状态自恰的状态，具体观察者实现抽象观察者角色所要求的更新接口，以便使本身的状态与主题相协调，具体观察者可以保持一个指向具体主题对象的引用。</li>
 </ul>
 <hr>
-<p>该题可以采用<em>暴力法</em> <em>、广度优先搜索</em>、<strong>动态规划</strong></p>
-<p>实际上三者都有一个共同点，即：应该先找出前半部分是否含有，再进行递归或者递推</p>
-<p>   动态规划三要素：（初始）状态，状态转移方程，终止条件</p>
-<p>其实动态规划套路就是记忆存储，自底递推，找到状态转移</p>
-<p>但是这道题，可以想象其实可以把一个单词（而不是一个下标），当初一个状态，来进行状态的转移</p>
-<p>eg: catdog—&gt;cat(true)+dog(exit)</p>
-<hr>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">wordBreak</span><span class="params">(String s, List&lt;String&gt; wordDict)</span> </span>&#123;</span><br><span class="line">        Set&lt;String&gt; set=<span class="keyword">new</span> HashSet(wordDict);</span><br><span class="line">        <span class="keyword">boolean</span>[] dp=<span class="keyword">new</span> <span class="keyword">boolean</span>[s.length()+<span class="number">1</span>];</span><br><span class="line">        dp[<span class="number">0</span>]=<span class="keyword">true</span>;</span><br><span class="line">        <span class="comment">//注意界限：i&lt;=s.length()</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=s.length();i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;i;j++)&#123;</span><br><span class="line">                <span class="comment">//想象成：dp[leet]+contains(code) ? true</span></span><br><span class="line">                <span class="keyword">if</span>(dp[j] &amp;&amp; set.contains(s.substring(j,i)))&#123;</span><br><span class="line">                    dp[i]=<span class="keyword">true</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[s.length()];</span><br><span class="line">    &#125;</span><br><span class="line">        </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>实现代码示例：</p>
+<p>抽象主题类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Subject</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 用来保存注册的观察者对象</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span>    List&lt;Observer&gt; list = <span class="keyword">new</span> ArrayList&lt;Observer&gt;();</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 注册观察者对象</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> observer    观察者对象</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">attach</span><span class="params">(Observer observer)</span></span>&#123;        </span><br><span class="line">        list.add(observer);</span><br><span class="line">        System.out.println(<span class="string">"Attached an observer"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 删除观察者对象</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> observer    观察者对象</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">detach</span><span class="params">(Observer observer)</span></span>&#123;  </span><br><span class="line">        list.remove(observer);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 通知所有注册的观察者对象</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">nodifyObservers</span><span class="params">(String newState)</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(Observer observer : list)&#123;</span><br><span class="line">            <span class="comment">//推模式下，需要传入状态</span></span><br><span class="line">            <span class="comment">//拉模式下，不需要传入状态</span></span><br><span class="line">            observer.update(newState);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>Leecode官方：</p>
-<hr>
-<p>这个方法的想法是对于给定的字符串（ss）可以被拆分成子问题 s1s1 和 s2s2 。如果这些子问题都可以独立地被拆分成符合要求的子问题，那么整个问题 ss 也可以满足。也就是，如果 “\text{catsanddog}catsanddog” 可以拆分成两个子字符串 “\text{catsand}catsand” 和 “\text{dog}dog” 。子问题 “\text{catsand}catsand” 可以进一步拆分成 “\text{cats}cats” 和 “\text{and}and” ，这两个独立的部分都是字典的一部分，所以 “\text{catsand}catsand” 满足题意条件，再往前， “\text{catsand}catsand” 和 “\text{dog}dog” 也分别满足条件，所以整个字符串 “\text{catsanddog}catsanddog” 也满足条件。</p>
-<p>现在，我们考虑 \text{dp}dp 数组求解的过程。我们使用 n+1n+1 大小数组的 \text{dp}dp ，其中 nn 是给定字符串的长度。我们也使用 2 个下标指针 ii 和 jj ，其中 ii 是当前字符串从头开始的子字符串（s’s）的长度， jj 是当前子字符串（s’s ′）的拆分位置，拆分成 s’(0,j)s ′ (0,j) 和 s’(j+1,i)s ′ (j+1,i) 。</p>
-<p>为了求出 \text{dp}dp 数组，我们初始化 \text{dp}[0]dp[0] 为 \text{true}true ，这是因为空字符串总是字典的一部分。 \text{dp}dp 数组剩余的元素都初始化为 \text{false}false 。</p>
-<p>我们用下标 ii 来考虑所有从当前字符串开始的可能的子字符串。对于每一个子字符串，我们通过下标 jj 将它拆分成 s1’s1 ′  和 s2’s2 ′  （注意 ii 现在指向 s2’s2 ′  的结尾）。为了将 \text{dp}[i]dp[i] 数组求出来，我们依次检查每个 \text{dp}[j]dp[j] 是否为 \text{true}true ，也就是子字符串 s1’s1 ′  是否满足题目要求。如果满足，我们接下来检查 s2’s2 ′  是否在字典中。如果包含，我们接下来检查 s2’s2 ′是否在字典中，如果两个字符串都满足要求，我们让 \text{dp}[i]dp[i] 为 \text{true}true ，否则令其为 \text{false}false 。</p>
-<hr>
+<p>具体主题角色类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConcreteSubject</span> <span class="keyword">extends</span> <span class="title">Subject</span></span>&#123; </span><br><span class="line">    <span class="keyword">private</span> String state;   </span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getState</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> state;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">change</span><span class="params">(String newState)</span></span>&#123;</span><br><span class="line">        state = newState;</span><br><span class="line">        System.out.println(<span class="string">"主题状态为："</span> + state);</span><br><span class="line">        <span class="comment">//状态发生改变，通知各个观察者</span></span><br><span class="line">       <span class="comment">//在推模式下，需要传入参数</span></span><br><span class="line">        <span class="comment">//拉模式下，不需要传入参数</span></span><br><span class="line">       <span class="keyword">this</span>.nodifyObservers(state);<span class="comment">//调用父类定义方法   </span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>抽象观察者角色类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Observer</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 更新接口</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> state    更新的状态</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">(String state)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>具体观察者角色类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConcreteObserver</span> <span class="keyword">implements</span> <span class="title">Observer</span> </span>&#123;</span><br><span class="line">    <span class="comment">//观察者的状态</span></span><br><span class="line">    <span class="keyword">private</span> String observerState;    </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">(String state)</span> </span>&#123;</span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 更新观察者的状态，使其与目标的状态保持一致</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        observerState = state;</span><br><span class="line">        System.out.println(<span class="string">"状态为："</span>+observerState);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>客户端：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//创建主题对象</span></span><br><span class="line">        ConcreteSubject subject = <span class="keyword">new</span> ConcreteSubject();</span><br><span class="line">        <span class="comment">//创建观察者对象</span></span><br><span class="line">        Observer observer = <span class="keyword">new</span> ConcreteObserver();</span><br><span class="line">        <span class="comment">//将观察者对象登记到主题对象上</span></span><br><span class="line">        subject.attach(observer);</span><br><span class="line">        <span class="comment">//改变主题对象的状态</span></span><br><span class="line">        subject.change(<span class="string">"new state"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="推模式和拉模式"><a href="#推模式和拉模式" class="headerlink" title="推模式和拉模式"></a>推模式和拉模式</h2><h3 id="推模式"><a href="#推模式" class="headerlink" title="推模式"></a>推模式</h3><p>上面的例子就是典型的推模式，主题对象向观察者推送详细信息。</p>
+<h3 id="拉模式"><a href="#拉模式" class="headerlink" title="拉模式"></a>拉模式</h3><p>主题对象在通知观察者的时候，只传递少量信息。如果观察者需要更具体的信息，由观察者主动到主题对象中获取，相当于是观察者从主题对象中拉数据。一般这种模型的实现中，会把主题对象自身通过update()方法传递给观察者，这样在观察者需要获取数据的时候，就可以通过这个引用来获取了。</p>
+<p><strong>调用观察者的方法时，不需要传入参数</strong></p>
+<h2 id="观察者模式与订阅模式"><a href="#观察者模式与订阅模式" class="headerlink" title="观察者模式与订阅模式"></a>观察者模式与订阅模式</h2><p><img src="/img/07_second.png" alt="观察者模式"></p>
+<p><strong>观察者注册到目标；目标发生改变时，调用观察者方法</strong></p>
+<p><img src="/img/07_three.png" alt="发布-订阅模式"></p>
+<p><strong>订阅者把自己想订阅的事件注册到调度中心，当该事件触发时候，发布者发布该事件到调度中心（顺带上下文），由调度中心统一调度订阅者注册到调度中心的处理代码</strong></p>
+<p><strong>总结</strong></p>
+<ol>
+<li>从两张图片可以看到，最大的区别是调度的地方。<br> 虽然两种模式都存在订阅者和发布者（具体观察者可认为是订阅者、具体目标可认为是发布者），但是观察者模式是由具体目标调度的，而发布/订阅模式是统一由调度中心调的，所以观察者模式的订阅者与发布者之间是存在依赖的，而发布/订阅模式则不会。</li>
+<li>两种模式都可以用于松散耦合，改进代码管理和潜在的复用。</li>
+</ol>
 
       
     </div>
@@ -431,7 +451,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Leecode-算法思路/" rel="tag"># -Leecode -算法思路</a>
+            <a href="/tags/设计模式/" rel="tag"># -设计模式</a>
           
         </div>
       
@@ -444,8 +464,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/10/04/第二篇博客/" rel="next" title="第二篇博客">
-                <i class="fa fa-chevron-left"></i> 第二篇博客
+              <a href="/2019/10/28/Java基本注解/" rel="next" title="Java基本注解">
+                <i class="fa fa-chevron-left"></i> Java基本注解
               </a>
             
           </div>
@@ -453,10 +473,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/10/05/virtualBox-进行Net后SSH注意事项/" rel="prev" title="virtualBox 进行Net后SSH注意事项">
-                virtualBox 进行Net后SSH注意事项 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -546,8 +562,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -622,6 +647,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#模式定义"><span class="nav-number">1.</span> <span class="nav-text">模式定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模式结构"><span class="nav-number">2.</span> <span class="nav-text">模式结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模式描述"><span class="nav-number">3.</span> <span class="nav-text">模式描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#角色"><span class="nav-number">4.</span> <span class="nav-text">角色</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#推模式和拉模式"><span class="nav-number">5.</span> <span class="nav-text">推模式和拉模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#推模式"><span class="nav-number">5.1.</span> <span class="nav-text">推模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拉模式"><span class="nav-number">5.2.</span> <span class="nav-text">拉模式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#观察者模式与订阅模式"><span class="nav-number">6.</span> <span class="nav-text">观察者模式与订阅模式</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
