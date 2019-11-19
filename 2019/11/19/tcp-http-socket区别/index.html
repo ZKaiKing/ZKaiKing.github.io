@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="-协议,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="HTTP、TCP和Socket的概念和原理及其区别一、HTTPHTTP简介 ①HTTP协议是Hyper Text Transfer Protocol（超文本传输协议）的缩写,是用于从万维网（WWW:World Wide Web ）服务器传输超文本到本地浏览器的传送协议。②HTTP是一个基于TCP/IP通信协议来传递数据（HTML 文件, 图片文件, 查询结果等）。③HTTP是一个属于应用层的面向对">
+<meta name="keywords" content="-协议">
+<meta property="og:type" content="article">
+<meta property="og:title" content="tcp-http-socket区别">
+<meta property="og:url" content="http://yoursite.com/2019/11/19/tcp-http-socket区别/index.html">
+<meta property="og:site_name" content="ZKaiKing-blog">
+<meta property="og:description" content="HTTP、TCP和Socket的概念和原理及其区别一、HTTPHTTP简介 ①HTTP协议是Hyper Text Transfer Protocol（超文本传输协议）的缩写,是用于从万维网（WWW:World Wide Web ）服务器传输超文本到本地浏览器的传送协议。②HTTP是一个基于TCP/IP通信协议来传递数据（HTML 文件, 图片文件, 查询结果等）。③HTTP是一个属于应用层的面向对">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/2019/11/19/tcp-http-socket区别/08_one.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/19/tcp-http-socket区别/08_two.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/19/tcp-http-socket区别/08_three.png">
+<meta property="og:updated_time" content="2019-11-19T03:14:40.044Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="tcp-http-socket区别">
+<meta name="twitter:description" content="HTTP、TCP和Socket的概念和原理及其区别一、HTTPHTTP简介 ①HTTP协议是Hyper Text Transfer Protocol（超文本传输协议）的缩写,是用于从万维网（WWW:World Wide Web ）服务器传输超文本到本地浏览器的传送协议。②HTTP是一个基于TCP/IP通信协议来传递数据（HTML 文件, 图片文件, 查询结果等）。③HTTP是一个属于应用层的面向对">
+<meta name="twitter:image" content="http://yoursite.com/2019/11/19/tcp-http-socket区别/08_one.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/11/19/tcp-http-socket区别/">
+
+
+
+
+
+  <title>tcp-http-socket区别 | ZKaiKing-blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+<script type="text/javascript" src="/js/src/clicksocialvalue.js"></script>
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ZKaiKing-blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/19/tcp-http-socket区别/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZKaiKing">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/photo.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZKaiKing-blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">tcp-http-socket区别</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-19T11:07:49+08:00">
+                2019-11-19
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2019-11-19T11:14:40+08:00">
+                2019-11-19
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="HTTP、TCP和Socket的概念和原理及其区别"><a href="#HTTP、TCP和Socket的概念和原理及其区别" class="headerlink" title="HTTP、TCP和Socket的概念和原理及其区别"></a>HTTP、TCP和Socket的概念和原理及其区别</h1><h3 id="一、HTTP"><a href="#一、HTTP" class="headerlink" title="一、HTTP"></a>一、HTTP</h3><h5 id="HTTP简介"><a href="#HTTP简介" class="headerlink" title="HTTP简介"></a>HTTP简介</h5><blockquote>
+<p>①HTTP协议是Hyper Text Transfer Protocol（超文本传输协议）的缩写,是用于从万维网（WWW:World Wide Web ）服务器传输超文本到本地浏览器的传送协议。<br>②HTTP是一个基于TCP/IP通信协议来传递数据（HTML 文件, 图片文件, 查询结果等）。<br>③HTTP是一个属于应用层的面向对象的协议，由于其简捷、快速的方式，适用于分布式超媒体信息系统。它于1990年提出，经过几年的使用与发展，得到不断地完善和扩展。目前在WWW中使用的是HTTP/1.0的第六版，HTTP/1.1的规范化工作正在进行之中，而且HTTP-NG(Next Generation of HTTP)的建议已经提出。<br>④HTTP协议工作于客户端-服务端架构为上。浏览器作为HTTP客户端通过URL向HTTP服务端即WEB服务器发送所有请求。Web服务器根据接收到的请求后，向客户端发送响应信息。</p>
+</blockquote>
+<h4 id="HTTP的主要特点"><a href="#HTTP的主要特点" class="headerlink" title="HTTP的主要特点"></a>HTTP的主要特点</h4><p>主要特点<br> <strong>1、简单快速：客户向服务器请求服务时，只需传送请求方法和路径。请求方法常用的有GET、HEAD、POST。每种方法规定了客户与服务器联系的类型不同。由于HTTP协议简单，使得HTTP服务器的程序规模小，因而通信速度很快。</strong></p>
+<p><strong>2、灵活：HTTP允许传输任意类型的数据对象。正在传输的类型由Content-Type加以标记。</strong></p>
+<p><strong>3.无连接：无连接的含义是限制每次连接只处理一个请求。服务器处理完客户的请求，并收到客户的应答后，即断开连接。采用这种方式可以节省传输时间。</strong></p>
+<p><strong>4.无状态：HTTP协议是无状态协议。无状态是指协议对于事务处理没有记忆能力。缺少状态意味着如果后续处理需要前面的信息，则它必须重传，这样可能导致每次连接传送的数据量增大。另一方面，在服务器不需要先前信息时它的应答就较快。</strong></p>
+<p><strong>5、支持B/S及C/S模式。</strong></p>
+<h4 id="HTTP的理解（此段摘抄于-Http协议与TCP协议简单理解后续）"><a href="#HTTP的理解（此段摘抄于-Http协议与TCP协议简单理解后续）" class="headerlink" title="HTTP的理解（此段摘抄于 Http协议与TCP协议简单理解后续）"></a>HTTP的理解（此段摘抄于 <a href="https://link.jianshu.com?t=http://blog.csdn.net/sundacheng1989/article/details/52437128" target="_blank" rel="noopener">Http协议与TCP协议简单理解后续</a>）</h4><p><strong>一、</strong><br> TCP协议对应于传输层，而HTTP协议对应于应用层，从本质上来说，二者没有可比性。Http协议是建立在TCP协议基础之上的，当浏览器需要从服务器获取网页数据的时候，会发出一次Http请求。Http会通过TCP建立起一个到服务器的连接通道，当本次请求的数据完毕后，Http会立即将TCP连接断开，这个过程是很短的。所以Http连接是一种短连接，是一种无状态的连接。所谓的无状态，是指浏览器每次向服务器发起请求的时候，不是通过一个连接，而是每次都建立一个新的连接。如果是一个连接的话，服务器进程中就能保持住这个连接并且在内存中记住一些信息状态。而每次请求结束后，连接就关闭，相关的内容就释放了，所以记不住任何状态，成为无状态连接。</p>
+<p><strong>二、</strong><br> 随着时间的推移，html页面变得复杂了，里面可能嵌入了很多图片，这时候每次访问图片都需要建立一次tcp连接就显得低效了。因此Keep-Alive被提出用来解决效率低的问题。从HTTP/1.1起，默认都开启了Keep-Alive，保持连接特性，简单地说，当一个网页打开完成后，客户端和服务器之间用于传输HTTP数据的TCP连接不会关闭，如果客户端再次访问这个服务器上的网页，会继续使用这一条已经建立的连接Keep-Alive不会永久保持连接，它有一个保持时间，可以在不同的服务器软件（如Apache）中设定这个时间。虽然这里使用TCP连接保持了一段时间，但是这个时间是有限范围的，到了时间点依然是会关闭的，所以我们还把其看做是每次连接完成后就会关闭。后来，通过Session, Cookie等相关技术，也能保持一些用户的状态。但是还是每次都使用一个连接，依然是无状态连接</p>
+<p><strong>三、</strong><br> 为什么Http是无状态的短连接呢？而TCP是有状态的长连接？Http不是建立在TCP的基础上吗，为什么还能是短连接？现在明白了，Http就是在每次请求完成后就把TCP连接关了，所以是短连接。而我们直接通过Socket编程使用TCP协议的时候，因为我们自己可以通过代码区控制什么时候打开连接什么时候关闭连接，只要我们不通过代码把连接关闭，这个连接就会在客户端和服务端的进程中一直存在，相关状态数据会一直保存着。<br> <strong>四、</strong><br> 比较形象的描述：HTTP是轿车，提供了封装或者显示数据的具体形式;Socket是发动机，提供了网络通信的能力。对于从C#编程的角度来讲，为了方便，你可以直接选择已经制造好的轿车Http来与服务器交互。但是有时候往往因为环境因素或者其他的一些定制的请求，必须要使用TCP协议，这时就需要使用Socket编程，然后自己去处理获取的数据。就像是你用已有的发动机，自己造了一辆卡车，去从服务器交互。</p>
+<p>HTTP都把TCP作为底层的传输协议。HTTP客户首先发起建立与服务器TCP连接。一旦建立连接，浏览器进程和服务器进程就可以通过各自的套接字来访问TCP。如前所述，客户端套接字是客户进程和TCP连接之间的“门”，服务器端套接字是服务器进程和同一TCP连接之间的“门”。客户往自己的套接字发送HTTP请求消息，也从自己的套接字接收HTTP响应消息。类似地，服务器从自己的套接字接收HTTP请求消息，也往自己的套接字发送HTTP响应消息。客户或服务器一旦把某个消息送入各自的套接字，这个消息就完全落入TCP的控制之中。TCP给HTTP提供一个可靠的数据传输服务;这意味着由客户发出的每个HTTP请求消息最终将无损地到达服务器，由服务器发出的每个HTTP响应消息最终也将无损地到达客户。</p>
+<h4 id="HTTP的请求方法"><a href="#HTTP的请求方法" class="headerlink" title="HTTP的请求方法"></a>HTTP的请求方法</h4><p>根据HTTP标准，HTTP请求可以使用多种请求方法。<br> HTTP1.0定义了三种请求方法： GET, POST 和 HEAD方法。<br> HTTP1.1新增了五种请求方法：OPTIONS, PUT, DELETE, TRACE 和 CONNECT 方法。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">GET     请求指定的页面信息，并返回实体主体。</span><br><span class="line">HEAD     类似于<span class="keyword">get</span>请求，只不过返回的响应中没有具体的内容，用于获取报头</span><br><span class="line">POST     向指定资源提交数据进行处理请求（例如提交表单或者上传文件）。数据被包含在请求体中。POST请求可能会导致新的资源的建立和/或已有资源的修改。</span><br><span class="line">PUT     从客户端向服务器传送的数据取代指定的文档的内容。</span><br><span class="line">DELETE      请求服务器删除指定的页面。</span><br><span class="line">CONNECT     HTTP/<span class="number">1.1</span>协议中预留给能够将连接改为管道方式的代理服务器。</span><br><span class="line">OPTIONS     允许客户端查看服务器的性能。</span><br><span class="line">TRACE     回显服务器收到的请求，主要用于测试或诊断。</span><br></pre></td></tr></table></figure>
+
+<h4 id="HTTP的工作原理"><a href="#HTTP的工作原理" class="headerlink" title="HTTP的工作原理"></a>HTTP的工作原理</h4><p>HTTP协议定义Web客户端如何从Web服务器请求Web页面，以及服务器如何把Web页面传送给客户端。HTTP协议采用了请求/响应模型。客户端向服务器发送一个请求报文，请求报文包含请求的方法、URL、协议版本、请求头部和请求数据。服务器以一个状态行作为响应，响应的内容包括协议的版本、成功或者错误代码、服务器信息、响应头部和响应数据。<br> 以下是 HTTP 请求/响应的步骤：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>、客户端连接到Web服务器</span><br><span class="line">  一个HTTP客户端，通常是浏览器，与Web服务器的HTTP端口（默认为<span class="number">80</span>）建立一个TCP套接字连接。</span><br><span class="line"><span class="number">2</span>、发送HTTP请求</span><br><span class="line">  通过TCP套接字，客户端向Web服务器发送一个文本的请求报文，一个请求报文由请求行、请求头部、空行和请求数据</span><br><span class="line">  四部分组成。</span><br><span class="line"><span class="number">3</span>、服务器接受请求并返回HTTP响应</span><br><span class="line">  Web服务器解析请求，定位请求资源。服务器将资源复本写到TCP套接字，由客户端读取。一个响应由状态行、响应头部、</span><br><span class="line">  空行和响应数据<span class="number">4</span>部分组成。</span><br><span class="line"><span class="number">4</span>、释放连接[TCP连接](http:<span class="comment">//www.jianshu.com/p/ef892323e68f)</span></span><br><span class="line">  若connection 模式为<span class="built_in">close</span>，则服务器主动关闭[TCP连接](http:<span class="comment">//www.jianshu.com/p/ef892323e68f)，</span></span><br><span class="line">  客户端被动关闭连接，释放[TCP连接](http:<span class="comment">//www.jianshu.com/p/ef892323e68f);若connection 模式为</span></span><br><span class="line">  keepalive，则该连接会保持一段时间，在该时间内可以继续接收请求;</span><br><span class="line"><span class="number">5</span>、客户端浏览器解析HTML内容</span><br><span class="line">  客户端浏览器首先解析状态行，查看表明请求是否成功的状态代码。然后解析每一个响应头，响应头告知以下为若干字节的</span><br><span class="line">  HTML文档和文档的字符集。客户端浏览器读取响应数据HTML，根据HTML的语法对其进行格式化，并在浏览器窗口中显示。</span><br><span class="line">  例如：在浏览器地址栏键入URL，按下回车之后会经历以下流程：</span><br><span class="line">  <span class="number">1</span>、浏览器向 DNS 服务器请求解析该 URL 中的域名所对应的 IP 地址;</span><br><span class="line">  <span class="number">2</span>、解析出 IP 地址后，根据该 IP 地址和默认端口 <span class="number">80</span>，和服务器建立[TCP连接]      (http:<span class="comment">//www.jianshu.com/p/ef892323e68f);</span></span><br><span class="line">  <span class="number">3</span>、浏览器发出读取文件(URL 中域名后面部分对应的文件)的HTTP 请求，该请求报文作为 [TCP 三次握手](http:<span class="comment">//www.jianshu.com/p/ef892323e68f)的第三个报文的数据发送给服务器;</span></span><br><span class="line">  <span class="number">4</span>、服务器对浏览器请求作出响应，并把对应的 html 文本发送给浏览器;</span><br><span class="line">  <span class="number">5</span>、释放 [TCP连接](http:<span class="comment">//www.jianshu.com/p/ef892323e68f);</span></span><br><span class="line">  <span class="number">6</span>、浏览器将该 html 文本并显示内容;</span><br></pre></td></tr></table></figure>
+
+<h3 id="二、TCP协议"><a href="#二、TCP协议" class="headerlink" title="二、TCP协议"></a>二、TCP协议</h3><h4 id="TCP协议主要是在传输层，三次握手四次挥手"><a href="#TCP协议主要是在传输层，三次握手四次挥手" class="headerlink" title="TCP协议主要是在传输层，三次握手四次挥手"></a>TCP协议主要是在传输层，三次握手四次挥手</h4><h5 id="①三次握手"><a href="#①三次握手" class="headerlink" title="①三次握手"></a>①三次握手</h5><p>在TCP/IP协议中，TCP协议通过三次握手建立一个可靠的连接</p>
+<p><img src="//yoursite.com/2019/11/19/tcp-http-socket区别/08_one.png" alt="img"></p>
+<p>三次握手</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">第一次握手：客户端尝试连接服务器，向服务器发送syn包（同步序列编号Synchronize Sequence Numbers），</span><br><span class="line">          syn=j，客户端进入SYN_SEND状态等待服务器确认</span><br><span class="line">第二次握手：服务器接收客户端syn包并确认（ack=j+1），同时向客户端发送一个SYN包（syn=k），即SYN+ACK包，</span><br><span class="line">          此时服务器进入SYN_RECV状态</span><br><span class="line">第三次握手：第三次握手：客户端收到服务器的SYN+ACK包，向服务器发送确认包ACK(ack=k+1），此包发送完毕，</span><br><span class="line">          客户端和服务器进入ESTABLISHED状态，完成三次握手</span><br></pre></td></tr></table></figure>
+
+<h5 id="②四次挥手"><a href="#②四次挥手" class="headerlink" title="②四次挥手"></a>②四次挥手</h5><p>由于TCP连接时全双工的，因此，每个方向都必须要单独进行关闭，这一原则是当一方完成数据发送任务后，发送一个FIN来终止这一方向的连接，收到一个FIN只是意味着这一方向上没有数据流动了，即不会再收到数据了，但是在这个TCP连接上仍然能够发送数据，直到这一方向也发送了FIN。首先进行关闭的一方将执行主动关闭，而另一方则执行被动关闭，下图描述的即是如此。</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">第一次挥手：Client发送一个FIN，用来关闭Client到Server的数据传送，Client进入FIN_WAIT_1状态。 </span><br><span class="line">第二次挥手：Server收到FIN后，发送一个ACK给Client，确认序号为收到序号+<span class="number">1</span>（与SYN相同，一个FIN占用一个序号），</span><br><span class="line">          Server进入<span class="built_in">CLOSE_WAIT</span>状态。 </span><br><span class="line">第三次挥手：Server发送一个FIN，用来关闭Server到Client的数据传送，Server进入LAST_ACK状态。 </span><br><span class="line">第四次挥手：Client收到FIN后，Client进入TIME_WAIT状态，接着发送一个ACK给Server，确认序号为收到序号+<span class="number">1</span>，</span><br><span class="line">          Server进入<span class="built_in">CLOSED</span>状态，完成四次挥手。</span><br></pre></td></tr></table></figure>
+
+<p><img src="//yoursite.com/2019/11/19/tcp-http-socket区别/08_two.png" alt="img"></p>
+<p>四次挥手</p>
+<h3 id="三、Scoket"><a href="#三、Scoket" class="headerlink" title="三、Scoket"></a>三、Scoket</h3><h4 id="1、socket概念"><a href="#1、socket概念" class="headerlink" title="1、socket概念"></a>1、socket概念</h4><p><code>套接字（socket</code>）是通信的基石，是支持TCP/IP协议的网络通信的基本操作单元。它是网络通信过程中端点的抽象表示，包含进行网络通信必须的五种信息：连接使用的协议，本地主机的IP地址，本地进程的协议端口，远地主机的IP地址，远地进程的协议端口。<br> 一个Socket是一对IP地址和端口。</p>
+<blockquote>
+<p>Socket可以看成在两个程序进行通讯连接中的一个端点，一个程序将一段信息写入Socket中，该Socket将这段信息发送给另外一个Socket中，使这段信息能传送到其他程序中。</p>
+</blockquote>
+<h4 id="2、socket的作用"><a href="#2、socket的作用" class="headerlink" title="2、socket的作用"></a>2、socket的作用</h4><p>应用层通过传输层进行数据通信时，TCP和UDP会遇到同时为多个应用程序进程提供并发服务的问题。为了区别不同的应用程序进程和连接，许多计算机<a href="https://link.jianshu.com?t=http://lib.csdn.net/base/operatingsystem" target="_blank" rel="noopener">操作系统</a>为应用程序与TCP／IP协议交互提供了称为套接字(Socket)的接口，区分不同应用程序进程间的网络通信和连接。</p>
+<h4 id="3、socket的原理"><a href="#3、socket的原理" class="headerlink" title="3、socket的原理"></a>3、socket的原理</h4><h6 id="3-1-socket的实现方式"><a href="#3-1-socket的实现方式" class="headerlink" title="3.1 socket的实现方式"></a>3.1 socket的实现方式</h6><p>生成套接字，主要有3个参数：通信的目的IP地址、使用的传输层协议(TCP或UDP)和使用的端口号。<code>Socket</code>原意是<code>“插座”</code>。通过将这3个参数结合起来，与一个“插座”Socket绑定，应用层就可以和传输层通过套接字接口，区分来自不同应用程序进程或网络连接的通信，实现数据传输的并发服务。</p>
+<p><img src="//yoursite.com/2019/11/19/tcp-http-socket区别/08_three.png" alt="img"></p>
+<p><code>Host A</code>上的程序A将一段信息写入<code>Socket</code>中，<code>Socket</code>的内容被<code>Host A</code>的网络管理软件访问，并将这段信息通过Host A的网络接口卡发送到<code>Host B</code>，<code>Host B</code>的网络接口卡接收到这段信息后，传送给<code>Host B</code>的网络管理软件，网络管理软件将这段信息保存在<code>Host B</code>的<code>Socket</code>中，然后程序B才能在Socket中阅读这段信息。</p>
+<h6 id="3-2-Socket连接的实现方式"><a href="#3-2-Socket连接的实现方式" class="headerlink" title="3.2     Socket连接的实现方式"></a>3.2     Socket连接的实现方式</h6><p>要通过互联网进行通信，至少需要一对套接字，一个运行于客户机端，称之为<code>ClientSocket</code>，另一个运行于服务器端，称之为<code>serverSocket</code>。<br> 根据连接启动的方式以及本地套接字要连接的目标，套接字之间的连接过程可以分为三个步骤：<code>服务器监听</code>，<code>客户端请求</code>，<code>连接确认</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">服务器监听：是服务器端套接字并不定位具体的客户端套接字，而是处于等待连接的状态，实时监控网络状态。</span><br><span class="line">客户端请求：是指由客户端的套接字提出连接请求，要连接的目标是服务器端的套接字。为此，客户端的套接字必须</span><br><span class="line">          首先描述它要连接的服务器的套接字，指出服务器端套接字的地址和端口号，然后就向服务器端套接字提出连接请求。</span><br><span class="line">连接确认  ：是指当服务器端套接字监听到或者说接收到客户端套接字的连接请求，它就响应客户端套接字的请求，</span><br><span class="line">          建立一个新的线程，把服务器端套接字的描述发给客户端，一旦客户端确认了此描述，连接就建立好了。</span><br><span class="line">          而服务器端套接字继续处于监听状态，继续接收其他客户端套接字的连接请求。</span><br></pre></td></tr></table></figure>
+
+<h6 id="3-3-Socket与TCP-IP的关系"><a href="#3-3-Socket与TCP-IP的关系" class="headerlink" title="3.3 Socket与TCP/IP的关系"></a>3.3 Socket与TCP/IP的关系</h6><blockquote>
+<p>创建Socket连接时，可以指定使用的传输层协议，Socket可以支持不同的传输层协议（TCP或UDP），当使用TCP协议进行连接时，该Socket连接就是一个TCP连接。<br>socket则是对TCP/IP协议的封装和应用（程序员层面上）。也可以说，TPC/IP协议是传输层协议，主要解决数据 如何在网络中传输，而HTTP是应用层协议，主要解决如何包装数据。关于TCP/IP和HTTP协议的关系，网络有一段比较容易理解的介绍：<br>“我们在传输数据时，可以只使用（传输层）TCP/IP协议，但是那样的话，如 果没有应用层，便无法识别数据内容，如果想要使传输的数据有意义，则必须使用到应用层协议，应用层协议有很多，比如HTTP、FTP、TELNET等，也 可以自己定义应用层协议。WEB使用HTTP协议作应用层协议，以封装HTTP文本信息，然后使用TCP/IP做传输层协议将它发到网络上。”<br>我们平时说的最多的socket是什么呢，实际上socket是对TCP/IP协议的封装，Socket本身并不是协议，而是一个调用接口（API），通过Socket，我们才能使用TCP/IP协议。 实际上，Socket跟TCP/IP协议没有必然的联系。Socket<a href="https://link.jianshu.com?t=http://www.2cto.com/kf" target="_blank" rel="noopener">编程</a>接口在设计的时候，就希望也能适应其他的网络协议。所以说，Socket的出现 只是使得程序员更方便地使用TCP/IP协议栈而已，是对TCP/IP协议的抽象，从而形成了我们知道的一些最基本的函数接口，比如create、 listen、connect、accept、send、read和write等等。网络有一段关于socket和TCP/IP协议关系的说法比较容易理解：<br>“TCP/IP只是一个协议栈，就像操作系统的运行机制一样，必须要具体实现，同时还要提供对外的操作接口。这个就像操作系统会提供标准的编程接口，比如win32编程接口一样，TCP/IP也要提供可供程序员做网络开发所用的接口，这就是Socket编程接口。”<br>实际上，传输层的TCP是基于网络层的IP协议的，而应用层的HTTP协议又是基于传输层的TCP协议的，而Socket本身不算是协议，就像上面所说，它只是提供了一个针对TCP或者UDP编程的接口。socket是对端口通信开发的工具,它要更底层一些.</p>
+</blockquote>
+<h6 id="3-4-Socket与HTTP的关系"><a href="#3-4-Socket与HTTP的关系" class="headerlink" title="3.4  Socket与HTTP的关系"></a>3.4  Socket与HTTP的关系</h6><blockquote>
+<p>由于通常情况下Socket连接就是TCP连接，因此Socket连接一旦建立，通信双方即可开始相互发送数据内容，直到双方连接断开。但在实际网络应用中，客户端到服务器之间的通信往往需要穿越多个中间节点，例如<a href="https://link.jianshu.com?t=http://www.2cto.com/net/router/" target="_blank" rel="noopener">路由器</a>、网关、防火墙等，大部分防火墙默认会关闭长时间处于非活跃状态的连接而导致 Socket 连接断连，因此需要通过轮询告诉网络，该连接处于活跃状态。<br>而HTTP连接使用的是“请求—响应”的方式，不仅在请求时需要先建立连接，而且需要客户端向服务器发出请求后，服务器端才能回复数据。</p>
+</blockquote>
+<blockquote>
+<p>很多情况下，需要服务器端主动向客户端推送数据，保持客户端与服务器数据的实时与同步。此时若双方建立的是Socket连接，服务器就可以直接将数据传送给客户端；若双方建立的是HTTP连接，则服务器需要等到客户端发送一次请求后才能将数据传回给客户端，因此，客户端定时向服务器端发送连接请求，不仅可以保持在线，同时也是在“询问”服务器是否有新的数据，如果有就将数据传给客户端。</p>
+</blockquote>
+<blockquote>
+<p>http协议是应用层的协义</p>
+</blockquote>
+<blockquote>
+<p>有个比较形象的描述：HTTP是轿车，提供了封装或者显示数据的具体形式；Socket是发动机，提供了网络通信的能力。</p>
+</blockquote>
+<h4 id="总结：从上面的详细了解HTTP、TCP和Socket的概念和原理及其区别，相信对这三者有一个了解和熟悉。"><a href="#总结：从上面的详细了解HTTP、TCP和Socket的概念和原理及其区别，相信对这三者有一个了解和熟悉。" class="headerlink" title="总结：从上面的详细了解HTTP、TCP和Socket的概念和原理及其区别，相信对这三者有一个了解和熟悉。"></a>总结：从上面的详细了解HTTP、TCP和Socket的概念和原理及其区别，相信对这三者有一个了解和熟悉。</h4>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/协议/" rel="tag"># -协议</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/11/18/Java8新特征-Lambda表达式与Stream-API/" rel="next" title="Java8新特征-Lambda表达式与Stream-API">
+                <i class="fa fa-chevron-left"></i> Java8新特征-Lambda表达式与Stream-API
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/photo.png" alt="ZKaiKing">
+            
+              <p class="site-author-name" itemprop="name">ZKaiKing</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                个人相关平台
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://github.com/ZKaiKing" title="GitHub" target="_blank">GitHub</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://leetcode-cn.com/u/xiao-hu-zi-2/" title="LeeCode" target="_blank">LeeCode</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.nowcoder.com/profile/204442994" title="nowCoder" target="_blank">nowCoder</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HTTP、TCP和Socket的概念和原理及其区别"><span class="nav-number">1.</span> <span class="nav-text">HTTP、TCP和Socket的概念和原理及其区别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、HTTP"><span class="nav-number">1.0.1.</span> <span class="nav-text">一、HTTP</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#HTTP简介"><span class="nav-number">1.0.1.0.1.</span> <span class="nav-text">HTTP简介</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTTP的主要特点"><span class="nav-number">1.0.1.1.</span> <span class="nav-text">HTTP的主要特点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTTP的理解（此段摘抄于-Http协议与TCP协议简单理解后续）"><span class="nav-number">1.0.1.2.</span> <span class="nav-text">HTTP的理解（此段摘抄于 Http协议与TCP协议简单理解后续）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTTP的请求方法"><span class="nav-number">1.0.1.3.</span> <span class="nav-text">HTTP的请求方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTTP的工作原理"><span class="nav-number">1.0.1.4.</span> <span class="nav-text">HTTP的工作原理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、TCP协议"><span class="nav-number">1.0.2.</span> <span class="nav-text">二、TCP协议</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#TCP协议主要是在传输层，三次握手四次挥手"><span class="nav-number">1.0.2.1.</span> <span class="nav-text">TCP协议主要是在传输层，三次握手四次挥手</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#①三次握手"><span class="nav-number">1.0.2.1.1.</span> <span class="nav-text">①三次握手</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#②四次挥手"><span class="nav-number">1.0.2.1.2.</span> <span class="nav-text">②四次挥手</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、Scoket"><span class="nav-number">1.0.3.</span> <span class="nav-text">三、Scoket</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、socket概念"><span class="nav-number">1.0.3.1.</span> <span class="nav-text">1、socket概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、socket的作用"><span class="nav-number">1.0.3.2.</span> <span class="nav-text">2、socket的作用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、socket的原理"><span class="nav-number">1.0.3.3.</span> <span class="nav-text">3、socket的原理</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#3-1-socket的实现方式"><span class="nav-number">1.0.3.3.0.1.</span> <span class="nav-text">3.1 socket的实现方式</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-2-Socket连接的实现方式"><span class="nav-number">1.0.3.3.0.2.</span> <span class="nav-text">3.2     Socket连接的实现方式</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-3-Socket与TCP-IP的关系"><span class="nav-number">1.0.3.3.0.3.</span> <span class="nav-text">3.3 Socket与TCP/IP的关系</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-4-Socket与HTTP的关系"><span class="nav-number">1.0.3.3.0.4.</span> <span class="nav-text">3.4  Socket与HTTP的关系</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总结：从上面的详细了解HTTP、TCP和Socket的概念和原理及其区别，相信对这三者有一个了解和熟悉。"><span class="nav-number">1.0.3.4.</span> <span class="nav-text">总结：从上面的详细了解HTTP、TCP和Socket的概念和原理及其区别，相信对这三者有一个了解和熟悉。</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-[object Object]"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ZKaiKing</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
