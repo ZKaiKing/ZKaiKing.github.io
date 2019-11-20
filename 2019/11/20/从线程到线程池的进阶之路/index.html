@@ -1,0 +1,1387 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="-Thread,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="从线程到线程池的进阶之路Thread与Runnable介绍Runnable 是一个接口，该接口中只包含了一个run()方法 123public interface Runnable &amp;#123;    public abstract void run();&amp;#125;  Thread 是一个类。Thread本身就实现了Runnable接口。 1public class Thread impleme">
+<meta name="keywords" content="-Thread">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从线程到线程池的进阶之路">
+<meta property="og:url" content="http://yoursite.com/2019/11/20/从线程到线程池的进阶之路/index.html">
+<meta property="og:site_name" content="ZKaiKing-blog">
+<meta property="og:description" content="从线程到线程池的进阶之路Thread与Runnable介绍Runnable 是一个接口，该接口中只包含了一个run()方法 123public interface Runnable &amp;#123;    public abstract void run();&amp;#125;  Thread 是一个类。Thread本身就实现了Runnable接口。 1public class Thread impleme">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/img/09_one.png">
+<meta property="og:image" content="http://yoursite.com/img/09_two.png">
+<meta property="og:updated_time" content="2019-11-20T02:38:14.245Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="从线程到线程池的进阶之路">
+<meta name="twitter:description" content="从线程到线程池的进阶之路Thread与Runnable介绍Runnable 是一个接口，该接口中只包含了一个run()方法 123public interface Runnable &amp;#123;    public abstract void run();&amp;#125;  Thread 是一个类。Thread本身就实现了Runnable接口。 1public class Thread impleme">
+<meta name="twitter:image" content="http://yoursite.com/img/09_one.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/11/20/从线程到线程池的进阶之路/">
+
+
+
+
+
+  <title>从线程到线程池的进阶之路 | ZKaiKing-blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+<script type="text/javascript" src="/js/src/clicksocialvalue.js"></script>
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ZKaiKing-blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/20/从线程到线程池的进阶之路/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZKaiKing">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/photo.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZKaiKing-blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">从线程到线程池的进阶之路</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-20T10:35:26+08:00">
+                2019-11-20
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2019-11-20T10:38:14+08:00">
+                2019-11-20
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="从线程到线程池的进阶之路"><a href="#从线程到线程池的进阶之路" class="headerlink" title="从线程到线程池的进阶之路"></a>从线程到线程池的进阶之路</h1><h2 id="Thread与Runnable介绍"><a href="#Thread与Runnable介绍" class="headerlink" title="Thread与Runnable介绍"></a>Thread与Runnable介绍</h2><p><strong>Runnable</strong> 是一个接口，该接口中只包含了一个run()方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>Thread</strong> 是一个类。Thread本身就实现了Runnable接口。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Thread</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Thread 是类，而Runnable是接口；Thread本身是实现了Runnable接口的类。我们知道“一个类只能有一个父类，但是却能实现多个接口”，因此Runnable具有更好的扩展性。<br>此外，Runnable还可以用于“资源的共享”。即，多个线程都是基于某一个Runnable对象建立的，它们会共享Runnable对象上的资源。<br>通常，建议通过“Runnable”实现多线程！</p>
+<h2 id="Future介绍"><a href="#Future介绍" class="headerlink" title="Future介绍"></a>Future介绍</h2><p>Future就是对于具体的Runnable或者Callable任务的执行结果进行取消、查询是否完成、获取结果。必要时可以通过get方法获取执行结果，该方法会阻塞直到任务返回结果。</p>
+<p>　Future类位于java.util.concurrent包下；在Future接口中声明了5个方法，下面依次解释每个方法的作用：</p>
+<ul>
+<li>cancel方法用来取消任务，如果取消任务成功则返回true，如果取消任务失败则返回false。参数mayInterruptIfRunning表示是否允许取消正在执行却没有执行完毕的任务，如果设置true，则表示可以取消正在执行过程中的任务。如果任务已经完成，则无论mayInterruptIfRunning为true还是false，此方法肯定返回false，即如果取消已经完成的任务会返回false；如果任务正在执行，若mayInterruptIfRunning设置为true，则返回true，若mayInterruptIfRunning设置为false，则返回false；如果任务还没有执行，则无论mayInterruptIfRunning为true还是false，肯定返回true。</li>
+<li>isCancelled方法表示任务是否被取消成功，如果在任务正常完成前被取消成功，则返回 true。</li>
+<li>isDone方法表示任务是否已经完成，若任务完成，则返回true；</li>
+<li><strong>get()方法用来获取执行结果，这个方法会产生阻塞，会一直等到任务执行完毕才返回</strong>；</li>
+<li><strong>get(long timeout, TimeUnit unit)用来获取执行结果，如果在指定时间内，还没获取到结果，就直接返回null。</strong></li>
+</ul>
+<p>　　也就是说Future提供了三种功能：</p>
+<p>　　1）判断任务是否完成；</p>
+<p>　　2）能够中断任务；</p>
+<p>　　3）能够获取任务执行结果。</p>
+<p>　　因为Future只是一个接口，所以是无法直接用来创建对象使用的，因此就有了下面的FutureTask。</p>
+<h2 id="FutureTask介绍"><a href="#FutureTask介绍" class="headerlink" title="FutureTask介绍"></a>FutureTask介绍</h2><p>FutureTask是一种可以取消的异步的计算任务。它的<strong>计算是通过Callable实现</strong>的，可以把它理解为是可以返回结果的Runnable。</p>
+<p>使用FutureTask的优势有：</p>
+<ol>
+<li>可以获取线程执行后的返回结果；</li>
+<li>提供了超时控制功能。</li>
+<li>它实现了Runnable接口和Future接口</li>
+</ol>
+<p>什么是异步计算呢？也就是说，在让该任务执行时，不需要一直等待其运行结束返回结果，而是可以先去处理其他的事情，然后再获取返回结果。例如你想下载一个很大的文件，这时很耗时的操作，没必要一直等待着文件下载完，你可以先去吃个饭，然后再回来看下文件是否下载完成，如果下载完成就可以使用了，否则还需要继续等待。</p>
+<h3 id="FutureTask的状态"><a href="#FutureTask的状态" class="headerlink" title="FutureTask的状态"></a>FutureTask的状态</h3><p>FutureTask内部有这样几种状态：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> NEW          = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> COMPLETING   = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> NORMAL       = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> EXCEPTIONAL  = <span class="number">3</span>;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> CANCELLED    = <span class="number">4</span>;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> INTERRUPTING = <span class="number">5</span>;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> INTERRUPTED  = <span class="number">6</span>;</span><br></pre></td></tr></table></figure>
+
+<p>看名字应该很好理解了，当创建一个FutureTask对象是，初始的状态是NEW，在运行时状态会转换，有4中状态的转换过程：</p>
+<ul>
+<li><strong>NEW -&gt; COMPLETING -&gt; NORMAL</strong>：正常执行并返回；</li>
+<li><strong>NEW -&gt; COMPLETING -&gt; EXCEPTIONAL</strong>：执行过程中出现了异常；</li>
+<li><strong>NEW -&gt; CANCELLED</strong>；执行前被取消；</li>
+<li><strong>NEW -&gt; INTERRUPTING -&gt; INTERRUPTED</strong>：取消时被中断。</li>
+</ul>
+<h3 id="使用FutureTask"><a href="#使用FutureTask" class="headerlink" title="使用FutureTask"></a>使用FutureTask</h3><p>下面看一下具体的使用过程：FutureTask实现了Runnable接口，所以需要实现run方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FutureTaskTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> ExecutionException, InterruptedException </span>&#123;</span><br><span class="line">        ExecutorService executor = Executors.newSingleThreadExecutor();</span><br><span class="line">        FutureTask&lt;Integer&gt; future = <span class="keyword">new</span> FutureTask&lt;&gt;(<span class="keyword">new</span> Callable&lt;Integer&gt;() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> Integer <span class="title">call</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">                <span class="keyword">int</span> result = <span class="number">0</span>;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">                    result += i;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">return</span> result;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        executor.execute(future);</span><br><span class="line">        System.out.println(future.get());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="FutureTask构造方法"><a href="#FutureTask构造方法" class="headerlink" title="FutureTask构造方法"></a>FutureTask构造方法</h3><p>FutureTask有两个构造方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">FutureTask</span><span class="params">(Callable&lt;V&gt; callable)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (callable == <span class="keyword">null</span>)</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException();</span><br><span class="line">    <span class="keyword">this</span>.callable = callable;</span><br><span class="line">    <span class="keyword">this</span>.state = NEW;       <span class="comment">// ensure visibility of callable</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">FutureTask</span><span class="params">(Runnable runnable, V result)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.callable = Executors.callable(runnable, result);</span><br><span class="line">    <span class="keyword">this</span>.state = NEW;       <span class="comment">// ensure visibility of callable</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>第二种构造方法传入一个Runnable对象和一个返回值对象，因为Runnable是没有返回值的，所以要通过result参数在执行完之后返回结果。</p>
+<h3 id="run方法"><a href="#run方法" class="headerlink" title="run方法"></a>run方法</h3><p>FutureTask实现了Runnable接口，所以需要实现run方法。</p>
+<p>run方法的执行过程</p>
+<ol>
+<li>只有state为NEW的时候才执行任务；</li>
+<li>执行前要设置runner为当前线程，使用CAS来设置是为了防止竞争；</li>
+<li>如果任务执行成功，任务状态从NEW转换为COMPLETING，如果执行正常，设置最终状态为NORMAL；如果执行中出现了异常，设置最终状态为EXCEPTIONAL；</li>
+<li>唤醒并删除Treiber Stack中的所有节点；</li>
+<li>如果调用了cancel(true)方法进行了中断，要确保在run方法执行结束前的状态是INTERRUPTED。</li>
+</ol>
+<p>这里涉及到3个比较重要的方法：setException，set和handlePossibleCancellationInterrupt。</p>
+<h3 id="get方法"><a href="#get方法" class="headerlink" title="get方法"></a>get方法</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> V <span class="title">get</span><span class="params">()</span> <span class="keyword">throws</span> InterruptedException, ExecutionException </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> s = state;</span><br><span class="line">    <span class="keyword">if</span> (s &lt;= COMPLETING)</span><br><span class="line">        s = awaitDone(<span class="keyword">false</span>, <span class="number">0L</span>);</span><br><span class="line">    <span class="keyword">return</span> report(s);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> V <span class="title">get</span><span class="params">(<span class="keyword">long</span> timeout, TimeUnit unit)</span></span></span><br><span class="line"><span class="function">    <span class="keyword">throws</span> InterruptedException, ExecutionException, TimeoutException </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (unit == <span class="keyword">null</span>)</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException();</span><br><span class="line">    <span class="keyword">int</span> s = state;</span><br><span class="line">    <span class="keyword">if</span> (s &lt;= COMPLETING &amp;&amp;</span><br><span class="line">        (s = awaitDone(<span class="keyword">true</span>, unit.toNanos(timeout))) &lt;= COMPLETING)</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> TimeoutException();</span><br><span class="line">    <span class="keyword">return</span> report(s);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这两个方法类似，首先判断状态，如果<code>s &lt;= COMPLETING</code>，说明任务已经执行完毕，但set方法或setException方法还未执行结束（还未设置状态为NORMAL或EXCEPTIONAL），这时需要将当前线程添加到waiters中并阻塞。</p>
+<p>第二种get提供了超时功能，如果在规定时间内任务还未执行完毕或者状态还是COMPLETING，则获取结果超时，抛出TimeoutException。而第一种get会一直阻塞直到<code>state &gt; COMPLETING</code>。</p>
+<h3 id="FutureTask总结"><a href="#FutureTask总结" class="headerlink" title="FutureTask总结"></a>FutureTask总结</h3><p>FutureTask的执行过程和获取返回值的过程，要注意以下几个地方：</p>
+<ul>
+<li>FutureTask是线程安全的，在多线程下任务也只会被执行一次；</li>
+<li>注意在执行时各种状态的切换；</li>
+<li>get方法调用时，如果任务没有结束，要阻塞当前线程，法阻塞的线程会保存在一个Treiber Stack中；</li>
+<li>get方法超时功能如果超时未获取成功，会抛出TimeoutException；</li>
+<li>注意在取消时的线程中断，在run方法中一定要保证结束时的状态是INTERRUPTED，否则在cancel方法中可能没有执行interrupt，造成中断的泄露。</li>
+</ul>
+<h2 id="Executor框架接口"><a href="#Executor框架接口" class="headerlink" title="Executor框架接口"></a>Executor框架接口</h2><p>Executor框架是一个根据一组执行策略调用，调度，执行和控制的异步任务的框架，目的是<strong>提供一种将”任务提交”与”任务如何运行”分离开来的机制。</strong></p>
+<p>J.U.C中有三个Executor接口：</p>
+<ul>
+<li><strong>Executor</strong>：一个运行新任务的简单接口；</li>
+<li><strong>ExecutorService</strong>：扩展了Executor接口。添加了一些用来管理执行器生命周期和任务生命周期的方法；</li>
+<li><strong>ScheduledExecutorService</strong>：扩展了ExecutorService。<strong>支持Future和定期执行任务。</strong></li>
+</ul>
+<h3 id="Executor接口"><a href="#Executor接口" class="headerlink" title="Executor接口"></a>Executor接口</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Executor</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">execute</span><span class="params">(Runnable command)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Executor接口只有一个execute方法，用来<strong>替代通常创建或启动线程的方法</strong>。例如，使用Thread来创建并启动线程的代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Thread t = <span class="keyword">new</span> Thread();</span><br><span class="line">t.start();</span><br></pre></td></tr></table></figure>
+
+<p>使用Executor来启动线程执行任务的代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Thread t = <span class="keyword">new</span> Thread();</span><br><span class="line">executor.execute(t);</span><br></pre></td></tr></table></figure>
+
+<p><em>对于不同的Executor实现，execute()方法可能是创建一个新线程并立即启动，也有可能是使用已有的工作线程来运行传入的任务，也可能是根据设置线程池的容量或者阻塞队列的容量来决定是否要将传入的线程放入阻塞队列中或者拒绝接收传入的线程。</em></p>
+<h3 id="ExecutorService接口"><a href="#ExecutorService接口" class="headerlink" title="ExecutorService接口"></a>ExecutorService接口</h3><p>ExecutorService接口继承自Executor接口，提供了管理终止的方法，以及可为跟踪一个或多个异步任务执行状况而生成 Future 的方法。增加了shutDown()，shutDownNow()，invokeAll()，invokeAny()和submit()等方法。如果需要支持即时关闭，也就是shutDownNow()方法，则任务需要正确处理中断。</p>
+<h3 id="ScheduledExecutorService接口"><a href="#ScheduledExecutorService接口" class="headerlink" title="ScheduledExecutorService接口"></a>ScheduledExecutorService接口</h3><p>ScheduledExecutorService扩展ExecutorService接口并<strong>增加了schedule方法。调用schedule方法可以在指定的延时后执行一个Runnable或者Callable任务</strong>。ScheduledExecutorService接口还定义了按照指定时间间隔定期执行任务的<strong>scheduleAtFixedRate()方法</strong>和<strong>scheduleWithFixedDelay()方法</strong>。</p>
+<h2 id="Java线程池：ThreadPoolExecutor"><a href="#Java线程池：ThreadPoolExecutor" class="headerlink" title="Java线程池：ThreadPoolExecutor"></a>Java线程池：ThreadPoolExecutor</h2><p>ThreadPoolExecutor继承自AbstractExecutorService，也是实现了ExecutorService接口。</p>
+<h3 id="线程池的运行状态"><a href="#线程池的运行状态" class="headerlink" title="线程池的运行状态"></a>线程池的运行状态</h3><p>线程池一共有五种状态, 分别是:</p>
+<ol>
+<li><p><strong>RUNNING</strong> ：能接受新提交的任务，并且也能处理阻塞队列中的任务；</p>
+</li>
+<li><p><strong>SHUTDOWN</strong>：关闭状态，不再接受新提交的任务，但却可以继续处理阻塞队列中已保存的任务。在线程池处于 RUNNING 状态时，调用 shutdown()方法会使线程池进入到该状态。（finalize() 方法在执行过程中也会调用shutdown()方法进入该状态）；</p>
+</li>
+<li><p><strong>STOP</strong>：不能接受新任务，也不处理队列中的任务，会中断正在处理任务的线程。在线程池处于 RUNNING 或 SHUTDOWN 状态时，调用 shutdownNow() 方法会使线程池进入到该状态；</p>
+</li>
+<li><p><strong>TIDYING</strong>：如果所有的任务都已终止了，workerCount (有效线程数) 为0，线程池进入该状态后会调用 terminated() 方法进入TERMINATED 状态。</p>
+</li>
+<li><p><strong>TERMINATED</strong>：在terminated() 方法执行完后进入该状态，默认terminated()方法中什么也没有做。</p>
+<p>进入TERMINATED的条件如下：</p>
+<ul>
+<li>线程池不是RUNNING状态；</li>
+<li>线程池状态不是TIDYING状态或TERMINATED状态；</li>
+<li>如果线程池状态是SHUTDOWN并且workerQueue为空；</li>
+<li>workerCount为0；</li>
+<li>设置TIDYING状态成功。</li>
+</ul>
+</li>
+</ol>
+<p>下图为线程池的状态转换过程：</p>
+<p><img src="/img/09_one.png" alt>  </p>
+<h3 id="ThreadPoolExecutor构造方法"><a href="#ThreadPoolExecutor构造方法" class="headerlink" title="ThreadPoolExecutor构造方法"></a>ThreadPoolExecutor构造方法</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">ThreadPoolExecutor</span><span class="params">(<span class="keyword">int</span> corePoolSize,</span></span></span><br><span class="line"><span class="function"><span class="params">                          <span class="keyword">int</span> maximumPoolSize,</span></span></span><br><span class="line"><span class="function"><span class="params">                          <span class="keyword">long</span> keepAliveTime,</span></span></span><br><span class="line"><span class="function"><span class="params">                          TimeUnit unit,</span></span></span><br><span class="line"><span class="function"><span class="params">                          BlockingQueue&lt;Runnable&gt; workQueue,</span></span></span><br><span class="line"><span class="function"><span class="params">                          ThreadFactory threadFactory,</span></span></span><br><span class="line"><span class="function"><span class="params">                          RejectedExecutionHandler handler)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (corePoolSize &lt; <span class="number">0</span> ||</span><br><span class="line">        maximumPoolSize &lt;= <span class="number">0</span> ||</span><br><span class="line">        maximumPoolSize &lt; corePoolSize ||</span><br><span class="line">        keepAliveTime &lt; <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException();</span><br><span class="line">    <span class="keyword">if</span> (workQueue == <span class="keyword">null</span> || threadFactory == <span class="keyword">null</span> || handler == <span class="keyword">null</span>)</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException();</span><br><span class="line">    <span class="keyword">this</span>.corePoolSize = corePoolSize;</span><br><span class="line">    <span class="keyword">this</span>.maximumPoolSize = maximumPoolSize;</span><br><span class="line">    <span class="keyword">this</span>.workQueue = workQueue;</span><br><span class="line">    <span class="keyword">this</span>.keepAliveTime = unit.toNanos(keepAliveTime);</span><br><span class="line">    <span class="keyword">this</span>.threadFactory = threadFactory;</span><br><span class="line">    <span class="keyword">this</span>.handler = handler;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>构造方法中的字段含义如下：</p>
+<ul>
+<li><p><strong>corePoolSize</strong>：核心线程数量，当有新任务在execute()方法提交时，会执行以下判断：</p>
+<ol>
+<li>如果运行的线程少于 corePoolSize，则创建新线程来处理任务，即使线程池中的其他线程是空闲的；</li>
+<li>如果线程池中的线程数量大于等于 corePoolSize 且小于 maximumPoolSize，则只有当workQueue满时才创建新的线程去处理任务；</li>
+<li>如果设置的corePoolSize 和 maximumPoolSize相同，则创建的线程池的大小是固定的，这时如果有新任务提交，若workQueue未满，则将请求放入workQueue中，等待有空闲的线程去从workQueue中取任务并处理；</li>
+<li>如果运行的线程数量大于等于maximumPoolSize，这时如果workQueue已经满了，则通过handler所指定的策略来处理任务；</li>
+</ol>
+<p>所以，任务提交时，判断的顺序为 corePoolSize –&gt; workQueue –&gt; maximumPoolSize。</p>
+</li>
+<li><p><strong>maximumPoolSize</strong>：最大线程数量；</p>
+</li>
+<li><p><strong>workQueue</strong>：等待队列，当任务提交时，<strong>如果线程池中的线程数量大于等于corePoolSize的时候，把该任务封装成一个Worker对象放入等待队列</strong>；</p>
+</li>
+<li><p>workQueue</p>
+<p>：保存等待执行的任务的阻塞队列，当提交一个新的任务到线程池以后, 线程池会根据当前线程池中正在运行着的线程的数量来决定对该任务的处理方式，主要有以下几种处理方式:</p>
+<ol>
+<li><p><strong>直接切换</strong>：这种方式常用的队列是SynchronousQueue，但现在还没有研究过该队列，这里暂时还没法介绍；</p>
+</li>
+<li><p><strong>使用无界队列</strong>：一般使用<strong>基于链表的阻塞队列LinkedBlockingQueue</strong>。<em>如果使用这种方式，那么线程池中能够创建的最大线程数就是corePoolSize，而maximumPoolSize就不会起作用了</em>。当线程池中所有的核心线程都是RUNNING状态时，这时一个新的任务提交就会放入等待队列中。</p>
+</li>
+<li><p>使用有界队列</p>
+<p>：一般使用ArrayBlockingQueue。使用该方式可以将线程池的最大线程数量限制为maximumPoolSize，这样能够降低资源的消耗，但同时这种方式也使得线程池对线程的调度变得更困难，因为线程池和队列的容量都是有限的值，所以要想使线程池处理任务的吞吐率达到一个相对合理的范围，又想使线程调度相对简单，并且还要尽可能的降低线程池对资源的消耗，就需要合理的设置这两个数量。</p>
+<ul>
+<li>如果要想降低系统资源的消耗（包括CPU的使用率，操作系统资源的消耗，上下文环境切换的开销等）, 可以设置较大的队列容量和较小的线程池容量, 但这样也会降低线程处理任务的吞吐量。</li>
+<li>如果提交的任务经常发生阻塞，那么可以考虑通过调用 setMaximumPoolSize() 方法来重新设定线程池的容量。</li>
+<li>如果队列的容量设置的较小，通常需要将线程池的容量设置大一点，这样CPU的使用率会相对的高一些。但如果线程池的容量设置的过大，则在提交的任务数量太多的情况下，并发量会增加，那么线程之间的调度就是一个要考虑的问题，因为这样反而有可能降低处理任务的吞吐量。</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p><strong>keepAliveTime</strong>：线程池维护线程所允许的空闲时间。当线程池中的线程数量大于corePoolSize的时候，如果这时没有新的任务提交，核心线程外的线程不会立即销毁，而是会等待，直到等待的时间超过了keepAliveTime；</p>
+</li>
+<li><p><strong>threadFactory</strong>：它是ThreadFactory类型的变量，用来创建新线程。默认使用Executors.defaultThreadFactory() 来创建线程。使用默认的ThreadFactory来创建线程时，会使新创建的线程具有相同的NORM_PRIORITY优先级并且是非守护线程，同时也设置了线程的名称。</p>
+</li>
+<li><p>handler</p>
+<p>：它是RejectedExecutionHandler类型的变量，表示线程池的饱和策略。如果阻塞队列满了并且没有空闲的线程，这时如果继续提交任务，就需要采取一种策略处理该任务。线程池提供了4种策略：</p>
+<ol>
+<li>AbortPolicy：直接抛出异常，这是默认策略；</li>
+<li>CallerRunsPolicy：用调用者所在的线程来执行任务；</li>
+<li>DiscardOldestPolicy：丢弃阻塞队列中靠最前的任务，并执行当前任务；</li>
+<li>DiscardPolicy：直接丢弃任务；</li>
+</ol>
+</li>
+</ul>
+<h3 id="execute方法"><a href="#execute方法" class="headerlink" title="execute方法"></a>execute方法</h3><p>execute()方法用来提交任务</p>
+<p>在执行execute()方法时如果状态一直是RUNNING时，执行过程如下：</p>
+<ol>
+<li>如果<code>workerCount &lt; corePoolSize</code>，则创建并启动一个线程来执行新提交的任务；</li>
+<li>如果<code>workerCount &gt;= corePoolSize</code>，且线程池内的阻塞队列未满，则将任务添加到该阻塞队列中；</li>
+<li>如果<code>workerCount &gt;= corePoolSize &amp;&amp; workerCount &lt; maximumPoolSize</code>，且<strong>线程池内的阻塞队列已满，则创建并启动一个线程来执行新提交的任务</strong>；</li>
+<li>如果<code>workerCount &gt;= maximumPoolSize</code>，并且线程池内的阻塞队列已满, 则根据拒绝策略来处理该任务, 默认的处理方式是直接抛异常。</li>
+</ol>
+<p>这里要注意一下<code>addWorker(null, false);</code>，也就是创建一个线程，但并没有传入任务，因为任务已经被添加到workQueue中了，所以worker在执行的时候，会直接从workQueue中获取任务。所以，在<code>workerCountOf(recheck) == 0</code>时执行<code>addWorker(null, false);</code>也是为了保证线程池在RUNNING状态下必须要有一个线程来执行任务。</p>
+<p>execute方法执行流程如下：</p>
+<p><img src="/img/09_two.png" alt></p>
+<h3 id="addWorker方法"><a href="#addWorker方法" class="headerlink" title="addWorker方法"></a>addWorker方法</h3><p>addWorker方法的主要工作是在线程池中创建一个新的线程并执行，firstTask参数 用于指定新增的线程执行的第一个任务，core参数为true表示在新增线程时会判断当前活动线程数是否少于corePoolSize，false表示新增线程前需要判断当前活动线程数是否少于maximumPoolSize</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">addWorker</span><span class="params">(Runnable firstTask, <span class="keyword">boolean</span> core)</span> </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>启动时会调用Worker类中的run方法，Worker本身实现了Runnable接口，所以一个Worker类型的对象也是一个线程。</p>
+<h3 id="Worker类（这是一个类）"><a href="#Worker类（这是一个类）" class="headerlink" title="Worker类（这是一个类）"></a>Worker类（这是一个类）</h3><p><strong>线程池中的每一个线程被封装成一个Worker对象，ThreadPool维护的其实就是一组Worker对象</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">Worker</span> <span class="keyword">extends</span> <span class="title">AbstractQueuedSynchronizer</span> <span class="keyword">implements</span> <span class="title">Runnable</span></span>&#123;</span><br><span class="line">   <span class="comment">//构造方法</span></span><br><span class="line">    Worker(Runnable firstTask) &#123;</span><br><span class="line">        setState(-<span class="number">1</span>); <span class="comment">// -1：禁止在执行任务前对线程进行中断</span></span><br><span class="line">        <span class="keyword">this</span>.firstTask = firstTask;</span><br><span class="line">        <span class="keyword">this</span>.thread = getThreadFactory().newThread(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/** 运行方法*/</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        runWorker(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Worker类继承了AQS，并实现了Runnable接口，注意其中的firstTask和thread属性：firstTask用它来保存传入的任务；thread是在调用构造方法时通过ThreadFactory来创建的线程，是用来处理任务的线程。</p>
+<p>在调用构造方法时，需要把任务传入，这里通过<code>getThreadFactory().newThread(this);</code>来新建一个线程，newThread方法传入的参数是this，因为Worker本身继承了Runnable接口，也就是一个线程，所以一个Worker对象在启动的时候会调用Worker类中的run方法。</p>
+<p>Worker继承了AQS，使用AQS来实现独占锁的功能。为什么不使用ReentrantLock来实现呢？可以看到tryAcquire方法，它是不允许重入的，而ReentrantLock是允许重入的：</p>
+<ol>
+<li><p>lock方法一旦获取了独占锁，表示当前线程正在执行任务中；</p>
+</li>
+<li><p>如果正在执行任务，则不应该中断线程；</p>
+</li>
+<li><p>如果该线程现在不是独占锁的状态，也就是空闲的状态，说明它没有在处理任务，这时可以对该线程进行中断；</p>
+</li>
+<li><p>线程池在执行shutdown方法或tryTerminate方法时会调用interruptIdleWorkers方法来中断空闲的线程，interruptIdleWorkers方法会使用tryLock方法来判断线程池中的线程是否是空闲状态；</p>
+</li>
+<li><p>之所以设置为不可重入，是因为我们不希望任务在调用像setCorePoolSize这样的线程池控制方法时重新获取锁。如果使用ReentrantLock，它是可重入的，这样如果在任务中调用了如setCorePoolSize这类线程池控制的方法，会中断正在运行的线程。</p>
+<p>所以，Worker继承自AQS，用于判断线程是否空闲以及是否可以被中断。</p>
+</li>
+</ol>
+<h3 id="线程池的监控"><a href="#线程池的监控" class="headerlink" title="线程池的监控"></a>线程池的监控</h3><p>通过线程池提供的参数进行监控。线程池里有一些属性在监控线程池的时候可以使用</p>
+<ul>
+<li><strong>getTaskCount</strong>：线程池<strong>已经执行的和未执行</strong>的任务总数；</li>
+<li><strong>getCompletedTaskCount</strong>：线程池<strong>已完成的任务数量</strong>，该值小于等于taskCount；</li>
+<li><strong>getLargestPoolSize</strong>：线程池曾经创建过的最大线程数量。通过这个数据可以知道线程池是否满过，也就是达到了maximumPoolSize；</li>
+<li><strong>getPoolSize</strong>：线程池当前的线程数量；</li>
+<li><strong>getActiveCount</strong>：当前线程池中正在执行任务的线程数量。</li>
+</ul>
+<p>通过这些方法，可以对线程池进行监控，在ThreadPoolExecutor类中提供了几个空方法，如beforeExecute方法，afterExecute方法和terminated方法，可以扩展这些方法在执行前或执行后增加一些新的操作，例如统计线程池的执行任务的时间等，可以继承自ThreadPoolExecutor来进行扩展。</p>
+<h2 id="线程池进阶：ScheduledThreadPoolExecutor"><a href="#线程池进阶：ScheduledThreadPoolExecutor" class="headerlink" title="线程池进阶：ScheduledThreadPoolExecutor"></a>线程池进阶：ScheduledThreadPoolExecutor</h2><p>自JDK1.5开始，JDK提供了ScheduledThreadPoolExecutor类来<strong>支持周期性任务的调度</strong>。在这之前的实现需要依靠Timer和TimerTask或者其它第三方工具来完成。但Timer有不少的缺陷：</p>
+<ul>
+<li>Timer是单线程模式；</li>
+<li>如果在执行任务期间某个TimerTask耗时较久，那么就会影响其它任务的调度；</li>
+<li>Timer的任务调度是基于绝对时间的，对系统时间敏感；</li>
+<li>Timer不会捕获执行TimerTask时所抛出的异常，由于Timer是单线程，所以一旦出现异常，则线程就会终止，其他任务也得不到执行。</li>
+</ul>
+<p>ScheduledThreadPoolExecutor<strong>继承ThreadPoolExecutor来重用线程池的功能</strong>，它的实现方式如下：</p>
+<ul>
+<li><strong>将任务封装成ScheduledFutureTask对象</strong>，ScheduledFutureTask基于相对时间，不受系统时间的改变所影响；</li>
+<li>ScheduledFutureTask实现了<code>java.lang.Comparable</code>接口和<code>java.util.concurrent.Delayed</code>接口，所以有两个重要的方法：compareTo和getDelay。compareTo方法用于比较任务之间的优先级关系，如果距离下次执行的时间间隔较短，则优先级高；getDelay方法用于返回距离下次任务执行时间的时间间隔；</li>
+<li>ScheduledThreadPoolExecutor定义了一个DelayedWorkQueue，它是一个有序队列，会通过每个任务按照距离下次执行时间间隔的大小来排序；</li>
+<li><strong>ScheduledFutureTask继承自FutureTask，可以通过返回Future对象来获取执行的结果</strong>。</li>
+</ul>
+<p>通过如上的介绍，可以对比一下Timer和ScheduledThreadPoolExecutor：</p>
+<table>
+<thead>
+<tr>
+<th align="left">Timer</th>
+<th align="left">ScheduledThreadPoolExecutor</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">单线程</td>
+<td align="left">多线程</td>
+</tr>
+<tr>
+<td align="left">单个任务执行时间影响其他任务调度</td>
+<td align="left">多线程，不会影响</td>
+</tr>
+<tr>
+<td align="left">基于绝对时间</td>
+<td align="left">基于相对时间</td>
+</tr>
+<tr>
+<td align="left">一旦执行任务出现异常不会捕获，其他任务得不到执行</td>
+<td align="left">多线程，单个任务的执行不会影响其他线程</td>
+</tr>
+</tbody></table>
+<p>所以，在JDK1.5之后，应该没什么理由继续使用Timer进行任务调度了。</p>
+<h3 id="ScheduledThreadPoolExecutor的构造方法"><a href="#ScheduledThreadPoolExecutor的构造方法" class="headerlink" title="ScheduledThreadPoolExecutor的构造方法"></a>ScheduledThreadPoolExecutor的构造方法</h3><p>ScheduledThreadPoolExecutor有3中构造方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">ScheduledThreadPoolExecutor</span><span class="params">(<span class="keyword">int</span> corePoolSize,</span></span></span><br><span class="line"><span class="function"><span class="params">                                    ThreadFactory threadFactory)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>(corePoolSize, Integer.MAX_VALUE, <span class="number">0</span>, NANOSECONDS,</span><br><span class="line">          <span class="keyword">new</span> DelayedWorkQueue(), threadFactory);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">ScheduledThreadPoolExecutor</span><span class="params">(<span class="keyword">int</span> corePoolSize,</span></span></span><br><span class="line"><span class="function"><span class="params">                                   RejectedExecutionHandler handler)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>(corePoolSize, Integer.MAX_VALUE, <span class="number">0</span>, NANOSECONDS,</span><br><span class="line">          <span class="keyword">new</span> DelayedWorkQueue(), handler);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">ScheduledThreadPoolExecutor</span><span class="params">(<span class="keyword">int</span> corePoolSize,</span></span></span><br><span class="line"><span class="function"><span class="params">                                   ThreadFactory threadFactory,</span></span></span><br><span class="line"><span class="function"><span class="params">                                   RejectedExecutionHandler handler)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>(corePoolSize, Integer.MAX_VALUE, <span class="number">0</span>, NANOSECONDS,</span><br><span class="line">          <span class="keyword">new</span> DelayedWorkQueue(), threadFactory, handler);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>因为ScheduledThreadPoolExecutor继承自ThreadPoolExecutor，所以这里都是调用的ThreadPoolExecutor类的构造方法。</strong></p>
+<p>第一种构造方法示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">scheduler = <span class="keyword">new</span> ScheduledThreadPoolExecutor(<span class="number">20</span>, threadFactory(<span class="string">"BDP-Default-Scheduler-Thread-"</span>, <span class="keyword">true</span>))</span><br><span class="line"> scheduler.setMaximumPoolSize(<span class="number">20</span>)</span><br><span class="line"> scheduler.setKeepAliveTime(<span class="number">5</span>, TimeUnit.MINUTES)</span><br></pre></td></tr></table></figure>
+
+<h3 id="scheduleAtFixedRate方法"><a href="#scheduleAtFixedRate方法" class="headerlink" title="scheduleAtFixedRate方法"></a>scheduleAtFixedRate方法</h3><p>该方法设置了执行周期，下一次执行时间相当于是上一次的执行时间加上period，它是采用已固定的频率来执行任务：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> ScheduledFuture&lt;?&gt; scheduleAtFixedRate(Runnable command,</span><br><span class="line">                                              <span class="keyword">long</span> initialDelay,</span><br><span class="line">                                              <span class="keyword">long</span> period,</span><br><span class="line">                                              TimeUnit unit) &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>ScheduedThreadPoolExecutor的实现，主要介绍了以下方面：</p>
+<ul>
+<li>ScheduledThreadPoolExecutor继承自ThreadPoolExecutor，所以它也是一个线程池，也有coorPoolSize和workQueue，ScheduledThreadPoolExecutor特殊的地方在于，自己实现了优先工作队列DelayedWorkQueue；</li>
+<li>ScheduedThreadPoolExecutor实现了ScheduledExecutorService，所以就有了任务调度的方法，如schedule，scheduleAtFixedRate和scheduleWithFixedDelay，同时注意他们之间的区别；</li>
+<li>内部类<strong>ScheduledFutureTask继承自FutureTask，实现了任务的异步执行并且可以获取返回结果</strong>。同时也实现了Delayed接口，可以通过getDelay方法获取将要执行的时间间隔；</li>
+<li><strong>周期任务的执行其实是调用了FutureTask类中的runAndReset方法</strong>，每次执行完不设置结果和状态。</li>
+<li>详细分析了DelayedWorkQueue的数据结构，它是一个基于最小堆结构的优先队列，并且每次出队时能够保证取出的任务是当前队列中下次执行时间最小的任务。同时注意一下优先队列中堆的顺序，堆中的顺序并不是绝对的，但要保证子节点的值要比父节点的值要大，这样就不会影响出队的顺序。</li>
+</ul>
+<p>总体来说，ScheduedThreadPoolExecutor的重点是要理解下次执行时间的计算，以及优先队列的出队、入队和删除的过程，这两个是理解ScheduedThreadPoolExecutor的关键。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Thread/" rel="tag"># -Thread</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/11/19/tcp-http-socket区别/" rel="next" title="tcp-http-socket区别">
+                <i class="fa fa-chevron-left"></i> tcp-http-socket区别
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/photo.png" alt="ZKaiKing">
+            
+              <p class="site-author-name" itemprop="name">ZKaiKing</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                个人相关平台
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://github.com/ZKaiKing" title="GitHub" target="_blank">GitHub</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://leetcode-cn.com/u/xiao-hu-zi-2/" title="LeeCode" target="_blank">LeeCode</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.nowcoder.com/profile/204442994" title="nowCoder" target="_blank">nowCoder</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#从线程到线程池的进阶之路"><span class="nav-number">1.</span> <span class="nav-text">从线程到线程池的进阶之路</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Thread与Runnable介绍"><span class="nav-number">1.1.</span> <span class="nav-text">Thread与Runnable介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Future介绍"><span class="nav-number">1.2.</span> <span class="nav-text">Future介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FutureTask介绍"><span class="nav-number">1.3.</span> <span class="nav-text">FutureTask介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#FutureTask的状态"><span class="nav-number">1.3.1.</span> <span class="nav-text">FutureTask的状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用FutureTask"><span class="nav-number">1.3.2.</span> <span class="nav-text">使用FutureTask</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FutureTask构造方法"><span class="nav-number">1.3.3.</span> <span class="nav-text">FutureTask构造方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#run方法"><span class="nav-number">1.3.4.</span> <span class="nav-text">run方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#get方法"><span class="nav-number">1.3.5.</span> <span class="nav-text">get方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FutureTask总结"><span class="nav-number">1.3.6.</span> <span class="nav-text">FutureTask总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Executor框架接口"><span class="nav-number">1.4.</span> <span class="nav-text">Executor框架接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Executor接口"><span class="nav-number">1.4.1.</span> <span class="nav-text">Executor接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ExecutorService接口"><span class="nav-number">1.4.2.</span> <span class="nav-text">ExecutorService接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ScheduledExecutorService接口"><span class="nav-number">1.4.3.</span> <span class="nav-text">ScheduledExecutorService接口</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java线程池：ThreadPoolExecutor"><span class="nav-number">1.5.</span> <span class="nav-text">Java线程池：ThreadPoolExecutor</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#线程池的运行状态"><span class="nav-number">1.5.1.</span> <span class="nav-text">线程池的运行状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ThreadPoolExecutor构造方法"><span class="nav-number">1.5.2.</span> <span class="nav-text">ThreadPoolExecutor构造方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#execute方法"><span class="nav-number">1.5.3.</span> <span class="nav-text">execute方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#addWorker方法"><span class="nav-number">1.5.4.</span> <span class="nav-text">addWorker方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Worker类（这是一个类）"><span class="nav-number">1.5.5.</span> <span class="nav-text">Worker类（这是一个类）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程池的监控"><span class="nav-number">1.5.6.</span> <span class="nav-text">线程池的监控</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线程池进阶：ScheduledThreadPoolExecutor"><span class="nav-number">1.6.</span> <span class="nav-text">线程池进阶：ScheduledThreadPoolExecutor</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ScheduledThreadPoolExecutor的构造方法"><span class="nav-number">1.6.1.</span> <span class="nav-text">ScheduledThreadPoolExecutor的构造方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#scheduleAtFixedRate方法"><span class="nav-number">1.6.2.</span> <span class="nav-text">scheduleAtFixedRate方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">1.6.3.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-[object Object]"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ZKaiKing</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
