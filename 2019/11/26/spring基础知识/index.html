@@ -1,0 +1,1226 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="-spring,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="spring容器Spring容器并不是只有一个。 Spring自带了多个容器实现， 可以归为两种不同的类型。  1、bean工厂（由org.springframework. beans. factory.eanFactory接口定义） 是最简单的容器， 提供基本的DI支持。  2、应用上下文（由org.springframework.context.ApplicationContext接口定义）">
+<meta name="keywords" content="-spring">
+<meta property="og:type" content="article">
+<meta property="og:title" content="spring基础知识">
+<meta property="og:url" content="http://yoursite.com/2019/11/26/spring基础知识/index.html">
+<meta property="og:site_name" content="ZKaiKing-blog">
+<meta property="og:description" content="spring容器Spring容器并不是只有一个。 Spring自带了多个容器实现， 可以归为两种不同的类型。  1、bean工厂（由org.springframework. beans. factory.eanFactory接口定义） 是最简单的容器， 提供基本的DI支持。  2、应用上下文（由org.springframework.context.ApplicationContext接口定义）">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/175724-0d50d67d980161b4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/810/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/175724-911dc459ef9cec28.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1200/format/webp">
+<meta property="og:updated_time" content="2019-11-26T11:31:38.422Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="spring基础知识">
+<meta name="twitter:description" content="spring容器Spring容器并不是只有一个。 Spring自带了多个容器实现， 可以归为两种不同的类型。  1、bean工厂（由org.springframework. beans. factory.eanFactory接口定义） 是最简单的容器， 提供基本的DI支持。  2、应用上下文（由org.springframework.context.ApplicationContext接口定义）">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/175724-0d50d67d980161b4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/810/format/webp">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/11/26/spring基础知识/">
+
+
+
+
+
+  <title>spring基础知识 | ZKaiKing-blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+<script type="text/javascript" src="/js/src/clicksocialvalue.js"></script>
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ZKaiKing-blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/26/spring基础知识/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZKaiKing">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/photo.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZKaiKing-blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">spring基础知识</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-26T19:26:43+08:00">
+                2019-11-26
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2019-11-26T19:31:38+08:00">
+                2019-11-26
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="spring容器"><a href="#spring容器" class="headerlink" title="spring容器"></a>spring容器</h1><p>Spring容器并不是只有一个。 Spring自带了多个容器实现， <strong>可以归为两种不同的类型</strong>。 </p>
+<p>1、bean工厂（由org.springframework. beans. factory.eanFactory接口定义） 是最简单<br>的容器， 提供基本的DI支持。 </p>
+<p>2、<strong>应用上下文</strong>（由org.springframework.context.ApplicationContext接口定义） 基于<br>BeanFactory构建， 并提供应用框架级别的服务， 例如从属性文件解析文本信息以及发布应用<br>事件给感兴趣的事件监听者 </p>
+<p>在bean工厂和应用上下文之间任选一种， 但bean工厂对大多数应用来说往往太低级了， 因此， 应用上下文要比bean工厂更受欢迎。 我们会把精力集中在应用上下文的使用上， 不再浪费时间讨论bean工厂 </p>
+<p>常见应用上下文：</p>
+<ul>
+<li>AnnotationConfigApplicationContext:从一个或多个基于Java的配置类中加<br>载Spring应用上下文。 </li>
+<li>AnnotationConfigWebApplicationContext:从一个或多个基于Java的配置类中<br>加载Spring Web应用上下文。 </li>
+<li>ClassPathXmlApplicationContext:从类路径下的一个或多个XML配置文件中加<br>载上下文定义， 把应用上下文的定义文件作为类资源 。</li>
+<li>FileSystemXmlApplicationContext:从文件系统下的一个或多个XML配置文件<br>中加载上下文定义 </li>
+<li>XmlWebApplicationContext:从Web应用下的一个或多个XML配置文件中加载上<br>下文定义。 </li>
+</ul>
+<p>如果你想从Java配置中加载应用上下文， 那么可以使用AnnotationConfigApplicationContext： </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ApplicationContext context=<span class="keyword">new</span> AnnotationConfiApplicationContext(com.springination.zhangzhengkaiConfig.class);</span><br></pre></td></tr></table></figure>
+
+<p>应用上下文准备就绪之后， 我们就可以调用上下文的getBean()方法从Spring容器中获取bean。 </p>
+<h1 id="Bean的生命周期"><a href="#Bean的生命周期" class="headerlink" title="Bean的生命周期"></a>Bean的生命周期</h1><p><img src="https:////upload-images.jianshu.io/upload_images/175724-0d50d67d980161b4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/810/format/webp" alt="img"></p>
+<p>在bean准备就绪之前， bean工厂执行了若干启动步骤。 我们对图1.5进行详细描<br>述：</p>
+<p>1． Spring对bean进行实例化；<br>2． Spring将值和bean的引用注入到bean对应的属性中；<br>3． 如果bean实现了BeanNameAware接口， Spring将bean的ID传递给setBean-Name()方法；<br>4． 如果bean实现了BeanFactoryAware接口， Spring将调用setBeanFactory()方法， 将BeanFactory容器实例传入；<br>5． 如果bean实现了ApplicationContextAware接口， Spring将调用setApplicationContext()方法， 将bean所在的应用上下文的引用传入进来；<br><strong>6． 如果bean实现了BeanPostProcessor接口， Spring将调用它们的postProcessBeforeInitialization()方法；</strong><br><strong>7． 如果bean实现了InitializingBean接口， Spring将调用它们的afterPropertiesSet()方法。 类似地， 如果bean使用init-method声明了初始化方法， 该方法也会被调用；</strong><br><strong>8． 如果bean实现了BeanPostProcessor接口， Spring将调用它们的postProcessAfterInitialization()方法；</strong><br>9． 此时， bean已经准备就绪， 可以被应用程序使用了， 它们将一直驻留在应用上下文中，直到该应用上下文被销毁；<br>10． 如果bean实现了DisposableBean接口， Spring将调用它的destroy()接口方法。 同样， 如果bean使用destroy-method声明了销毁方法， 该方法也会被调用。 </p>
+<h2 id="IoC容器"><a href="#IoC容器" class="headerlink" title="IoC容器"></a>IoC容器</h2><p><code>BeanDefinition</code>对象：容器中的每一个bean都会有一个对应的BeanDefinition实例，该实例负责保存bean对象的所有必要信息，包括bean对象的class类型、是否是抽象类、构造方法和参数、其它属性等等。当客户端向容器请求相应对象时，容器就会通过这些信息为客户端返回一个完整可用的bean实例。<br><code>BeanDefinitionRegistry</code>和<code>BeanFactory</code>：BeanDefinitionRegistry抽象出bean的注册逻辑，而BeanFactory则抽象出了bean的管理逻辑，而各个BeanFactory的实现类就具体承担了bean的注册以及管理工作。它们之间的关系就如下图：<img src="https://upload-images.jianshu.io/upload_images/175724-911dc459ef9cec28.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1200/format/webp" alt></p>
+<p>IoC容器负责管理容器中所有bean的生命周期，而在bean生命周期的不同阶段，Spring提供了不同的扩展点来改变bean的命运。</p>
+<p>1、在容器的启动阶段，<code>BeanFactoryPostProcessor</code>允许我们在<strong>容器实例化相应对象之前，对注册到容器的BeanDefinition所保存的信息做一些额外的操作，比如修改bean定义的某些属性或者增加其他信息等</strong>。如果要自定义扩展类，通常需要实现<code>org.springframework.beans.factory.config.BeanFactoryPostProcessor</code>接口，与此同时，因为容器中可能有多个BeanFactoryPostProcessor，可能还需要实现<code>org.springframework.core.Ordered</code>接口，以保证BeanFactoryPostProcessor按照顺序执行。Spring提供了为数不多的BeanFactoryPostProcessor实现</p>
+<p>我们以<code>PropertyPlaceholderConfigurer</code>来说明其大致的工作流程：</p>
+<p>在Spring项目的XML配置文件中，经常可以看到许多配置项的值使用占位符，而将占位符所代表的值单独配置到独立的properties文件，这样可以将散落在不同XML文件中的配置集中管理，而且也方便运维根据不同的环境进行配置不同的值。这个非常实用的功能就是由PropertyPlaceholderConfigurer负责实现的。</p>
+<p>根据前文，当BeanFactory在第一阶段加载完所有配置信息时，BeanFactory中保存的对象的属性还是以占位符方式存在的，比如<code>${jdbc.mysql.url}</code>。当PropertyPlaceholderConfigurer作为BeanFactoryPostProcessor被应用时，它会使用properties配置文件中的值来替换相应的BeanDefinition中占位符所表示的属性值。<strong>当需要实例化bean时，bean定义中的属性值就已经被替换成我们配置的值。</strong>当然其实现比上面描述的要复杂一些。</p>
+<p>2、<code>BeanPostProcessor</code>，其存在于对象实例化阶段。跟BeanFactoryPostProcessor类似，它会处理容器内所有符合条件并且已经实例化后的对象。</p>
+<p>总结：<strong>BeanFactoryPostProcessor处理bean的定义，而BeanPostProcessor则处理bean完成实例化后的对象</strong>。</p>
+<p>BeanPostProcessor定义了两个接口：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public interface BeanPostProcessor &#123;</span><br><span class="line">    // 前置处理</span><br><span class="line">    Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException;</span><br><span class="line">    // 后置处理</span><br><span class="line">    Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>postProcessBeforeInitialization()</code>方法与<code>postProcessAfterInitialization()</code>分别对应图中前置处理和后置处理两个步骤将执行的方法。<strong>这两个方法中都传入了bean对象实例的引用</strong>，为扩展容器的对象实例化过程提供了很大便利，在这儿几乎可以对传入的实例执行任何操作。注解、AOP等功能的实现均大量使用了<code>BeanPostProcessor</code>，比如有一个自定义注解，你完全可以实现BeanPostProcessor的接口，在其中判断bean对象的脑袋上是否有该注解，如果有，你可以对这个bean实例执行任何操作。</p>
+<p>再来看一个更常见的例子，在Spring中经常能够看到各种各样的Aware接口，其作用就是在对象实例化完成以后将Aware接口定义中规定的依赖注入到当前实例中。比如最常见的<code>ApplicationContextAware</code>接口，实现了这个接口的类都可以获取到一个ApplicationContext对象。当容器中每个对象的实例化过程走到BeanPostProcessor前置处理这一步时，容器会检测到之前注册到容器的ApplicationContextAwareProcessor，然后就会调用其postProcessBeforeInitialization()方法，检查并设置Aware相关依赖。看看代码吧，是不是很简单：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 代码来自：org.springframework.context.support.ApplicationContextAwareProcessor</span></span><br><span class="line"><span class="comment">// 其postProcessBeforeInitialization方法调用了invokeAwareInterfaces方法</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">invokeAwareInterfaces</span><span class="params">(Object bean)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (bean <span class="keyword">instanceof</span> EnvironmentAware) &#123;</span><br><span class="line">        ((EnvironmentAware) bean).setEnvironment(<span class="keyword">this</span>.applicationContext.getEnvironment());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (bean <span class="keyword">instanceof</span> ApplicationContextAware) &#123;</span><br><span class="line">        ((ApplicationContextAware) bean).setApplicationContext(<span class="keyword">this</span>.applicationContext);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// ......</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="装配Bean"><a href="#装配Bean" class="headerlink" title="装配Bean"></a>装配Bean</h1><p>装配：创建应用组件之间协作的行为称为装配</p>
+<p>Spring容器负责创建应用程序中的bean并通过DI来协调这些对象之间的关系。 </p>
+<p>Spring具有非常大的灵活性， 它提供了三种主要的装配机制：</p>
+<ul>
+<li>在XML中进行显式配置。</li>
+<li>在Java中进行显式配置</li>
+<li>隐式的bean发现机制和自动装配。 </li>
+</ul>
+<h2 id="自动化装配Bean"><a href="#自动化装配Bean" class="headerlink" title="自动化装配Bean"></a>自动化装配Bean</h2><p>Spring从两个角度来实现自动化装配：<br>组件扫描（component scanning）：Spring会自动发现应用上下文中所创建的bean。<br>自动装配（autowiring）：Spring自动满足bean之间的依赖 。</p>
+<p>注解详解：</p>
+<p>@Component注解。 这个简单的注解表明该类会作为<strong>组件类， 并告知Spring要为这个类创建bean</strong> </p>
+<p>不过， 组件扫描默认是不启用的。 我们还需要显式配置一下Spring， 从而命令它去寻找带有@Component注解的类， 并为其创建bean。 </p>
+<p>@ComponentScan注解， 这个注解能够在Spring中启用组件扫描。 </p>
+<p>@ComponentScan注解下没有其他配置的话， @ComponentScan默认会扫描与配置类相同的包以及子包</p>
+<p>—对应Xml配置中的：&lt; context:component-scan &gt;元素 </p>
+<p>@Autowired注解：在满足依赖的过程中， 会在Spring应用上下文中寻找匹配某个bean需求的其他bean。 为了声明要进行自动装配， 我们可以借助Spring的@Autowired注解 ；@Autowired注解可以用在类的任何方法上 </p>
+<p>特别注意：bean装载到容器中时，如果没有指定名称，会自动的将其名称作为bean名称(首字母大写会变成小写)</p>
+<h2 id="通过Java装配Bean"><a href="#通过Java装配Bean" class="headerlink" title="通过Java装配Bean"></a>通过Java装配Bean</h2><p>尽管在很多场景下通过组件扫描和自动装配实现Spring的自动化配置是更为推荐的方式， 但有时候自动化配置的方案行不通， 因此需要明确配置Spring。 比如说， 你想要将第三方库中的组件装配到你的应用中， 在这种情况下， 是没有办法在它的类上添加@Component和@Autowired注解的， 因此就不能使用自动化装配的方案了。 </p>
+<p>显式配置有俩种方案：</p>
+<ul>
+<li>在XML中进行显式配置</li>
+<li>在Java中进行显式配置</li>
+</ul>
+<p>注解详解：</p>
+<p>@Configuration注解：表明这个类是一个<strong>配置类， 该类应该包含在Spring应用上下文中如何创建bean的细节。</strong> </p>
+<p>@Bean注解：会告诉Spring这个方法将会返回一个对象， 该对象要注册为Spring应用上下文中的bean。 </p>
+<h2 id="通过Xml装配Bean"><a href="#通过Xml装配Bean" class="headerlink" title="通过Xml装配Bean"></a>通过Xml装配Bean</h2><p>&lt; beans &gt;是该模式中的一个元素， 它是所有Spring配置文件的根元素。 </p>
+<p>&lt; bean &gt;元素类似于JavaConfig中的@Bean注解 ；创建这个bean的类通过class属性来指定的， 并且要使用全限<br>定的类名。 </p>
+<p>&lt; constructor-arg &gt;元素 ;使用构造器注入到bean的引用；用ref属性引用其他bean，也可以通过value属性，通过该属性表明给定的值要以字面量的形式注入到构造器中</p>
+<p>&lt; set &gt;和&lt; list &gt;元素的区别不大， 其中最重要的不同在于当Spring创建要装配的集合时，所创建的是java.util.Set还是java.util.List。 如果是Set的话， 所有重复的值都会被忽略掉 </p>
+<p>&lt; property &gt;元素为属性的Setter方法所提供的功能与&lt; constructor-arg &gt;元素为构造器所提供的功能是一样的。 </p>
+<h1 id="Bean的作用域"><a href="#Bean的作用域" class="headerlink" title="Bean的作用域"></a>Bean的作用域</h1><h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><ul>
+<li>单例（Singleton） ： 在整个应用中， 只创建bean的一个实例。<strong>（默认）</strong></li>
+<li>原型（Prototype） ： 每次注入或者<strong>通过Spring应用上下文获取的时候</strong>， 都会创建一个新的bean实例。</li>
+<li>会话（Session） ： 在Web应用中， 为每个会话创建一个bean实例。</li>
+<li>请求（Rquest） ： 在Web应用中， 为每个请求创建一个bean实例。 </li>
+</ul>
+<p>如果选择其他的作用域， 要使用<code>@Scope</code>注解， 它可以与<code>@Component</code>或<code>@Bean</code>一起使用。 </p>
+<p>使用ConfigurableBeanFactory类的SCOPE_PROTOTYPE常量设置了原型作用域。 你当然也可以使@Scope(“prototype”)， 但是使用SCOPE_PROTOTYPE常量更加安全并且不易出错。 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="meta">@Scope</span>(ConfigurableBeaanFactory.SCOPE.PROTOTYPE)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">zzkai</span></span>&#123;...&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果你使用XML来配置bean的话， 可以使用&lt; bean &gt;元素的scope属性来设置作用域： </p>
+<p>会话作用域bean的作用示例： 在典型的电子商务应用中， 可能会有一个bean代表用户的购物车。 如果购物车是单例的话， 那么将会导致所有的用户都会向同一个购物车中添加商品。 另一方面， 如果购物车是原型作用域的， 那么在应用中某一个地方往购物车中添加商品， 在应用的另外一个地方可能就不可用了， 因为在这里注入的是另外一个原型作用域的购物车。就购物车bean来说， 会话作用域是最为合适的， 因为它与给定的用户关联性最大。 </p>
+<h2 id="作用域代理问题"><a href="#作用域代理问题" class="headerlink" title="作用域代理问题"></a>作用域代理问题</h2><p><code>@Scope</code>同时还有一个<code>proxyMode</code>属性， 它被设置成了<code>ScopedProxyMode.INTERFACES</code>。 这个属性解决了将会话或请求作用域的bean注入到单例bean中所遇到的问题。  </p>
+<h3 id="proxyMode属性解决的问题"><a href="#proxyMode属性解决的问题" class="headerlink" title="proxyMode属性解决的问题"></a><code>proxyMode</code>属性解决的问题</h3><p>假设我们要将ShoppingCart bean注入到单例StoreService bean的Setter方法中， 如下所示： </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StoreService</span></span>&#123;</span><br><span class="line">    <span class="meta">@AutoWired</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setShoppingCart</span><span class="params">(ShoppingCart shoppingCart)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.shoppingCart=shoppingCart;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>因为<strong>StoreService是一个单例的bean， 会在Spring应用上下文加载的时候创建。 当它创建的时候， Spring会试图将ShoppingCart bean注入到setShoppingCart()方法中</strong>。 但是<strong>ShoppingCart bean是会话作用域的， 此时并不存在。 直到某个用户进入系统， 创建了会话之后， 才会出现ShoppingCart实例</strong>。另外， 系统中将会有多个ShoppingCart实例： 每个用户一个。 我们并不想让Spring注入某个固定的ShoppingCart实例到StoreService中。 我们希望的是当StoreService处理购物车功能时， 它所使用的ShoppingCart实例恰好是当前会话所对应的那一个。<strong>Spring并不会将实际的ShoppingCart bean注入到StoreService中， Spring会注入一个到ShoppingCart bean的代理</strong>， 这个代理会暴露与ShoppingCart相同的方法， 所以StoreService会认为它就是一个购物车。 但是， <strong>当StoreService调用ShoppingCart的方法时， 代理会对其进行懒解析并将调用委托给会话作用域内真正的ShoppingCart bean。</strong> </p>
+<p><img src alt="委托代理"></p>
+<h3 id="proxyMode作用"><a href="#proxyMode作用" class="headerlink" title="proxyMode作用"></a><code>proxyMode</code>作用</h3><p>proxyMode属性被设置成了ScopedProxyMode.INTERFACES， 这表明这个代理要实<br>现ShoppingCart接口， 并将调用委托给实现bean。 </p>
+<h3 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h3><p>如果ShoppingCart是接口而不是类的话， 这是可以的（也是最为理想的代理模式） 。 但<strong>如果ShoppingCart是一个具体的类的话， Spring就没有办法创建基于接口的代理了</strong>。 此时， 它必须使用CGLib来生成基于类的代理。 所以， <strong>如果bean类型是具体类的话， 我们必须要将proxyMode属性设为ScopedProxyMode.TARGET_CLASS，</strong>以此来表明要以生成目标类扩展的方式创建代理。 </p>
+<h1 id="运行时注入"><a href="#运行时注入" class="headerlink" title="运行时注入"></a>运行时注入</h1><h2 id="注入方式"><a href="#注入方式" class="headerlink" title="注入方式"></a>注入方式</h2><p>注入方式有：</p>
+<ul>
+<li>构造器注入</li>
+<li>Setter注入</li>
+</ul>
+<p>为了避免硬编码问题，Spring提供了两种在运行时求值的方式 </p>
+<ul>
+<li>属性占位符(Property placeholder)</li>
+<li>spring表达式语言(spEL)</li>
+</ul>
+<p>在Spring装配中， 占位符的形式为使用“${ … }”包装的属性名称 </p>
+<p>如果我们依赖于组件扫描和自动装配来创建和初始化应用组件的话， 那么就没有指定占位符的配置文件或类了。 在这种情况下， 我们可以使用@Value注解 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> zhangkai&#123;</span><br><span class="line">    <span class="meta">@Value</span>(<span class="string">"$&#123;linkis.ip&#125;"</span>) String ip;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/spring/" rel="tag"># -spring</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/11/26/springCloud-Feign知识清单/" rel="next" title="springCloud-Feign知识清单">
+                <i class="fa fa-chevron-left"></i> springCloud-Feign知识清单
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/photo.png" alt="ZKaiKing">
+            
+              <p class="site-author-name" itemprop="name">ZKaiKing</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                个人相关平台
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://github.com/ZKaiKing" title="GitHub" target="_blank">GitHub</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://leetcode-cn.com/u/xiao-hu-zi-2/" title="LeeCode" target="_blank">LeeCode</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.nowcoder.com/profile/204442994" title="nowCoder" target="_blank">nowCoder</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#spring容器"><span class="nav-number">1.</span> <span class="nav-text">spring容器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Bean的生命周期"><span class="nav-number">2.</span> <span class="nav-text">Bean的生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#IoC容器"><span class="nav-number">2.1.</span> <span class="nav-text">IoC容器</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#装配Bean"><span class="nav-number">3.</span> <span class="nav-text">装配Bean</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#自动化装配Bean"><span class="nav-number">3.1.</span> <span class="nav-text">自动化装配Bean</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通过Java装配Bean"><span class="nav-number">3.2.</span> <span class="nav-text">通过Java装配Bean</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通过Xml装配Bean"><span class="nav-number">3.3.</span> <span class="nav-text">通过Xml装配Bean</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Bean的作用域"><span class="nav-number">4.</span> <span class="nav-text">Bean的作用域</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#作用域"><span class="nav-number">4.1.</span> <span class="nav-text">作用域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#作用域代理问题"><span class="nav-number">4.2.</span> <span class="nav-text">作用域代理问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#proxyMode属性解决的问题"><span class="nav-number">4.2.1.</span> <span class="nav-text">proxyMode属性解决的问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#proxyMode作用"><span class="nav-number">4.2.2.</span> <span class="nav-text">proxyMode作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注意点"><span class="nav-number">4.2.3.</span> <span class="nav-text">注意点</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#运行时注入"><span class="nav-number">5.</span> <span class="nav-text">运行时注入</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#注入方式"><span class="nav-number">5.1.</span> <span class="nav-text">注入方式</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-[object Object]"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ZKaiKing</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
