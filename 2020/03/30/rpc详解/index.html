@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="-Hive,">
+  <meta name="keywords" content="-基础,">
 
 
 
@@ -79,22 +79,20 @@
 
 
 
-<meta name="description" content="数据仓库Hive产生背景MapReduce编程门槛高，无法及时应对需求的变更 传统RDBMS（关系型数据库）人员的需求，HDFS上的文件并没有schema的概念 可通过Hive进行大数据的处理 Hive概述有Facebook开源，用于解决海量结构化日志的数据统计问题 构建在Hadoop之上的数据仓库（计算能力，存储能力，可应付数据的暴增） Hive提供的SQL查询语言：HQL 底层支撑多种不同的执">
-<meta name="keywords" content="-Hive">
+<meta name="description" content="一、 什么是RPC  RPC是指远程过程调用，指计算机 A 上的进程，调用另外一台计算机 B 上的进程，其中 A 上的调用进程被挂起，而 B 上的被调用进程开始执行，当值返回给 A 时，A 进程继续执行。调用方可以通过使用参数将信息传送给被调用方，而后可以通过传回的结果得到信息。而这一过程，对于开发人员来说是透明的。也就是说两台服务器A，B，一个应用部署在A服务器上，想要调用B服务器上应用提供的函">
+<meta name="keywords" content="-基础">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hive数据仓库基础知识">
-<meta property="og:url" content="http://yoursite.com/2019/10/22/Hive数据仓库基础知识/index.html">
+<meta property="og:title" content="rpc详解">
+<meta property="og:url" content="http://yoursite.com/2020/03/30/rpc详解/index.html">
 <meta property="og:site_name" content="ZKaiKing-blog">
-<meta property="og:description" content="数据仓库Hive产生背景MapReduce编程门槛高，无法及时应对需求的变更 传统RDBMS（关系型数据库）人员的需求，HDFS上的文件并没有schema的概念 可通过Hive进行大数据的处理 Hive概述有Facebook开源，用于解决海量结构化日志的数据统计问题 构建在Hadoop之上的数据仓库（计算能力，存储能力，可应付数据的暴增） Hive提供的SQL查询语言：HQL 底层支撑多种不同的执">
+<meta property="og:description" content="一、 什么是RPC  RPC是指远程过程调用，指计算机 A 上的进程，调用另外一台计算机 B 上的进程，其中 A 上的调用进程被挂起，而 B 上的被调用进程开始执行，当值返回给 A 时，A 进程继续执行。调用方可以通过使用参数将信息传送给被调用方，而后可以通过传回的结果得到信息。而这一过程，对于开发人员来说是透明的。也就是说两台服务器A，B，一个应用部署在A服务器上，想要调用B服务器上应用提供的函">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://yoursite.com/img/06_first.PNG">
-<meta property="og:image" content="http://yoursite.com/img/06_second.PNG">
-<meta property="og:image" content="http://yoursite.com/img/06_three.PNG">
-<meta property="og:updated_time" content="2019-10-22T15:50:23.148Z">
+<meta property="og:image" content="http://yoursite.com/2020/03/30/rpc详解/E:%5CmyBlog%5Cpublic%5Cimg%5Crpc_1.png">
+<meta property="og:updated_time" content="2020-03-30T09:10:28.910Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hive数据仓库基础知识">
-<meta name="twitter:description" content="数据仓库Hive产生背景MapReduce编程门槛高，无法及时应对需求的变更 传统RDBMS（关系型数据库）人员的需求，HDFS上的文件并没有schema的概念 可通过Hive进行大数据的处理 Hive概述有Facebook开源，用于解决海量结构化日志的数据统计问题 构建在Hadoop之上的数据仓库（计算能力，存储能力，可应付数据的暴增） Hive提供的SQL查询语言：HQL 底层支撑多种不同的执">
-<meta name="twitter:image" content="http://yoursite.com/img/06_first.PNG">
+<meta name="twitter:title" content="rpc详解">
+<meta name="twitter:description" content="一、 什么是RPC  RPC是指远程过程调用，指计算机 A 上的进程，调用另外一台计算机 B 上的进程，其中 A 上的调用进程被挂起，而 B 上的被调用进程开始执行，当值返回给 A 时，A 进程继续执行。调用方可以通过使用参数将信息传送给被调用方，而后可以通过传回的结果得到信息。而这一过程，对于开发人员来说是透明的。也就是说两台服务器A，B，一个应用部署在A服务器上，想要调用B服务器上应用提供的函">
+<meta name="twitter:image" content="http://yoursite.com/2020/03/30/rpc详解/E:%5CmyBlog%5Cpublic%5Cimg%5Crpc_1.png">
 
 
 
@@ -124,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/10/22/Hive数据仓库基础知识/">
+  <link rel="canonical" href="http://yoursite.com/2020/03/30/rpc详解/">
 
 
 
 
 
-  <title>Hive数据仓库基础知识 | ZKaiKing-blog</title>
+  <title>rpc详解 | ZKaiKing-blog</title>
   
 
 
@@ -304,7 +302,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/22/Hive数据仓库基础知识/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/30/rpc详解/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ZKaiKing">
@@ -321,7 +319,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hive数据仓库基础知识</h1>
+          <h1 class="post-title" itemprop="name headline">rpc详解</h1>
         
 
         <div class="post-meta">
@@ -333,8 +331,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-22T11:01:10+08:00">
-                2019-10-22
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-30T17:07:21+08:00">
+                2020-03-30
               </time>
             
 
@@ -349,8 +347,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-10-22T23:50:23+08:00">
-                2019-10-22
+              <time title="Post modified" itemprop="dateModified" datetime="2020-03-30T17:10:28+08:00">
+                2020-03-30
               </time>
             
           </span>
@@ -383,134 +381,71 @@
       
 
       
-        <h1 id="数据仓库Hive"><a href="#数据仓库Hive" class="headerlink" title="数据仓库Hive"></a>数据仓库Hive</h1><h2 id="产生背景"><a href="#产生背景" class="headerlink" title="产生背景"></a>产生背景</h2><p>MapReduce编程门槛高，无法及时应对需求的变更</p>
-<p>传统RDBMS（关系型数据库）人员的需求，HDFS上的文件并没有schema的概念</p>
-<p>可通过Hive进行大数据的处理</p>
-<h2 id="Hive概述"><a href="#Hive概述" class="headerlink" title="Hive概述"></a>Hive概述</h2><p>有Facebook开源，用于解决<strong>海量结构化日志</strong>的<strong>数据统计</strong>问题</p>
-<p>构建在Hadoop之上的数据仓库（计算能力，存储能力，可应付数据的暴增）</p>
-<p>Hive提供的SQL查询语言：HQL</p>
-<p>底层支撑多种不同的执行引擎</p>
-<p> Hive底层执行引擎支持：MR/Tez/Spark（用户不感知）</p>
-<p>###为什么要使用Hive</p>
+        <h1 id="一、-什么是RPC"><a href="#一、-什么是RPC" class="headerlink" title="一、 什么是RPC"></a>一、 什么是RPC</h1><p>  <strong>RPC是指远程过程调用</strong>，指计算机 A 上的进程，调用另外一台计算机 B 上的进程，其中 A 上的调用进程被挂起，而 B 上的被调用进程开始执行，当值返回给 A 时，A 进程继续执行。调用方可以通过使用参数将信息传送给被调用方，而后可以通过传回的结果得到信息。而这一过程，对于开发人员来说是透明的。也就是说两台服务器A，B，一个应用部署在A服务器上，想要调用B服务器上应用提供的函数/方法，<strong>由于不在一个内存空间，不能直接调用</strong>，需要通过<strong>网络来表达调用的语义和传达调用的数据</strong>。</p>
+<h1 id="二PRC需要解决的问题"><a href="#二PRC需要解决的问题" class="headerlink" title="二PRC需要解决的问题"></a>二PRC需要解决的问题</h1><h2 id="1、Call-ID映射"><a href="#1、Call-ID映射" class="headerlink" title="1、Call ID映射"></a>1、Call ID映射</h2><p>  我们怎么告诉远程机器我们要调用funA，而不是funB或者funC呢？<strong>在本地调用中，函数体是直接通过函数指针来指定的</strong>，我们调用funA，编译器就自动帮我们调用它相应的函数指针。<strong>但是在远程调用中，函数指针是不行的，因为两个进程的地址空间是完全不一样的</strong>。</p>
+<p>  所以，在RPC中，<strong>所有的函数都必须有自己的一个ID</strong>。这个ID在所有进程中都是唯一确定的。<strong>客户端在做远程过程调用时，必须附上这个ID</strong>。然后我们还需要在客户端和服务端分别维护一个 {函数 &lt;–&gt; Call ID} 的对应表。两者的表不一定需要完全相同，<strong>但相同的函数对应的Call ID必须相同</strong>。</p>
+<p>  <strong>【Note】当客户端需要进行远程调用时，它就查一下这个表，找出相应的Call ID，然后把它传给服务端，服务端也通过查表，来确定客户端需要调用的函数，然后执行相应函数的代码。</strong></p>
+<p><img src="//yoursite.com/2020/03/30/rpc详解/E:%5CmyBlog%5Cpublic%5Cimg%5Crpc_1.png" alt="RPC—1"></p>
+<h2 id="2、序列化和反序列化"><a href="#2、序列化和反序列化" class="headerlink" title="2、序列化和反序列化"></a>2、序列化和反序列化</h2><p>  <strong>客户端怎么把参数值传给远程的函数呢</strong>？在本地调用中，我们只需要把参数压到栈里，然后让函数自己去栈里读就行。</p>
+<p>  但是在远程过程调用时，<strong>客户端跟服务端是不同的进程，不能通过内存来传递参数。甚至有时候客户端和服务端使用的都不是同一种语言</strong>（比如服务端用C++，客户端用Java或者Python）。</p>
+<p>  <strong>【Note】这时候就需要客户端把参数先转成一个字节流（编码），传给服务端后，再把字节流转成自己能读取的格式（解码）。这个过程叫序列化和反序列化。同理，从服务端返回的值也需要序列化反序列化的过程。</strong></p>
+<p>  为什么需要序列化？</p>
 <ul>
-<li><p>简单，容易上手</p>
-</li>
-<li><p>为超大数据集设计的计算/扩展能力</p>
-</li>
-<li><p>同一的元数据管理：Hive数据是存放在HDFS上，元数据信息（记录数据(HDFS数据)的数据）是存放在MySQL中</p>
+<li><strong>转换为字节流方便进行网络传输</strong>。</li>
+<li><strong>实现跨平台、跨语言</strong>；如果是跨平台的序列化，则<strong>发送方序列化后，接收方可以用任何其支持的平台反序列化成相应的版本</strong>，比如 Java序列化后， <a href="http://xn--jny.net/" target="_blank" rel="noopener">用.net</a>、phython等反序列化。</li>
+</ul>
+<h2 id="3、网络传输"><a href="#3、网络传输" class="headerlink" title="3、网络传输"></a>3、网络传输</h2><p>  远程调用往往用在网络上，客户端和服务端是通过网络连接的。<strong>所有的数据都需要通过网络传输</strong>，因此就需要有一个网络传输层。</p>
+<p>  <strong>【Note】网络传输层需要把Call ID和序列化后的参数字节流传给服务端，然后再把序列化后的调用结果传回客户端。</strong>只要能完成这两者的，都可以作为传输层使用。因此，它所使用的协议其实是不限的，能完成传输就行。<strong>尽管大部分RPC框架都使用TCP协议，但其实UDP也可以，而gRPC干脆就用了HTTP2。</strong></p>
+<p>  所以，要实现一个RPC框架，其实只需要把以上三点实现了就基本完成了。Call ID映射可以直接使用函数字符串，也可以使用整数ID。<strong>映射表一般就是一个哈希表</strong>。序列化反序列化可以自己写，也可以使用<strong>Protobuf</strong>或者FlatBuffers之类的。网络传输库可以自己写socket，或者用<strong>asio，ZeroMQ，Netty</strong>之类。</p>
+<p>总结一下，<strong>RPC要解决的两个问题：</strong></p>
+<ol>
+<li><strong>解决分布式系统中，服务之间的调用问题。</strong></li>
+<li><strong>远程调用时，要能够像本地调用一样方便，让调用者感知不到远程调用的逻辑。</strong></li>
+</ol>
+<h1 id="三、PRC分析"><a href="#三、PRC分析" class="headerlink" title="三、PRC分析"></a>三、PRC分析</h1><h2 id="1、RPC-vs-Restful"><a href="#1、RPC-vs-Restful" class="headerlink" title="1、RPC vs Restful"></a>1、RPC vs Restful</h2><p>在微服务中，使用什么协议来构建服务体系，一直是个热门话题。 争论的焦点集中在两个候选技术： (binary) RPC or Restful。</p>
+<ol>
+<li>以Apache Thrift为代表的二进制RPC，支持多种语言（但不是所有语言），四层通讯协议，性能高，节省带宽。相对Restful协议，使用Thrifpt RPC，<strong>在同等硬件条件下，带宽使用率仅为前者的20%，性能却提升一个数量级。但是这种协议最大的问题在于，无法穿透防火墙。</strong></li>
+<li>以Spring Cloud为代表所支持的Restful 协议，优势在于能够穿透防火墙，使用方便，语言无关，基本上可以使用各种开发语言实现的系统，都可以接受Restful 的请求。 但性能和带宽占用上有劣势。</li>
+</ol>
+<p>所以，业内对微服务的实现，基本是确定一个组织边界，在该边界内，使用RPC; 边界外，使用Restful。这个边界，可以是业务、部门，甚至是全公司。</p>
+<p>其实这两者并不是一个维度的概念，总得来说RPC涉及的维度更广。</p>
+<p>使用RPC远程服务调用方式与传统http接口直接调用方式的差别在于：<strong>RPC是面向过程，Restful是面向资源</strong></p>
+<ol>
+<li>从使用方面看，Http接口只关注服务提供方，对于客户端怎么调用，调用方式怎样并不关心，通常情况下，我们使用Http方式进行调用时，只要将内容进行传输即可，这样客户端在使用时，需要更关注网络方面的传输，比较不适用与业务方面的开发；而<strong>RPC服务则需要客户端接口与服务端保持一致，服务端提供一个方法，客户端通过接口直接发起调用，业务开发人员仅需要关注业务方法的调用即可，不再关注网络传输的细节，在开发上更为高效</strong>。</li>
+<li>从性能角度看，使用Http时，Http本身提供了丰富的状态功能与扩展功能，但也正由于Http提供的功能过多，导致在网络传输时，需要携带的信息更多，从性能角度上讲，较为低效。而<strong>RPC服务网络传输上仅传输与业务内容相关的数据，传输数据更小，性能更高。</strong></li>
+<li>从运维角度看，使用Http接口时，常常使用一个前端代理，来进行Http转发代理请求的操作，需要进行扩容时，则需要去修改代理服务器的配置，较为繁琐，也容易出错。而使用RPC方式的微服务，则只要增加一个服务节点即可，注册中心可自动感知到节点的变化，通知调用客户端进行负载的动态控制，更为智能，省去运维的操作。</li>
+</ol>
+<p>比如你提供一个查询订单的接口，用RPC风格，你可能会这样写：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/queryOrder?orderId=123</span><br></pre></td></tr></table></figure>
+
+<p>用Restful风格呢？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Get  </span><br><span class="line">/order?orderId=123</span><br></pre></td></tr></table></figure>
+
+<h2 id="2、RPC-vs-RMI"><a href="#2、RPC-vs-RMI" class="headerlink" title="2、RPC vs RMI"></a>2、RPC vs RMI</h2><p> 1、什么是RMI</p>
+<p> RMI:远程方法调用(Remote Method Invocation)。能够让在客户端<strong>Java</strong>虚拟机上的对象像调用本地对象一样调用服务端java 虚拟机中的对象上的方法。</p>
+<p>RMI对服务器的IP地址和端口依赖很紧密，但是在开发的时候不知道将来的服务器IP和端口如何，但是客户端程序依赖这个IP和端口。这也是RMI的局限性之一。</p>
+<p>这个问题有两种解决途径：一是通过DNS来解决，二是通过封装将IP暴露到程序代码之外。</p>
+<p>RMI的局限性之二是RMI是Java语言的远程调用，两端的程序语言必须是Java实现，对于不同语言间的通讯可以考虑用Web Service或者公用对象请求代理体系（CORBA）来实现。</p>
+<p>2、<strong>RPC与RMI的区别</strong></p>
+<p><strong>（1）：方法调用方式不同：</strong></p>
 <ul>
-<li>SQL  on Hadoop:Hive,Spark,SQL,impala…</li>
+<li>RPC（远程过程调用）和RMI（远程方法调用）是两种可以让用户从一台电脑调用不同电脑上面的方法的的机制（也可以称作规范、协议）。两者的主要不同是他们的使用方式或者称作范式，RMI使用面向对象的范式，也就是用户需要知道他调用的对象和对象中的方法；RPC不是面向对象也不能处理对象，而是调用具体的子程序。</li>
+<li>RPC中是通过网络服务协议向远程主机发送请求，请求包含了一个参数集和一个文本值，通常形成“classname.methodname(参数集)”的形式。RPC远程主机就去搜索与之相匹配的类和方法，找到后就执行方法并把结果编码，通过网络协议发回。</li>
 </ul>
-</li>
-</ul>
-<p>Hive是一个离线框架，不适合实时查询</p>
-<h2 id="Hive体系架构"><a href="#Hive体系架构" class="headerlink" title="Hive体系架构"></a>Hive体系架构</h2><h3 id="Hive-在Hadoop生态中的位置"><a href="#Hive-在Hadoop生态中的位置" class="headerlink" title="Hive 在Hadoop生态中的位置"></a>Hive 在Hadoop生态中的位置</h3><p><img src="/img/06_first.PNG" alt="Hive 在Hadoop生态中的位置"></p>
-<p>体系架构图：</p>
-<p><img src="/img/06_second.PNG" alt></p>
-<p>client：shell、<strong>thrift/jdbc(server/jdbc)</strong>、webUI(HUE/Zeppelin)</p>
-<p>metastore:==&gt;MySQL</p>
-<pre><code>database:name/location/owner...
-
-table:name、location、owner、column、name/type...</code></pre><p>Hive：写SQL翻译成MapReduce，放入到Hadoop</p>
-<h2 id="Hive部署架构"><a href="#Hive部署架构" class="headerlink" title="Hive部署架构"></a>Hive部署架构</h2><ul>
-<li><p>测试环境</p>
-<p>客户端把SQL提交Hive引擎，<em>元数据信息可存放在Derby中（只能进行单客户端的操作，就是单session）即使是测试环境也不推荐使用</em>，因此只能选择MySQL</p>
-</li>
-<li><p>生产环境：为了防止MySQL错误导致无法进行获取元数据信息，因此得有主备MySQL，主备MySQL会进行切换。（解决MySQL单点问题）</p>
-<p>Hadoop集群：DN、NM、NN、RM</p>
-<p>Hive提交到RM上，Hadpoop集群有很多节点，Hive是一个客户端，并不涉及集群的概念</p>
-<p><img src="/img/06_three.PNG" alt></p>
-</li>
-</ul>
-<h2 id="Hive与RDBMS的区别"><a href="#Hive与RDBMS的区别" class="headerlink" title="Hive与RDBMS的区别"></a>Hive与RDBMS的区别</h2><ul>
-<li>支持的：都支持分布式</li>
-<li>区别的：Hive不适合立马进行查询</li>
-</ul>
-<h2 id="Hive部署及快速入门"><a href="#Hive部署及快速入门" class="headerlink" title="Hive部署及快速入门"></a>Hive部署及快速入门</h2><p>包：hive-1.*.0cdh.5 *. *tar-gz</p>
-<p>*bin目录：脚本</p>
-<p>*conf目录：配置</p>
-<p>1 下载</p>
-<p>2解压的 ~/app</p>
-<p>3添加Hive-HOME到系统环境变量</p>
-<p>4修改配置</p>
-<p>5拷贝MySQL驱动包</p>
-<p>6预先下载MySQL数据库</p>
-<h2 id="Hive-DDL详解"><a href="#Hive-DDL详解" class="headerlink" title="Hive DDL详解"></a>Hive DDL详解</h2><p><em>可以创建一张表，把数据加入到表中，对数据的各种维度的分析</em></p>
-<p>create/delete/alter…</p>
-<p>Hive数据抽象/结构</p>
+<p><strong>（2）：适用语言范围不同：</strong></p>
 <ul>
-<li><p>database   HDFS一个目录</p>
-</li>
-<li><p>table   HDFS一个目录</p>
-<ul>
-<li>data文件</li>
-<li>partition分区表 HDFS一个目录</li>
-<li>bucket分桶   HDFS一个文件</li>
+<li>RPC是一个基于C语言的相对较旧的协议，因此也就继承了C语言的范式，使用RPC，你可以像调用一个本地方法一样调用远程的方法，由RPC处理调用过程的复杂操作，RMI的功能和RPC基本一样。但是和RPC只传输一个过程调用不同，RMI需要传输对象的引用以及调用的方法。RMI是用Java开发的，运行在Java虚拟机上，因此它的用途是调用远程计算机上的java应用程序。</li>
 </ul>
-</li>
-</ul>
-<hr>
-<h4 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">CREATE  (DATABASE|SCHEMA)  [IF NOT EXISTS] database_name</span><br><span class="line"> [COMMENT database_comment]</span><br><span class="line"> [LOCATIO hdfs_path]</span><br><span class="line"> [WITH DBPROPERTIES  (property_name=property_value,...)];</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h4 id="创建表"><a href="#创建表" class="headerlink" title="创建表"></a>创建表</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">CREATE [EXTERNAL] TABLE [IF NOT EXISTS] table_name</span><br><span class="line">  [(col_name data_type[COMMENT col_comment], ... [constraint_specification])]</span><br><span class="line">  [COMMENT table_comment]</span><br><span class="line">  [PARTITIONED BY (col_name data_type [COMMENT col_comment], ...)]</span><br><span class="line">  [CLUSTERED BY (col_name, col_name, ...) [SORTED BY (col_name [ASC|DESC], ...)] INTO num_buckets BUCKETS]</span><br><span class="line">   [ROW FORMAT row_format] 	</span><br><span class="line">   [STORED AS file_format]</span><br><span class="line">  [LOCATION hdfs_path]</span><br><span class="line">  [TBLPROPERTIES (property_name=property_value, ...)] </span><br><span class="line">  [AS select_statement];</span><br><span class="line">CREATE [TEMPORARY] [EXTERNAL] TABLE [IF NOT EXISTS] [db_name.]table_name</span><br><span class="line">  LIKE existing_table_or_view_name</span><br><span class="line">  [LOCATION hdfs_path];</span><br></pre></td></tr></table></figure>
-
-<p>各项参数说明：</p>
+<p><strong>（3）：调用结果的返回形式不同：</strong></p>
 <ul>
-<li>1<strong>CREATE TABLE 创建一个指定名字的表。如果相同名字的表已经存在，则抛出异常；用户可以用 IF NOT EXISTS 选项来忽略这个异常，一般也可以不加这个IF NOT EXISTS语句，最多抛出错误。</strong></li>
-<li>2 [constraint_specification]可选项： [ PRIMARY KEY|UNIQUE|NOT NULL|DEFAULT [default_value]</li>
-<li>3 [COMMENT table_comment] 可选项：COMMENT 后面跟的字符串是给表字段或者表内容添加注释说明的</li>
-<li>4  [PARTITIONED BY ] 可选项：<strong>PARTITIONED BY其实是给表做分区，决定了表是否是分区表。（Hive中所谓分区表就是将表里新增加一个字段，就是分区的名字，这样你在操作表中的数据时，可以按分区字段进行过滤）</strong></li>
-<li>5 [CLUSTERED BY ]可选项：<strong>CLUSTERED BY对于每一个表（table）或者分区， Hive可以进一步组织成桶，也就是说桶是更为细粒度的数据范围划分。Hive也针对某一列进行桶的组织。Hive采用对列值哈希，然后除以桶的个数求余的方式决定该条记录存放在哪个桶当中</strong></li>
-<li>6  [ROW FORMAT]可选项：存储表格式</li>
-<li>7   [STORED AS] 可选项：hive存储的三种文件格式</li>
-<li>8  [LOCATION AS] 可选项：LOCATION 其实是定义hive表的数据在hdfs上的存储路径，一般管理表（内部表不不要自定义），但是如果定义的是外部表，则需要直接指定一个路径。实际上不指定也没事，会使用默认路径</li>
+<li>RPC和RMI只是处理同一个问题的不同方式，这一切都归结于你所使用的语言和你所使用的范式。使用面向对象的RMI是两者之间的更好的方法，特别是大型程序，使用RMI代码更简洁，更容易追踪bug。RPC目前依然是被广泛接受的，尤其是当无法选择任何的可替代的远程程序协议时候。</li>
+<li>Java是面向对象的，所以RMI的调用结果可以是对象类型或者基本数据类型；</li>
+<li>RMI的结果统一由外部数据表示 (External Data Representation, XDR) 语言表示，这种语言抽象了字节序类和数据类型结构之间的差异。</li>
 </ul>
-<p>部分详解：</p>
-<ul>
-<li><p>使用PARTITIONED BY子句创建分区表。一个表可以具有一个或多个分区列，并为分区列中的每个不同值组合创建一个单独的数据目录。此外，可以使用CLUSTERED BY列对表或分区进行存储，并且可以通过SORT BY列在该存储区中对数据进行排序。这样可以提高某些查询的性能。</p>
-<p>eg:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE page_view(viewTime INT, userid BIGINT,</span><br><span class="line">     page_url STRING, referrer_url STRING,</span><br><span class="line">     ip STRING COMMENT &apos;IP Address of the User&apos;)</span><br><span class="line"> COMMENT &apos;This is the page view table&apos;</span><br><span class="line"> PARTITIONED BY(dt STRING, country STRING)</span><br><span class="line"> ROW FORMAT DELIMITED</span><br><span class="line">   FIELDS TERMINATED BY &apos;\001&apos;</span><br><span class="line">STORED AS SEQUENCEFILE;</span><br></pre></td></tr></table></figure>
-
-<pre><code>上面的语句创建带有viewTime，userid，page_url，referrer_url和ip列（包括注释）的page_view表。该表也被分区，数据存储在序列文件中,文件中的数据格式由ctrl-A分隔字段，由换行分隔行。</code></pre></li>
-</ul>
-<hr>
-<h4 id="重命名表"><a href="#重命名表" class="headerlink" title="重命名表"></a>重命名表</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE table_name RENAME TO new_table_name;</span><br></pre></td></tr></table></figure>
-
-<p>####更改表属性</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`ALTER TABLE table_name SET TBLPROPERTIES table_properties;` `table_properties:``  ``: (property_name = property_value, property_name = property_value, ... )`</span><br></pre></td></tr></table></figure>
-
-<p><code>table_properties</code>  : (property_name = property_value, property_name = property_value, … )</p>
-<p><code>TBLPROPERTIES</code>:允许您使用自己的<strong>元数据键/值</strong>对标记表定义;还存在一些预定义的表属性，由Hive自动添加和管理的last_modified_user和last_modified_time。</p>
-<p>修改表注释：要更改表的注释，您必须更改的<code>comment</code>属性<code>TBLPROPERTIES</code>：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`ALTER TABLE table_name SET TBLPROPERTIES (``&apos;comment&apos;` `= new_comment);`</span><br></pre></td></tr></table></figure>
-
-<h4 id="重命名现有表的列"><a href="#重命名现有表的列" class="headerlink" title="重命名现有表的列"></a>重命名现有表的列</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`ALTER TABLE old_table_name REPLACE COLUMNS (col1 TYPE, ...);`</span><br></pre></td></tr></table></figure>
-
-<h4 id="将列添加到现有表"><a href="#将列添加到现有表" class="headerlink" title="将列添加到现有表"></a>将列添加到现有表</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE tab1 ADD COLUMNS (c1 INT COMMENT &apos;a new int column&apos;, c2 STRING DEFAULT &apos;def val&apos;);</span><br></pre></td></tr></table></figure>
-
-<h4 id="删除表"><a href="#删除表" class="headerlink" title="删除表"></a>删除表</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`DROP TABLE pv_users;`</span><br></pre></td></tr></table></figure>
-
-<h4 id="删除表分区-更改表以删除分区-："><a href="#删除表分区-更改表以删除分区-：" class="headerlink" title="删除表分区(更改表以删除分区)："></a>删除表分区(更改表以删除分区)：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`ALTER TABLE pv_users DROP PARTITION (ds=``&apos;2008-08-08&apos;``)`</span><br></pre></td></tr></table></figure>
-
-<p>Hive查询操作记录在<a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Select" target="_blank" rel="noopener">Select中</a>，而插入操作记录在<a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DML#LanguageManualDML-InsertingdataintoHiveTablesfromqueries" target="_blank" rel="noopener">将数据从查询插入Hive表</a>和<a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DML#LanguageManualDML-InsertingdataintoHiveTablesfromqueries" target="_blank" rel="noopener">从查询</a><a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DML#LanguageManualDML-Writingdataintothefilesystemfromqueries" target="_blank" rel="noopener">将数据写入文件系统中</a>。</p>
-<h4 id="简单查询"><a href="#简单查询" class="headerlink" title="简单查询"></a>简单查询</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`INSERT OVERWRITE TABLE user_active``SELECT user.*``FROM user``WHERE user.active = ``1``;`</span><br></pre></td></tr></table></figure>
-
-<p>请注意，与SQL不同，我们总是将结果插入表中。也可以将其转储到本地文件中。</p>
-<p>也可以在<a href="https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline–NewCommandLineShell" target="_blank" rel="noopener">Beeline</a>  或Hive  <a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Cli" target="_blank" rel="noopener">CLI中</a>运行以下查询  ：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT user.*</span><br><span class="line">FROM user</span><br><span class="line">WHERE user.active = ``1``;</span><br></pre></td></tr></table></figure>
-
-<h4 id="基于分区的查询"><a href="#基于分区的查询" class="headerlink" title="基于分区的查询"></a>基于分区的查询</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`INSERT OVERWRITE TABLE xyz_com_page_views``SELECT page_views.*``FROM page_views``WHERE page_views.date &gt;= ``&apos;2008-03-01&apos;` `AND page_views.date &lt;= ``&apos;2008-03-31&apos;` `AND``      ``page_views.referrer_url like ``&apos;%xyz.com&apos;``;`</span><br></pre></td></tr></table></figure>
-
-<p>系统根据分区列上的where子句条件自动确定要在查询中使用的分区。例如，为了获取域xyz.com引用的03/2008月份的所有page_views</p>
-<p><em>请注意，此处使用page_views.date，因为该表（上面）是使用PARTITIONED BY（date DATETIME，country STRING）定义的；如果您给分区命名不同，请不要期望.date发挥您的想法！</em></p>
-<h4 id="连接查询"><a href="#连接查询" class="headerlink" title="连接查询"></a>连接查询</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">INSERT OVERWRITE TABLE pv_users</span><br><span class="line">SELECT pv.*, u.gender, u.age</span><br><span class="line">FROM user u JOIN page_view pv ON (pv.userid = u.id)</span><br><span class="line">WHERE pv.date = &apos;2008-03-03&apos;;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>可以使用LEFT OUTER，RIGHT OUTER或FULL OUTER关键字限定联接，以指示外部联接的类型（保留的左侧，保留的右侧或两侧保留）</p>
-</li>
-<li><p>检查另一个表中是否存在键，用户可以使用LEFT SEMI JOIN</p>
-</li>
+<h1 id="四常见的RPC框架"><a href="#四常见的RPC框架" class="headerlink" title="四常见的RPC框架"></a>四常见的RPC框架</h1><h1 id="常用的RPC框架"><a href="#常用的RPC框架" class="headerlink" title="常用的RPC框架"></a>常用的RPC框架</h1><ul>
+<li><strong>gRPC是Google公布的开源软件，基于最新的HTTP2.0协议，并支持常见的众多编程语言。</strong> 我们知道HTTP2.0是基于二进制的HTTP协议升级版本，目前各大浏览器都在快马加鞭的加以支持。 这个RPC框架是基于HTTP协议实现的，底层使用到了Netty框架的支持。</li>
+<li><strong>Thrift是Facebook的一个开源项目，主要是一个跨语言的服务开发框架</strong>。它有一个代码生成器来对它所定义的IDL定义文件自动生成服务代码框架。用户只要在其之前进行二次开发就行，对于底层的RPC通讯等都是透明的。不过这个对于用户来说的话需要学习特定领域语言这个特性，还是有一定成本的。</li>
+<li><strong>Dubbo是阿里集团开源的一个极为出名的RPC框架</strong>，在很多互联网公司和企业应用中广泛使用。协议和序列化框架都可以插拔是及其鲜明的特色。同样的远程接口是基于Java Interface，并且依托于spring框架方便开发。可以方便的打包成单一文件，独立进程运行，和现在的微服务概念一致。</li>
 </ul>
 
       
@@ -529,7 +464,7 @@ table:name、location、owner、column、name/type...</code></pre><p>Hive：写S
       
         <div class="post-tags">
           
-            <a href="/tags/Hive/" rel="tag"># -Hive</a>
+            <a href="/tags/基础/" rel="tag"># -基础</a>
           
         </div>
       
@@ -542,8 +477,8 @@ table:name、location、owner、column、name/type...</code></pre><p>Hive：写S
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/10/16/swagger2学习/" rel="next" title="swagger2学习">
-                <i class="fa fa-chevron-left"></i> swagger2学习
+              <a href="/2020/03/20/springMVC知识点回顾/" rel="next" title="springMVC知识点回顾">
+                <i class="fa fa-chevron-left"></i> springMVC知识点回顾
               </a>
             
           </div>
@@ -551,10 +486,6 @@ table:name、location、owner、column、name/type...</code></pre><p>Hive：写S
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/10/28/Java基本注解/" rel="prev" title="Java基本注解">
-                Java基本注解 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -739,7 +670,7 @@ table:name、location、owner、column、name/type...</code></pre><p>Hive：写S
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数据仓库Hive"><span class="nav-number">1.</span> <span class="nav-text">数据仓库Hive</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#产生背景"><span class="nav-number">1.1.</span> <span class="nav-text">产生背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hive概述"><span class="nav-number">1.2.</span> <span class="nav-text">Hive概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hive体系架构"><span class="nav-number">1.3.</span> <span class="nav-text">Hive体系架构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hive-在Hadoop生态中的位置"><span class="nav-number">1.3.1.</span> <span class="nav-text">Hive 在Hadoop生态中的位置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hive部署架构"><span class="nav-number">1.4.</span> <span class="nav-text">Hive部署架构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hive与RDBMS的区别"><span class="nav-number">1.5.</span> <span class="nav-text">Hive与RDBMS的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hive部署及快速入门"><span class="nav-number">1.6.</span> <span class="nav-text">Hive部署及快速入门</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hive-DDL详解"><span class="nav-number">1.7.</span> <span class="nav-text">Hive DDL详解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建数据库"><span class="nav-number">1.7.0.1.</span> <span class="nav-text">创建数据库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建表"><span class="nav-number">1.7.0.2.</span> <span class="nav-text">创建表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#重命名表"><span class="nav-number">1.7.0.3.</span> <span class="nav-text">重命名表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#重命名现有表的列"><span class="nav-number">1.7.0.4.</span> <span class="nav-text">重命名现有表的列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#将列添加到现有表"><span class="nav-number">1.7.0.5.</span> <span class="nav-text">将列添加到现有表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除表"><span class="nav-number">1.7.0.6.</span> <span class="nav-text">删除表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除表分区-更改表以删除分区-："><span class="nav-number">1.7.0.7.</span> <span class="nav-text">删除表分区(更改表以删除分区)：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#简单查询"><span class="nav-number">1.7.0.8.</span> <span class="nav-text">简单查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基于分区的查询"><span class="nav-number">1.7.0.9.</span> <span class="nav-text">基于分区的查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#连接查询"><span class="nav-number">1.7.0.10.</span> <span class="nav-text">连接查询</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、-什么是RPC"><span class="nav-number">1.</span> <span class="nav-text">一、 什么是RPC</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二PRC需要解决的问题"><span class="nav-number">2.</span> <span class="nav-text">二PRC需要解决的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、Call-ID映射"><span class="nav-number">2.1.</span> <span class="nav-text">1、Call ID映射</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、序列化和反序列化"><span class="nav-number">2.2.</span> <span class="nav-text">2、序列化和反序列化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、网络传输"><span class="nav-number">2.3.</span> <span class="nav-text">3、网络传输</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、PRC分析"><span class="nav-number">3.</span> <span class="nav-text">三、PRC分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、RPC-vs-Restful"><span class="nav-number">3.1.</span> <span class="nav-text">1、RPC vs Restful</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、RPC-vs-RMI"><span class="nav-number">3.2.</span> <span class="nav-text">2、RPC vs RMI</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四常见的RPC框架"><span class="nav-number">4.</span> <span class="nav-text">四常见的RPC框架</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常用的RPC框架"><span class="nav-number">5.</span> <span class="nav-text">常用的RPC框架</span></a></li></ol></div>
             
 
           </div>
