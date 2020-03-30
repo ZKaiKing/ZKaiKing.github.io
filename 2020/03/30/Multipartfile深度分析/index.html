@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="-swagger,">
+  <meta name="keywords" content="-基础,">
 
 
 
@@ -79,20 +79,20 @@
 
 
 
-<meta name="description" content="一、Swagger简介背景​        在现在的开发流程中，为了最大程度实现前后端的分离，通常后端接口只提供数据接口，由前端通过Ajax请求从后端获取数据并进行渲染再展示给用户。我们用的最多的方式就是后端会返回给前端一个JSON字符串，前端解析JSON字符串生成JavaScript的对象，然后再做处理。 演化非Restful接口的支持 一个方法对应于一个端口方法映射，通常只有GET/POST方">
-<meta name="keywords" content="-swagger">
+<meta name="description" content="什么是Multipartfile MultipartFile是spring框架中的一个接口，为了便于接收客户端上传文件信息进行封装，其代表HTML中form data方式上传的文件，包含二进制数据+文件名称 实际生产中，通常我们可以在controller定义方法使用MultipartFile接收form表单提交的文件，然后将MultipartFile可以转化成一个文件。 1、Multipartfi">
+<meta name="keywords" content="-基础">
 <meta property="og:type" content="article">
-<meta property="og:title" content="swagger2学习">
-<meta property="og:url" content="http://yoursite.com/2019/10/16/swagger2学习/index.html">
+<meta property="og:title" content="Multipartfile深度分析">
+<meta property="og:url" content="http://yoursite.com/2020/03/30/Multipartfile深度分析/index.html">
 <meta property="og:site_name" content="ZKaiKing-blog">
-<meta property="og:description" content="一、Swagger简介背景​        在现在的开发流程中，为了最大程度实现前后端的分离，通常后端接口只提供数据接口，由前端通过Ajax请求从后端获取数据并进行渲染再展示给用户。我们用的最多的方式就是后端会返回给前端一个JSON字符串，前端解析JSON字符串生成JavaScript的对象，然后再做处理。 演化非Restful接口的支持 一个方法对应于一个端口方法映射，通常只有GET/POST方">
+<meta property="og:description" content="什么是Multipartfile MultipartFile是spring框架中的一个接口，为了便于接收客户端上传文件信息进行封装，其代表HTML中form data方式上传的文件，包含二进制数据+文件名称 实际生产中，通常我们可以在controller定义方法使用MultipartFile接收form表单提交的文件，然后将MultipartFile可以转化成一个文件。 1、Multipartfi">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://yoursite.com/img/05_first.png">
-<meta property="og:updated_time" content="2019-10-16T02:56:45.299Z">
+<meta property="og:image" content="http://yoursite.com/2020/03/30/Multipartfile深度分析/E:%5CmyBlog%5Csource%5Cimg%5C14_first.PNG">
+<meta property="og:updated_time" content="2020-03-30T09:15:50.907Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="swagger2学习">
-<meta name="twitter:description" content="一、Swagger简介背景​        在现在的开发流程中，为了最大程度实现前后端的分离，通常后端接口只提供数据接口，由前端通过Ajax请求从后端获取数据并进行渲染再展示给用户。我们用的最多的方式就是后端会返回给前端一个JSON字符串，前端解析JSON字符串生成JavaScript的对象，然后再做处理。 演化非Restful接口的支持 一个方法对应于一个端口方法映射，通常只有GET/POST方">
-<meta name="twitter:image" content="http://yoursite.com/img/05_first.png">
+<meta name="twitter:title" content="Multipartfile深度分析">
+<meta name="twitter:description" content="什么是Multipartfile MultipartFile是spring框架中的一个接口，为了便于接收客户端上传文件信息进行封装，其代表HTML中form data方式上传的文件，包含二进制数据+文件名称 实际生产中，通常我们可以在controller定义方法使用MultipartFile接收form表单提交的文件，然后将MultipartFile可以转化成一个文件。 1、Multipartfi">
+<meta name="twitter:image" content="http://yoursite.com/2020/03/30/Multipartfile深度分析/E:%5CmyBlog%5Csource%5Cimg%5C14_first.PNG">
 
 
 
@@ -122,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/10/16/swagger2学习/">
+  <link rel="canonical" href="http://yoursite.com/2020/03/30/Multipartfile深度分析/">
 
 
 
 
 
-  <title>swagger2学习 | ZKaiKing-blog</title>
+  <title>Multipartfile深度分析 | ZKaiKing-blog</title>
   
 
 
@@ -302,7 +302,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/16/swagger2学习/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/30/Multipartfile深度分析/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ZKaiKing">
@@ -319,7 +319,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">swagger2学习</h1>
+          <h1 class="post-title" itemprop="name headline">Multipartfile深度分析</h1>
         
 
         <div class="post-meta">
@@ -331,8 +331,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-16T09:41:11+08:00">
-                2019-10-16
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-30T17:13:11+08:00">
+                2020-03-30
               </time>
             
 
@@ -347,8 +347,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-10-16T10:56:45+08:00">
-                2019-10-16
+              <time title="Post modified" itemprop="dateModified" datetime="2020-03-30T17:15:50+08:00">
+                2020-03-30
               </time>
             
           </span>
@@ -381,83 +381,39 @@
       
 
       
-        <h3 id="一、Swagger简介"><a href="#一、Swagger简介" class="headerlink" title="一、Swagger简介"></a>一、Swagger简介</h3><h5 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h5><p>​        在现在的开发流程中，为了最大程度实现前后端的分离，通常后端接口只提供数据接口，由前端<strong>通过Ajax请求</strong>从后端获取数据并进行渲染再展示给用户。我们用的最多的方式就是后端会<strong>返回给前端一个JSON字符串</strong>，前端解析JSON字符串生成JavaScript的对象，然后再做处理。</p>
-<h5 id="演化"><a href="#演化" class="headerlink" title="演化"></a>演化</h5><p><strong>非Restful接口的支持</strong></p>
-<p>一个方法对应于一个端口方法映射，通常只有GET/POST方法对应CRUD，后期维护成本大，通常标签有：</p>
-<p>​       <em>@Controller 标识一个类为控制器。</em></p>
-<p>　　<em>@RequestMapping URL的映射。</em></p>
-<p>　　<em>@ResponseBody 返回结果转换为JSON字符串。</em></p>
-<p>　　<em>@RequestBody 表示接收JSON格式字符串参数。</em></p>
-<p><strong>Restful API设计</strong></p>
-<p>Restful API是一种编程风格，比起传统的通过get/post方法的接口设计，Restful API的设计则通过HTTP的方法来表示CRUD相关的操作。</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">接口URL | HTTP方法 | 接口说明</span><br><span class="line">-------| -------- |-------</span><br><span class="line">/article | POST   | 保存文章</span><br><span class="line">/article/&#123;id&#125; | GET | 查询文章列表</span><br><span class="line">/article/&#123;id&#125; | DELETE | 删除文章</span><br><span class="line">/article/&#123;id&#125; |  PUT  | 修改文章</span><br></pre></td></tr></table></figure>
+        <h1 id="什么是Multipartfile"><a href="#什么是Multipartfile" class="headerlink" title="什么是Multipartfile"></a>什么是Multipartfile</h1><p> MultipartFile是spring框架中的一个<strong>接口</strong>，为了便于接收客户端上传文件信息进行封装，其代表HTML中form data方式上传的文件，包含<strong>二进制数据+文件名称</strong></p>
+<p>实际生产中，通常我们可以在controller定义方法使用MultipartFile接收form表单提交的文件，然后将MultipartFile可以转化成一个文件。</p>
+<h1 id="1、Multipartfile工作原理"><a href="#1、Multipartfile工作原理" class="headerlink" title="1、Multipartfile工作原理"></a>1、Multipartfile工作原理</h1><p>按照Multipart规定的格式将文件名和文件内容在请求中发送到服务器中</p>
+<p>服务器从<strong>请求流中得到文件名和文件内容放入到Multipart定义的类中</strong>，<br>服务器处理请求中再在服务器生成相关的文件目录，并将内容保存到服务器中去</p>
+<p>该文件内容储在内存中或临时存储在磁盘上。在任何一种情况下，如果需要，用户负责将文件内容复制到会话级或持久性存储。临时存储将在请求处理结束时清除。</p>
+<h2 id="2、Multipartfile方法"><a href="#2、Multipartfile方法" class="headerlink" title="2、Multipartfile方法"></a>2、Multipartfile方法</h2><p><img src="//yoursite.com/2020/03/30/Multipartfile深度分析/E:%5CmyBlog%5Csource%5Cimg%5C14_first.PNG" alt></p>
+<h2 id="3、Multipartfile与File相互转化"><a href="#3、Multipartfile与File相互转化" class="headerlink" title="3、Multipartfile与File相互转化"></a>3、Multipartfile与File相互转化</h2><h3 id="3-1、File转MultipartFile-了解即可"><a href="#3-1、File转MultipartFile-了解即可" class="headerlink" title="3.1、File转MultipartFile(了解即可)"></a><strong>3.1、File转MultipartFile</strong>(了解即可)</h3><p>1、使用org.springframework.mock.web.MockMultipartFile 需要导入spring-test.jar</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        String filePath = <span class="string">"F:\\test.txt"</span>;</span><br><span class="line">        File file = <span class="keyword">new</span> File(filePath);</span><br><span class="line">        FileInputStream fileInputStream = <span class="keyword">new</span> FileInputStream(file);</span><br><span class="line">        <span class="comment">// MockMultipartFile(String name, @Nullable String originalFilename, @Nullable String contentType, InputStream contentStream)</span></span><br><span class="line">        <span class="comment">// 其中originalFilename,String contentType 旧名字，类型  可为空</span></span><br><span class="line">        <span class="comment">// ContentType.APPLICATION_OCTET_STREAM.toString() 需要使用HttpClient的包</span></span><br><span class="line">        MultipartFile multipartFile = <span class="keyword">new</span> MockMultipartFile(<span class="string">"copy"</span>+file.getName(),file.getName(),ContentType.APPLICATION_OCTET_STREAM.toString(),fileInputStream);</span><br><span class="line">        System.out.println(multipartFile.getName()); <span class="comment">// 输出copytest.txt</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
-<p>区别：</p>
-<p>​     ①类上通常使用@RestController注解（spring4提供），表示返回Json数据的注解，支持Restful控制器。</p>
-<p>​     ②/article/{id}具有三个相同的URL映射，这在@Controller标识的类中是不允许出现的，而这通过method来进行区分，produces的作用是表示返回结果的类型是JSON。</p>
-<p>   ③@PathVariable这个注解（Spring MVC提供），作用是表示该变量的值是从访问路径中获取。</p>
-<hr>
-<h5 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h5><p>Swagger 是一个规范和完整的框架，用于生成、描述、调用和可视化 <em>RESTful 风格的 Web 服务</em>。总体目标是使客户端和文件系统作为服务器以同样的速度来更新。文件的方法，参数和模型紧密集成到服务器端的代码，允许API来始终保持同步。Swagger 让部署管理和使用功能强大的API从未如此简单。</p>
-<h3 id="二、Swagger与Spring-boot集成"><a href="#二、Swagger与Spring-boot集成" class="headerlink" title="二、Swagger与Spring boot集成"></a>二、Swagger与Spring boot集成</h3><h5 id="①、导入相应jar包"><a href="#①、导入相应jar包" class="headerlink" title="①、导入相应jar包"></a>①、导入相应jar包</h5><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.springfox<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>springfox-swagger2<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.6.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.springfox<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>springfox-swagger-ui<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.6.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>直接用MultipartFile的初始化方法即可将File转化为Multipartfile（实际就是对输入字节流进行转化）</p>
+<p>2、使用CommonsMultipartFile</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        String filePath = <span class="string">"F:\\test.txt"</span>;</span><br><span class="line">        File file = <span class="keyword">new</span> File(filePath);</span><br><span class="line">        <span class="comment">// 需要导入commons-fileupload的包</span></span><br><span class="line">        FileItem fileItem = <span class="keyword">new</span> DiskFileItem(<span class="string">"copyfile.txt"</span>, Files.probeContentType(file.toPath()),<span class="keyword">false</span>,file.getName(),(<span class="keyword">int</span>)file.length(),file.getParentFile());</span><br><span class="line">        <span class="keyword">byte</span>[] buffer = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">4096</span>];</span><br><span class="line">        <span class="keyword">int</span> n;</span><br><span class="line">        <span class="keyword">try</span> (InputStream inputStream = <span class="keyword">new</span> FileInputStream(file); OutputStream os = fileItem.getOutputStream())&#123;</span><br><span class="line">           <span class="keyword">while</span> ( (n = inputStream.read(buffer,<span class="number">0</span>,<span class="number">4096</span>)) != -<span class="number">1</span>)&#123;</span><br><span class="line">               os.write(buffer,<span class="number">0</span>,n);</span><br><span class="line">           &#125;</span><br><span class="line">            <span class="comment">//也可以用IOUtils.copy(inputStream,os);</span></span><br><span class="line">            MultipartFile multipartFile = <span class="keyword">new</span> CommonsMultipartFile(fileItem);</span><br><span class="line">            System.out.println(multipartFile.getName());</span><br><span class="line">        &#125;<span class="keyword">catch</span> (IOException e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
-<h5 id="②、基本信息配置"><a href="#②、基本信息配置" class="headerlink" title="②、基本信息配置"></a>②、基本信息配置</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableSwagger</span>2</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SwaggerConfig</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Docket <span class="title">docket</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Docket(DocumentationType.SWAGGER_2)</span><br><span class="line">                .apiInfo(apiInfo())</span><br><span class="line">                .select()</span><br><span class="line">                <span class="comment">//当前包路径</span></span><br><span class="line">                .apis(RequestHandlerSelectors.basePackage(<span class="string">"com.bmsoft.dc.dodp"</span>))</span><br><span class="line">                .paths(PathSelectors.any()).build();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Docket <span class="title">docket1</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Docket(DocumentationType.SWAGGER_2)</span><br><span class="line">                .apiInfo(apiInfo())</span><br><span class="line">                .groupName(<span class="string">"caozifu"</span>)</span><br><span class="line">                .select()</span><br><span class="line">                .apis(RequestHandlerSelectors.basePackage(<span class="string">"com.bmsoft.dc.dodp"</span>))</span><br><span class="line">                .paths(PathSelectors.any()).build();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 构建api文档的详细信息函数</span></span><br><span class="line"><span class="comment">     * */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> ApiInfo <span class="title">apiInfo</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ApiInfoBuilder()</span><br><span class="line">                <span class="comment">//页面标题</span></span><br><span class="line">                .title(<span class="string">"离线开发平台Restful接口管理"</span>)</span><br><span class="line">                <span class="comment">//版本号</span></span><br><span class="line">                .version(<span class="string">"1.0"</span>)</span><br><span class="line">                <span class="comment">//描述</span></span><br><span class="line">                .description(<span class="string">"API 描述"</span>)</span><br><span class="line">                .build();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当我们需要操作File类方法时，我们需要将Multipartfile转化为File类型，</p>
+<h3 id="3-2、MultipartFile转File"><a href="#3-2、MultipartFile转File" class="headerlink" title="3.2、MultipartFile转File"></a><strong>3.2、MultipartFile转File</strong></h3><p>MultipartFile转File有几种方法，通过上面的转化可知，可利用逆向方法转化，最终会在目录下生成一个文件，需要对文件进行删除，也可以利用MultipartFile中的方法transferTo (本质上还是使用了流 只不过是封装了步骤)会生成文件，最后如果不需要文件该文件，要进行删除。</p>
+<p>1、使用File转MultipartFile的逆过程，这个方法会在根目录生成一个文件，需要删除该文件。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n;</span><br><span class="line">        <span class="comment">// 得到MultipartFile文件，实际生产中是文件上传中获得即可</span></span><br><span class="line">        MultipartFile multipartFile = getFile();</span><br><span class="line">        File f = <span class="keyword">null</span>;</span><br><span class="line">        <span class="comment">// 输出文件的新name 就是指上传后的文件名称</span></span><br><span class="line">        System.out.println(<span class="string">"getName:"</span>+multipartFile.getName());</span><br><span class="line">        <span class="comment">// 输出源文件名称 就是指上传前的文件名称</span></span><br><span class="line">        System.out.println(<span class="string">"Oriname:"</span>+multipartFile.getOriginalFilename());</span><br><span class="line">        <span class="comment">// 创建文件</span></span><br><span class="line">        f = <span class="keyword">new</span> File(multipartFile.getOriginalFilename());</span><br><span class="line">        <span class="keyword">try</span> ( InputStream in  = multipartFile.getInputStream();</span><br><span class="line">              OutputStream os = <span class="keyword">new</span> FileOutputStream(f))&#123;</span><br><span class="line">            <span class="comment">// 得到文件流。以文件流的方式输出到新文件</span></span><br><span class="line">            <span class="comment">// 可以使用byte[] ss = multipartFile.getBytes();代替while</span></span><br><span class="line">            <span class="keyword">byte</span>[] buffer = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">4096</span>];</span><br><span class="line">            <span class="keyword">while</span> ((n = in.read(buffer,<span class="number">0</span>,<span class="number">4096</span>)) != -<span class="number">1</span>)&#123;</span><br><span class="line">                os.write(buffer,<span class="number">0</span>,n);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 读取文件第一行</span></span><br><span class="line">            BufferedReader bufferedReader = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> FileReader(f));</span><br><span class="line">            System.out.println(bufferedReader.readLine());</span><br><span class="line">            <span class="comment">// 输出路径</span></span><br><span class="line">            bufferedReader.close();</span><br><span class="line">        &#125;<span class="keyword">catch</span> (IOException e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 输出file的URL</span></span><br><span class="line">        System.out.println(f.toURI().toURL().toString());</span><br><span class="line">        <span class="comment">// 输出文件的绝对路径</span></span><br><span class="line">        System.out.println(f.getAbsolutePath());</span><br><span class="line">        <span class="comment">// 操作完上的文件 需要删除在根目录下生成的文件</span></span><br><span class="line">        File file = <span class="keyword">new</span> File(f.toURI());</span><br><span class="line">        <span class="keyword">if</span> (file.delete())&#123;</span><br><span class="line">            System.out.println(<span class="string">"删除成功"</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">"删除失败"</span>);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     *为了测试需要，实际生产中是文件上传后的MultipartFile文件即可</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@Description</span> 返回MultipartFile文件</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> org.springframework.web.multipart.MultipartFile</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> MultipartFile <span class="title">getFile</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        String filePath = <span class="string">"F:\\test.txt"</span>;</span><br><span class="line">        File file = <span class="keyword">new</span> File(filePath);</span><br><span class="line">        FileItem fileItem = <span class="keyword">new</span> DiskFileItem(<span class="string">"copyfile.txt"</span>, Files.probeContentType(file.toPath()),<span class="keyword">false</span>,file.getName(),(<span class="keyword">int</span>)file.length(),file.getParentFile());</span><br><span class="line">        <span class="keyword">byte</span>[] buffer = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">4096</span>];</span><br><span class="line">        <span class="keyword">int</span> n;</span><br><span class="line">        <span class="keyword">try</span> (InputStream inputStream = <span class="keyword">new</span> FileInputStream(file); OutputStream os = fileItem.getOutputStream())&#123;</span><br><span class="line">            <span class="keyword">while</span> ( (n = inputStream.read(buffer,<span class="number">0</span>,<span class="number">4096</span>)) != -<span class="number">1</span>)&#123;</span><br><span class="line">                os.write(buffer,<span class="number">0</span>,n);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//也可以用IOUtils.copy(inputStream,os);</span></span><br><span class="line">            MultipartFile multipartFile = <span class="keyword">new</span> CommonsMultipartFile(fileItem);</span><br><span class="line">            System.out.println(multipartFile.getName());</span><br><span class="line">            <span class="keyword">return</span> multipartFile;</span><br><span class="line">        &#125;<span class="keyword">catch</span> (IOException e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
-<p> 标签说明：</p>
-<p>@Configuration是表示这是一个配置类，是JDK自带的注解</p>
-<p>@EnableSwagger2的作用是启用Swagger2相关功能。</p>
-<p>​    <em>配置类里面我么实例化了一个Docket对象，这个对象主要包括三个方面的信息：</em></p>
-<p>​              （1）整个API的描述信息，即ApiInfo对象包括的信息，这     部分信息会在页面上展示。</p>
-<p>　　　　（2）指定生成API文档的包名。</p>
-<p>　　　　（3）指定生成API的路径。按路径生成API可支持四种模式：任何路径都生成(any)、任何路径都不生成  (none)以及正则匹配(regex)和ant 模式匹配四种方式</p>
-<h5 id="③、编写方法及其参数描述"><a href="#③、编写方法及其参数描述" class="headerlink" title="③、编写方法及其参数描述"></a>③、编写方法及其参数描述</h5><p>​       编写相应的方法，并应方法中做出相应的参数描述，具体标签有：</p>
-<blockquote>
-<p><code>@ApiOperation</code> 用在方法上，说明方法的作用，每一个url资源的定义,使用方式：</p>
-<blockquote>
-<p><strong>属性名称                 备注</strong><br>   <em>value                   url的路径值</em></p>
-<p>​    *tags                    接口的标签，相同标签的接口会在一个标签页下展示。</p>
-<p>　notes                 接口详细说明，展示在接口的详情页。</p>
-<p> httpMethod        支持的HTTP的方法。</p>
-</blockquote>
-<p><code>@ApiImplicitParams</code>，<code>@ApiImplicitParam</code>的容器，可包含多个<code>@ApiImplicitParam</code>注解</p>
-<p><code>@ApiImplicitParam</code>，请求参数属性配置：</p>
-<blockquote>
-<p><strong>属性名称                 备注</strong></p>
-<p>name                   参数名称</p>
-<p>value                     参数说明</p>
-<p>required               是否必须</p>
-<p>dataType             数据类型　</p>
-</blockquote>
-<p><code>@ApiResponse</code>，返回结果属性配置：</p>
-<blockquote>
-<p><strong>属性名称                 备注</strong></p>
-<p>code                 返回结果的编码</p>
-<p>message          返回结果的说明</p>
-<p>response         返回结果对应的类</p>
-</blockquote>
-</blockquote>
-<p>示例</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">@ApiOperation(value = &quot;更新文章&quot;, notes = &quot;更新文章内容&quot;, tags = &quot;Article&quot;,httpMethod = &quot;PUT&quot;)</span><br><span class="line">   @ApiImplicitParams(&#123;</span><br><span class="line">           @ApiImplicitParam(name = &quot;id&quot;, value = &quot;文章ID&quot;, required = true, dataType = &quot;Long&quot;),</span><br><span class="line">           @ApiImplicitParam(name = &quot;title&quot;, value = &quot;文章标题&quot;, required = false, dataType = &quot;String&quot;),</span><br><span class="line">           @ApiImplicitParam(name = &quot;summary&quot;, value = &quot;文章摘要&quot;, required = false, dataType = &quot;String&quot;),</span><br><span class="line">           @ApiImplicitParam(name = &quot;status&quot;, value = &quot;发布状态&quot;, required = false, dataType = &quot;Integer&quot;)</span><br><span class="line">   &#125;)</span><br><span class="line">   @RequestMapping(value = &quot;/article/&#123;id&#125;&quot;, method = PUT, produces = &quot;application/json&quot;)</span><br><span class="line">   public WebResponse&lt;?&gt; updateArticle(@PathVariable Long id,@RequestBody Article article)&#123;</span><br><span class="line">       article.setId(id);</span><br><span class="line">       articleService.updateArticle(article);</span><br><span class="line">       return WebResponse.getSuccessResponse(new HashMap&lt;&gt;());</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>2、使用transferTo (本质上还是使用了流 只不过是封装了步骤)会生成文件，最后不需要文件要删除</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        String path = <span class="string">"F:\\demo\\"</span>;</span><br><span class="line">        File file = <span class="keyword">new</span> File(path,<span class="string">"demo.txt"</span>);</span><br><span class="line">        <span class="comment">// 得到MultipartFile文件</span></span><br><span class="line">        MultipartFile multipartFile = getFile();</span><br><span class="line">        <span class="comment">/*byte[] ss = multipartFile.getBytes();</span></span><br><span class="line"><span class="comment">        OutputStream os = new FileOutputStream(file);</span></span><br><span class="line"><span class="comment">        os.write(ss);</span></span><br><span class="line"><span class="comment">        os.close();*/</span></span><br><span class="line">        multipartFile.transferTo(file);</span><br><span class="line">        <span class="comment">// 读取文件第一行</span></span><br><span class="line">        BufferedReader bufferedReader = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> FileReader(file));</span><br><span class="line">        System.out.println(bufferedReader.readLine());</span><br><span class="line">        <span class="comment">// 输出绝对路径</span></span><br><span class="line">        System.out.println(file.getAbsolutePath());</span><br><span class="line">        bufferedReader.close();</span><br><span class="line">        <span class="comment">// 操作完上的文件 需要删除在根目录下生成的文件</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
-<p>启动Spring boot，然后访问：<a href="http://127.0.0.1:8080/swagger-ui.html即可看到如下结果" target="_blank" rel="noopener">http://127.0.0.1:8080/swagger-ui.html即可看到如下结果</a></p>
-<p>页面显示：</p>
-<p><img src="/img/05_first.png" alt="页面显示"></p>
-<hr>
-<hr>
-<h5 id="其他常用标签"><a href="#其他常用标签" class="headerlink" title="其他常用标签"></a><strong>其他常用标签</strong></h5><blockquote>
-<p><code>@API</code>注解:用在类上，说明该类的作用。可以标记一个Controller类做为swagger 文档资源</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="meta">@Api</span>(value = <span class="string">"/user"</span>, description = <span class="string">"Operations about user"</span>)</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<blockquote>
-<blockquote>
-<p><strong>属性名称                 备注</strong></p>
-<p><em>value                  url的路径值</em></p>
-<p> <em>tags                   如果设置这个值、value的值会被覆盖</em></p>
-<p><em>description            对api资源的描述</em></p>
-<p><em>description            对api资源的描述</em></p>
-</blockquote>
-<p><code>@ApiModel</code>：描述一个Model的信息（这种一般用在post创建的时候，使用<code>@RequestBody</code>这样的场景，请求参数无法使用</p>
-<p><code>@ApiModelProperty</code>：描述一个model的属性</p>
-</blockquote>
+<p>常见配置</p>
+<p>　MultipartResolver其中属性详解：</p>
+<ul>
+<li>defaultEncoding=”UTF-8” 是请求的编码格式，默认为iso-8859-1<ul>
+<li>maxUploadSize=”5400000” 是上传文件的大小，单位为字节<ul>
+<li>uploadTempDir=”fileUpload/temp” 为上传文件的临时路径</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-3、一切皆流"><a href="#3-3、一切皆流" class="headerlink" title="3.3、一切皆流"></a>3.3、一切皆流</h3><p>深层次来讲，文件的上下传问题都是流的问题，当我们需要上传文件时，我们需要将上传文件流进行获取，spring框架为了方便开发，将文件信息进行二进制封装为Multipartfile，而且如果上传的文件数据过大，我们需要对上传文件大小进行限制，因此，文件的上传下载说到底就是对流知识的了解，我们需要对不同的流进行转化， 因此需要用到字节转化的编码知识。最终，文件上下传就是靠我们对字节流的熟悉程度。</p>
 
       
     </div>
@@ -475,7 +431,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/swagger/" rel="tag"># -swagger</a>
+            <a href="/tags/基础/" rel="tag"># -基础</a>
           
         </div>
       
@@ -488,8 +444,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/10/14/mybatis-plus个人见解/" rel="next" title="mybatis-plus学习">
-                <i class="fa fa-chevron-left"></i> mybatis-plus学习
+              <a href="/2020/03/30/rpc详解/" rel="next" title="rpc详解">
+                <i class="fa fa-chevron-left"></i> rpc详解
               </a>
             
           </div>
@@ -497,10 +453,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/10/22/Hive数据仓库基础知识/" rel="prev" title="Hive数据仓库基础知识">
-                Hive数据仓库基础知识 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -685,7 +637,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、Swagger简介"><span class="nav-number">1.</span> <span class="nav-text">一、Swagger简介</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#背景"><span class="nav-number">1.0.1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#演化"><span class="nav-number">1.0.2.</span> <span class="nav-text">演化</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#简介"><span class="nav-number">1.0.3.</span> <span class="nav-text">简介</span></a></li></ol></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#二、Swagger与Spring-boot集成"><span class="nav-number">2.</span> <span class="nav-text">二、Swagger与Spring boot集成</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#①、导入相应jar包"><span class="nav-number">2.0.1.</span> <span class="nav-text">①、导入相应jar包</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#②、基本信息配置"><span class="nav-number">2.0.2.</span> <span class="nav-text">②、基本信息配置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#③、编写方法及其参数描述"><span class="nav-number">2.0.3.</span> <span class="nav-text">③、编写方法及其参数描述</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#其他常用标签"><span class="nav-number">2.0.4.</span> <span class="nav-text">其他常用标签</span></a></li></ol></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是Multipartfile"><span class="nav-number">1.</span> <span class="nav-text">什么是Multipartfile</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1、Multipartfile工作原理"><span class="nav-number">2.</span> <span class="nav-text">1、Multipartfile工作原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2、Multipartfile方法"><span class="nav-number">2.1.</span> <span class="nav-text">2、Multipartfile方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、Multipartfile与File相互转化"><span class="nav-number">2.2.</span> <span class="nav-text">3、Multipartfile与File相互转化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1、File转MultipartFile-了解即可"><span class="nav-number">2.2.1.</span> <span class="nav-text">3.1、File转MultipartFile(了解即可)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2、MultipartFile转File"><span class="nav-number">2.2.2.</span> <span class="nav-text">3.2、MultipartFile转File</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3、一切皆流"><span class="nav-number">2.2.3.</span> <span class="nav-text">3.3、一切皆流</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
