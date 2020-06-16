@@ -79,28 +79,28 @@
 
 
 
-<meta name="description" content="synchronizesynchronize实现同步的基础：Java中每个对象都可作为锁；具体表现为三种状态  对象是普通同步方法，锁是当前的实例对象 对象是静态同步方法，锁是当前类的Class对象 对于同步方法块，锁是synchronize括号里配置的对象  synchronize用的锁是存在Java的对象头Mark Work里。 Java中锁一共有4种状态，级别从低到依次为：无锁状态、偏向锁状">
+<meta name="description" content="/synchronizesynchronize实现同步的基础：Java中每个对象都可作为锁；具体表现为三种状态  对象是普通同步方法，锁是当前的实例对象 对象是静态同步方法，锁是当前类的Class对象 对于同步方法块，锁是synchronize括号里配置的对象  synchronize用的锁是存在Java的对象头Mark Work里。 Java中锁一共有4种状态，级别从低到依次为：无锁状态、偏向锁">
 <meta name="keywords" content="-并发编程">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java并发编程的艺术">
 <meta property="og:url" content="http://yoursite.com/2020/06/15/Java并发编程的艺术/index.html">
 <meta property="og:site_name" content="ZKaiKing-blog">
-<meta property="og:description" content="synchronizesynchronize实现同步的基础：Java中每个对象都可作为锁；具体表现为三种状态  对象是普通同步方法，锁是当前的实例对象 对象是静态同步方法，锁是当前类的Class对象 对于同步方法块，锁是synchronize括号里配置的对象  synchronize用的锁是存在Java的对象头Mark Work里。 Java中锁一共有4种状态，级别从低到依次为：无锁状态、偏向锁状">
+<meta property="og:description" content="/synchronizesynchronize实现同步的基础：Java中每个对象都可作为锁；具体表现为三种状态  对象是普通同步方法，锁是当前的实例对象 对象是静态同步方法，锁是当前类的Class对象 对于同步方法块，锁是synchronize括号里配置的对象  synchronize用的锁是存在Java的对象头Mark Work里。 Java中锁一共有4种状态，级别从低到依次为：无锁状态、偏向锁">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://yoursite.com/2020/06/15/Java并发编程的艺术/E:%5CmyBlog%5Csource%5Cimg%5C%E9%94%81%E4%BC%98%E7%BC%BA%E7%82%B9.png">
-<meta property="og:image" content="http://yoursite.com/2020/06/15/Java并发编程的艺术/E:%5CmyBlog%5Csource%5Cimg%5C%E7%BA%BF%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1.png">
-<meta property="og:image" content="http://yoursite.com/2020/06/15/Java并发编程的艺术/E:%5CmyBlog%5Csource%5Cimg%5Cconcurrent%E5%8C%85%E7%BB%93%E6%9E%84.png">
-<meta property="og:image" content="http://yoursite.com/2020/06/15/Java并发编程的艺术/E:%5CmyBlog%5Csource%5Cimg%5C%E7%BA%BF%E7%A8%8B%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png">
-<meta property="og:image" content="http://yoursite.com/2020/06/15/Java并发编程的艺术/E:%5CmyBlog%5Csource%5Cimg%5CLOCK%E9%94%81API.png">
-<meta property="og:image" content="http://yoursite.com/2020/06/15/Java并发编程的艺术/E:%5CmyBlog%5Csource%5Cimg%5C%E9%98%BB%E5%A1%9E%E9%98%9F%E5%88%97%E6%93%8D%E4%BD%9C%E6%96%B9%E6%B3%95.png">
-<meta property="og:image" content="http://yoursite.com/2020/06/15/Java并发编程的艺术/E:%5CmyBlog%5Csource%5Cimg%5C%E7%BA%BF%E7%A8%8B%E6%B1%A0%E6%B5%81%E7%A8%8B%E5%9B%BE">
-<meta property="og:image" content="http://yoursite.com/2020/06/15/Java并发编程的艺术/E:%5CmyBlog%5Csource%5Cimg%5C%E4%BB%BB%E5%8A%A1%E7%9A%84%E4%BF%A9%E7%BA%A7%E8%B0%83%E5%BA%A6%E6%A8%A1%E5%9E%8B.png">
-<meta property="og:image" content="http://yoursite.com/2020/06/15/Java并发编程的艺术/E:%5CmyBlog%5Csource%5Cimg%5CExecutor%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8%E7%A4%BA%E6%84%8F%E5%9B%BE.png">
-<meta property="og:updated_time" content="2020-06-15T10:37:50.135Z">
+<meta property="og:image" content="http://yoursite.com/2020/06/15/Java并发编程的艺术/%5Cimg%5C%E9%94%81%E4%BC%98%E7%BC%BA%E7%82%B9.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/15/Java并发编程的艺术/%5Cimg%5C%E7%BA%BF%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/15/Java并发编程的艺术/%5Cimg%5Cconcurrent%E5%8C%85%E7%BB%93%E6%9E%84.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/15/Java并发编程的艺术/%5Cimg%5C%E7%BA%BF%E7%A8%8B%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/15/Java并发编程的艺术/%5Cimg%5CLOCK%E9%94%81API.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/15/Java并发编程的艺术/%5Cimg%5C%E9%98%BB%E5%A1%9E%E9%98%9F%E5%88%97%E6%93%8D%E4%BD%9C%E6%96%B9%E6%B3%95.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/15/Java并发编程的艺术/%5Cimg%5C%E7%BA%BF%E7%A8%8B%E6%B1%A0%E6%B5%81%E7%A8%8B%E5%9B%BE.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/15/Java并发编程的艺术/%5Cimg%5C%E4%BB%BB%E5%8A%A1%E7%9A%84%E4%BF%A9%E7%BA%A7%E8%B0%83%E5%BA%A6%E6%A8%A1%E5%9E%8B.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/15/Java并发编程的艺术/%5Cimg%5CExecutor%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8%E7%A4%BA%E6%84%8F%E5%9B%BE.png">
+<meta property="og:updated_time" content="2020-06-16T08:09:11.923Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java并发编程的艺术">
-<meta name="twitter:description" content="synchronizesynchronize实现同步的基础：Java中每个对象都可作为锁；具体表现为三种状态  对象是普通同步方法，锁是当前的实例对象 对象是静态同步方法，锁是当前类的Class对象 对于同步方法块，锁是synchronize括号里配置的对象  synchronize用的锁是存在Java的对象头Mark Work里。 Java中锁一共有4种状态，级别从低到依次为：无锁状态、偏向锁状">
-<meta name="twitter:image" content="http://yoursite.com/2020/06/15/Java并发编程的艺术/E:%5CmyBlog%5Csource%5Cimg%5C%E9%94%81%E4%BC%98%E7%BC%BA%E7%82%B9.png">
+<meta name="twitter:description" content="/synchronizesynchronize实现同步的基础：Java中每个对象都可作为锁；具体表现为三种状态  对象是普通同步方法，锁是当前的实例对象 对象是静态同步方法，锁是当前类的Class对象 对于同步方法块，锁是synchronize括号里配置的对象  synchronize用的锁是存在Java的对象头Mark Work里。 Java中锁一共有4种状态，级别从低到依次为：无锁状态、偏向锁">
+<meta name="twitter:image" content="http://yoursite.com/2020/06/15/Java并发编程的艺术/%5Cimg%5C%E9%94%81%E4%BC%98%E7%BC%BA%E7%82%B9.png">
 
 
 
@@ -355,8 +355,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2020-06-15T18:37:50+08:00">
-                2020-06-15
+              <time title="Post modified" itemprop="dateModified" datetime="2020-06-16T16:09:11+08:00">
+                2020-06-16
               </time>
             
           </span>
@@ -389,7 +389,7 @@
       
 
       
-        <h1 id="synchronize"><a href="#synchronize" class="headerlink" title="synchronize"></a>synchronize</h1><p>synchronize实现同步的基础：Java中每个对象都可作为锁；具体表现为三种状态</p>
+        <h1 id="synchronize"><a href="#synchronize" class="headerlink" title="/synchronize"></a>/synchronize</h1><p>synchronize实现同步的基础：Java中每个对象都可作为锁；具体表现为三种状态</p>
 <ul>
 <li>对象是普通同步方法，锁是当前的实例对象</li>
 <li>对象是静态同步方法，锁是当前类的Class对象</li>
@@ -397,7 +397,7 @@
 </ul>
 <p>synchronize用的锁是存在Java的对象头Mark Work里。</p>
 <p>Java中锁一共有4种状态，级别从低到依次为：无锁状态、偏向锁状态、轻量级锁状态、重量级锁状态，这几种状态会随着竞争情况逐渐升级，锁可以升级但不可降级。</p>
-<p><img src="//yoursite.com/2020/06/15/Java并发编程的艺术/E:%5CmyBlog%5Csource%5Cimg%5C%E9%94%81%E4%BC%98%E7%BC%BA%E7%82%B9.png" alt="1590201115301"></p>
+<p><img src="//yoursite.com/2020/06/15/Java并发编程的艺术/%5Cimg%5C%E9%94%81%E4%BC%98%E7%BC%BA%E7%82%B9.png" alt="锁优缺点"></p>
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">处理器如何实现原子操作？</span><br><span class="line"></span><br><span class="line">第一种机制是可通过总线锁保证原子操作，第二种机制是通过缓存锁定来保证原子性。</span><br><span class="line"></span><br><span class="line">缓存锁定：内存区域被缓存到处理器缓存行中，并且在LOCK操作期间被锁定，当执行锁操作回写到内存时，处理器不进行总线锁定，而是修改内部的内存地址，并运行它的缓存一致性保证操作的原子性。</span><br><span class="line">原因：缓存一致性会阻止同时修改由俩个以上的处理器缓存的内存区域数据，当其中处理器回写已被锁定的缓存行的数据时，会使缓存行无效。</span><br></pre></td></tr></table></figure>
 
 <p>Java中通过锁与循环CAS（compare and swap 比较与设置） 方式实现原子操作</p>
@@ -411,7 +411,7 @@
 <p>Java线程之间的通信由Java内存模型(JMM)控制。JMM定义了线程与主内存之间的抽象关系：线程之间的共享变量存储在主内存，每个线程都有一个私有的本地内存，本地内存中存储了该线程以读/写共享变量的副本。</p>
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">线程间的通信模型是如何实现通信的？</span><br><span class="line">线程A与线程B之间要实现通信，必须经历俩个步骤</span><br><span class="line">1）线程A把本地内存A更新过的共享变量刷新到主内存中</span><br><span class="line">2）线程B到主内存去读取线程A之间更新过的共享变量。</span><br><span class="line">线程间的通信是通过主内存进行的。</span><br></pre></td></tr></table></figure>
 
-<p><img src="//yoursite.com/2020/06/15/Java并发编程的艺术/E:%5CmyBlog%5Csource%5Cimg%5C%E7%BA%BF%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1.png" alt="1590216488166"></p>
+<p><img src="//yoursite.com/2020/06/15/Java并发编程的艺术/%5Cimg%5C%E7%BA%BF%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1.png" alt="线程间通信"></p>
 <p>线程间的通信必须经过主内存。JMM通过控制主内存与每个线程的本地内存之间的交互，提供内存可见性保证。</p>
 <h2 id="重排序"><a href="#重排序" class="headerlink" title="重排序"></a>重排序</h2><p>执行代码时，为了提高性能，编译器与处理器常常会对指令进行重排序，重排序分为三类：编译器优化的重排序、指令级并行的重排序、内存系统的重排序。第一种属于编译器重排序，第二、三种为处理器重排序。</p>
 <p>:baby_chick:top-背景知识:处理器使用写缓存区临时保存向内存写入的数据。写缓存区可以保证指令流水线持续运行，避免由于处理器停顿下来等待想内存写入数据而产生延迟。通过批处理的方式刷新写缓冲区，以及<strong>合并写缓冲区中对同一内存地址的多次写，减少对内存总线的占用。每个处理器上的缓冲区，仅仅对它所在的处理器可见。</strong></p>
@@ -449,7 +449,7 @@
 <h2 id="concurrent包的实现"><a href="#concurrent包的实现" class="headerlink" title="concurrent包的实现"></a>concurrent包的实现</h2><p>由于CAS同时具有volatile读和volatile写的内存含义，因此Java线程之间的通信有都是通过CAS与volatile变量之间的读写（4种）来实现的。</p>
 <p>:e-mail: AQS(java.util.concurrent.atomic包)非阻塞数据结构和原子变量类。</p>
 <p><strong>volatile读/写和CAS可以实现线程之间的通信，把这些特征整合在一起，就形成了整个concurrent包得以实现的基石</strong></p>
-<p><img src="//yoursite.com/2020/06/15/Java并发编程的艺术/E:%5CmyBlog%5Csource%5Cimg%5Cconcurrent%E5%8C%85%E7%BB%93%E6%9E%84.png" alt="1590315411621"></p>
+<p><img src="//yoursite.com/2020/06/15/Java并发编程的艺术/%5Cimg%5Cconcurrent%E5%8C%85%E7%BB%93%E6%9E%84.png" alt="1590315411621"></p>
 <h2 id="final域的内存语意"><a href="#final域的内存语意" class="headerlink" title="final域的内存语意"></a>final域的内存语意</h2><p>Java中final修饰的实际上是为了表示常量，那么常量就必须做到不可变（最终的），那么final修饰的常量最好进行初始化操作，那么为何做出初始化操作后，该常量就不可变呢，底层是如何做到的呢？这就需要了解final域的内存语意。</p>
 <p>:aerial_tramway:String类型是final修饰的，因此String类型是最终的，是一个常量</p>
 <p>final域中，编译器与处理器要遵循俩个重排序规则</p>
@@ -464,7 +464,7 @@
 <p>运行：当就绪状态的线程获取CPU资源，便进入运行状态，run方法定义了线程的操作与功能。</p>
 <p>阻塞：在运行状态，可能因为某些原因导致运行状态的线程变成阻塞状态，比如sleep()、wait()之后线程就处于阻塞状态，这个时候需要其他机制将处于阻塞状态的线程唤醒，比如调用notify()、notifyAll()方法，唤醒的线程会再次进入就绪状态。</p>
 <p>销毁：线程正常执行完毕后或者线程被强制性终止或出现异常，那么线程就会被销毁，释放资源。</p>
-<p><img src="//yoursite.com/2020/06/15/Java并发编程的艺术/E:%5CmyBlog%5Csource%5Cimg%5C%E7%BA%BF%E7%A8%8B%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png" alt="线程生命周期"></p>
+<p><img src="//yoursite.com/2020/06/15/Java并发编程的艺术/%5Cimg%5C%E7%BA%BF%E7%A8%8B%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png" alt="线程生命周期"></p>
 <p>线程的中断：中断可以理解为线程的一个标识位属性，它表示一个运行中的线程是否被其他线程进行了中断操作，中断好比其他线程对该线程打了招呼，其他线程可通过调用该线程的interrupt()方法对其进行中断操作。</p>
 <p>:japanese_ogre:中断并不是一种错误，是一种标识符（信号），编译时可忽略该标识，也可以利用该机制实现一些功能。中断操作是一种简便的线程间的交互方式。</p>
 <h2 id="线程间的通信"><a href="#线程间的通信" class="headerlink" title="线程间的通信"></a>线程间的通信</h2><p>1、通过synchronize关键字修饰代码块或者volatile关键字修饰变量达到不同线程之间内存可见性问题，这是一中线程间的通信方式。</p>
@@ -478,7 +478,7 @@
 <p>如果线程A执行了Thread.join()方法，则含义是:线程A等待thread线程终止之后才从thread.join()返回。join()方法的逻辑结构与等待/通知一致，实际上是加锁-循环-处理逻辑3个步骤。</p>
 <h1 id="Java中的锁"><a href="#Java中的锁" class="headerlink" title="Java中的锁"></a>Java中的锁</h1><p>锁是用来控制多个线程访问共享资源的方式。一个锁能防止多个线程并发访问共享资源（读写锁除外）</p>
 <h2 id="LOCK接口"><a href="#LOCK接口" class="headerlink" title="LOCK接口"></a>LOCK接口</h2><p>lock接口提供了synchronize关键字类似的同步功能，在使用时是显示的获取锁和释放锁。</p>
-<p><img src="//yoursite.com/2020/06/15/Java并发编程的艺术/E:%5CmyBlog%5Csource%5Cimg%5CLOCK%E9%94%81API.png" alt="1590330632044"></p>
+<p><img src="//yoursite.com/2020/06/15/Java并发编程的艺术/%5Cimg%5CLOCK%E9%94%81API.png" alt="LOCK锁API"></p>
 <p>[^LOCK锁API]: </p>
 <p>公平锁保证了锁的获取按照FIFO原则，而代价是进行大量的线程切换。非公平锁虽然可能造成线程“饥饿”，但极少线程切换，保证了更大的吞吐量。</p>
 <h1 id="Java并发容器和框架"><a href="#Java并发容器和框架" class="headerlink" title="Java并发容器和框架"></a>Java并发容器和框架</h1><p>ConcurrentHashMap与ConcurrentLinkedQueue</p>
@@ -486,7 +486,7 @@
 
 <p>阻塞队列常常用于生产者/消费者模式场景。</p>
 <p>在阻塞队列不可用时，这来个附加操作提供了4种处理方式</p>
-<p><img src="//yoursite.com/2020/06/15/Java并发编程的艺术/E:%5CmyBlog%5Csource%5Cimg%5C%E9%98%BB%E5%A1%9E%E9%98%9F%E5%88%97%E6%93%8D%E4%BD%9C%E6%96%B9%E6%B3%95.png" alt="1590562418548"></p>
+<p><img src="//yoursite.com/2020/06/15/Java并发编程的艺术/%5Cimg%5C%E9%98%BB%E5%A1%9E%E9%98%9F%E5%88%97%E6%93%8D%E4%BD%9C%E6%96%B9%E6%B3%95.png" alt="阻塞队列操作方法"></p>
 <p>Java7提供了7种阻塞队列（数组、队列、链表等数据结构组成），分别为：</p>
 <ul>
 <li>ArrayBlockingQueue:一个数组结构的有界阻塞队列</li>
@@ -523,30 +523,36 @@
 <p>2、如果运行的线程等于多于corepoolSize，则将任务加入BlockingQueue</p>
 <p>3、如果无法继续将任务加入BlockingQueue，则创建新的线程来处理任务（需要获取全局锁）</p>
 <p>4、如果创建新线程将使当前运行的线程超出maximumpoolSize，任务将被拒绝，将调用策略。</p>
-<p><img src="//yoursite.com/2020/06/15/Java并发编程的艺术/E:%5CmyBlog%5Csource%5Cimg%5C%E7%BA%BF%E7%A8%8B%E6%B1%A0%E6%B5%81%E7%A8%8B%E5%9B%BE" alt="线程池流程图"></p>
+<p><img src="//yoursite.com/2020/06/15/Java并发编程的艺术/%5Cimg%5C%E7%BA%BF%E7%A8%8B%E6%B1%A0%E6%B5%81%E7%A8%8B%E5%9B%BE.png" alt="线程池流程图"></p>
 <p>线程池中的线程执行任务分俩种情况</p>
 <p>1、在execute()方法中创建一个线程时，会让这个线程执行当前任务。</p>
 <p>2、这个线程执行完任务后，会反复从BlockingQueue获取任务来执行。</p>
 <h2 id="线程池的创建"><a href="#线程池的创建" class="headerlink" title="线程池的创建"></a>线程池的创建</h2><p>可通过ThreadPoolExecutor来创建线程池，需要注意几个参数。</p>
 <ul>
-<li>corePoolSize:核心线程数，当提交一个任务时，线程池会创建一个线程来执行任务，即使其他空闲的基本线程能够执行新任务也会创建新线程。等到需要执行的任务数大于核心线程数就不再创建。</li>
-<li>runnableTaskQueue:保存等待执行的任务的阻塞队列<ul>
+<li><p>corePoolSize:核心线程数，当提交一个任务时，线程池会创建一个线程来执行任务，即使其他空闲的基本线程能够执行新任务也会创建新线程。等到需要执行的任务数大于核心线程数就不再创建。</p>
+</li>
+<li><p>runnableTaskQueue:保存等待执行的任务的阻塞队列</p>
+<ul>
 <li>ArrayBlockingQueue:基于数据的FIFO队列</li>
 <li>LinkedBlockingQueue：基于链表的FIFO队列，吞吐量通常比ArrayBlockingQueue高</li>
 <li>synchronousQueue:不存储元素的阻塞队列</li>
 <li>priorityBlockingQueue:具有优先级的无限阻塞队列</li>
 </ul>
 </li>
-<li>maximumPoolSize:<strong>线程池允许创建的最大线程数，如果队列满了，并且已创建的线程小于最大线程数，则线程池会再创建新的线程执行任务，值得注意的是，如果使用了无界的任务线程队列则这个参数没有意义。</strong></li>
-<li>ThreadFactory：用于设置创建线程的工厂，可以通过线程工厂给每个创建出来的线程设置更有意义的名字。可使用开源框架guava提供的FactoryBuilder可以快速给线程池里的线程设置更有意义的名字。</li>
-<li>RejectedExecutionHandle(饱和策略)：线程池队列满后采用的策略，默认AbortPolicy<ul>
+<li><p>maximumPoolSize:<strong>线程池允许创建的最大线程数，如果队列满了，并且已创建的线程小于最大线程数，则线程池会再创建新的线程执行任务，值得注意的是，如果使用了无界的任务线程队列则这个参数没有意义。</strong></p>
+</li>
+<li><p>ThreadFactory：用于设置创建线程的工厂，可以通过线程工厂给每个创建出来的线程设置更有意义的名字。可使用开源框架guava提供的FactoryBuilder可以快速给线程池里的线程设置更有意义的名字。</p>
+</li>
+<li><p>RejectedExecutionHandle(饱和策略)：线程池队列满后采用的策略，默认AbortPolicy</p>
+<ul>
 <li>AbortPolicy:抛出异常</li>
 <li>CallerRunsPolicy:只用调用者所在线程来执行任务</li>
 <li>DiscardOldstPolicy:丢弃队列里最近的一个任务，并执行当前线程。</li>
 <li>DiscardPolicy:不处理，丢弃</li>
 </ul>
 </li>
-<li>KeepAliveTime:线程池的工作线程空闲后，保持存活的时间。如果任务多，可调大时间提高利用率</li>
+<li><p>KeepAliveTime:线程池的工作线程空闲后，保持存活的时间。如果任务多，可调大时间提高利用率</p>
+</li>
 </ul>
 <h2 id="向线程池提交任务"><a href="#向线程池提交任务" class="headerlink" title="向线程池提交任务"></a>向线程池提交任务</h2><p>可使用俩种方式提交任务：execute()和submit()方法</p>
 <ul>
@@ -555,14 +561,14 @@
 </ul>
 <h1 id="Executor框架"><a href="#Executor框架" class="headerlink" title="Executor框架"></a>Executor框架</h1><p>Java的线程既是工作单元，也是执行机制，JDK5开始，把工作单元与执行机制分离开来，工作单元包括Runnable和Callable，而执行机制由Executor框架提供。<strong>Executor是基于生产者消费者模式的，提交任务的操作相当于生成者，执行任务的线程相当于消费者。</strong>Executor是一个接口，它将任务的提交与任务的执行分离开来。</p>
 <p>Runnbale接口和Callable接口的实现类，都可以被ThreadPoolExecutor或ScheduledThreadPoolExecutor执行。</p>
-<p><img src="//yoursite.com/2020/06/15/Java并发编程的艺术/E:%5CmyBlog%5Csource%5Cimg%5C%E4%BB%BB%E5%8A%A1%E7%9A%84%E4%BF%A9%E7%BA%A7%E8%B0%83%E5%BA%A6%E6%A8%A1%E5%9E%8B.png" alt="任务的俩级调度模型"></p>
+<p><img src="//yoursite.com/2020/06/15/Java并发编程的艺术/%5Cimg%5C%E4%BB%BB%E5%8A%A1%E7%9A%84%E4%BF%A9%E7%BA%A7%E8%B0%83%E5%BA%A6%E6%A8%A1%E5%9E%8B.png" alt="任务的俩级调度模型"></p>
 <h2 id="Executor框架结构"><a href="#Executor框架结构" class="headerlink" title="Executor框架结构"></a>Executor框架结构</h2><p>Executor框架主要由3大部分组成</p>
 <ul>
 <li>任务：包括被执行任务需要实现的接口，Runnbale接口或Callable接口</li>
 <li>任务的执行：包括任务执行机制的核心接口Executor，以及继承自Executor的ExecutorService接口</li>
 <li>异步计算的结果：包括接口Future和实现Future接口的FutureTask类</li>
 </ul>
-<p><img src="//yoursite.com/2020/06/15/Java并发编程的艺术/E:%5CmyBlog%5Csource%5Cimg%5CExecutor%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8%E7%A4%BA%E6%84%8F%E5%9B%BE.png" alt="Executor框架使用示意图"></p>
+<p><img src="//yoursite.com/2020/06/15/Java并发编程的艺术/%5Cimg%5CExecutor%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8%E7%A4%BA%E6%84%8F%E5%9B%BE.png" alt="Executor框架使用示意图"></p>
 <p>​                                                                             Executor框架使用示意图</p>
 <p>主线程创建Runnbale或Callable接口的任务对象，可把Runnbale或Callable对象executor或者submit提交给ExecutorService，如果ExecutorService.sumbit(…)将返回一个Future接口的FutureTask类，最后主线程可执行FutureTask.get()等待任务执行完成，也可执行FutureTask.cancel()取消任务执行。</p>
 <p>通常用工具类Executors提供的方法进行创建；可使用工具类Executors来把一个Runnbale包装成Callable。</p>
@@ -789,7 +795,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#synchronize"><span class="nav-number">1.</span> <span class="nav-text">synchronize</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java内存模型"><span class="nav-number">2.</span> <span class="nav-text">Java内存模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#重排序"><span class="nav-number">2.1.</span> <span class="nav-text">重排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#happens-before"><span class="nav-number">2.2.</span> <span class="nav-text">happens-before</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#volatile"><span class="nav-number">3.</span> <span class="nav-text">volatile</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#volatile的内存语意"><span class="nav-number">3.1.</span> <span class="nav-text">volatile的内存语意</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#volatile的内存语意的实现"><span class="nav-number">3.2.</span> <span class="nav-text">volatile的内存语意的实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#锁的内存含义"><span class="nav-number">3.3.</span> <span class="nav-text">锁的内存含义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#锁内存含义的实现"><span class="nav-number">3.4.</span> <span class="nav-text">锁内存含义的实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#concurrent包的实现"><span class="nav-number">3.5.</span> <span class="nav-text">concurrent包的实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#final域的内存语意"><span class="nav-number">3.6.</span> <span class="nav-text">final域的内存语意</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#线程"><span class="nav-number">4.</span> <span class="nav-text">线程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#线程的状态"><span class="nav-number">4.1.</span> <span class="nav-text">线程的状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线程间的通信"><span class="nav-number">4.2.</span> <span class="nav-text">线程间的通信</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java中的锁"><span class="nav-number">5.</span> <span class="nav-text">Java中的锁</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#LOCK接口"><span class="nav-number">5.1.</span> <span class="nav-text">LOCK接口</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java并发容器和框架"><span class="nav-number">6.</span> <span class="nav-text">Java并发容器和框架</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#阻塞队列"><span class="nav-number">6.1.</span> <span class="nav-text">阻塞队列</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#13个原子操作类"><span class="nav-number">7.</span> <span class="nav-text">13个原子操作类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#原子更新基本类"><span class="nav-number">7.1.</span> <span class="nav-text">原子更新基本类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原子更新数组"><span class="nav-number">7.2.</span> <span class="nav-text">原子更新数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原子更新引用"><span class="nav-number">7.3.</span> <span class="nav-text">原子更新引用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原子更新字段类"><span class="nav-number">7.4.</span> <span class="nav-text">原子更新字段类</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java中的并发工具类"><span class="nav-number">8.</span> <span class="nav-text">Java中的并发工具类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#CountDownLatch"><span class="nav-number">8.1.</span> <span class="nav-text">CountDownLatch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CyclicBarrier"><span class="nav-number">8.2.</span> <span class="nav-text">CyclicBarrier</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#semaphore"><span class="nav-number">8.3.</span> <span class="nav-text">semaphore</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Exchanger"><span class="nav-number">8.4.</span> <span class="nav-text">Exchanger</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java中的线程池"><span class="nav-number">9.</span> <span class="nav-text">Java中的线程池</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#线程池的实现原理"><span class="nav-number">9.1.</span> <span class="nav-text">线程池的实现原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线程池的创建"><span class="nav-number">9.2.</span> <span class="nav-text">线程池的创建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#向线程池提交任务"><span class="nav-number">9.3.</span> <span class="nav-text">向线程池提交任务</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Executor框架"><span class="nav-number">10.</span> <span class="nav-text">Executor框架</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Executor框架结构"><span class="nav-number">10.1.</span> <span class="nav-text">Executor框架结构</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#synchronize"><span class="nav-number">1.</span> <span class="nav-text">/synchronize</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java内存模型"><span class="nav-number">2.</span> <span class="nav-text">Java内存模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#重排序"><span class="nav-number">2.1.</span> <span class="nav-text">重排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#happens-before"><span class="nav-number">2.2.</span> <span class="nav-text">happens-before</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#volatile"><span class="nav-number">3.</span> <span class="nav-text">volatile</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#volatile的内存语意"><span class="nav-number">3.1.</span> <span class="nav-text">volatile的内存语意</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#volatile的内存语意的实现"><span class="nav-number">3.2.</span> <span class="nav-text">volatile的内存语意的实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#锁的内存含义"><span class="nav-number">3.3.</span> <span class="nav-text">锁的内存含义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#锁内存含义的实现"><span class="nav-number">3.4.</span> <span class="nav-text">锁内存含义的实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#concurrent包的实现"><span class="nav-number">3.5.</span> <span class="nav-text">concurrent包的实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#final域的内存语意"><span class="nav-number">3.6.</span> <span class="nav-text">final域的内存语意</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#线程"><span class="nav-number">4.</span> <span class="nav-text">线程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#线程的状态"><span class="nav-number">4.1.</span> <span class="nav-text">线程的状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线程间的通信"><span class="nav-number">4.2.</span> <span class="nav-text">线程间的通信</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java中的锁"><span class="nav-number">5.</span> <span class="nav-text">Java中的锁</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#LOCK接口"><span class="nav-number">5.1.</span> <span class="nav-text">LOCK接口</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java并发容器和框架"><span class="nav-number">6.</span> <span class="nav-text">Java并发容器和框架</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#阻塞队列"><span class="nav-number">6.1.</span> <span class="nav-text">阻塞队列</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#13个原子操作类"><span class="nav-number">7.</span> <span class="nav-text">13个原子操作类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#原子更新基本类"><span class="nav-number">7.1.</span> <span class="nav-text">原子更新基本类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原子更新数组"><span class="nav-number">7.2.</span> <span class="nav-text">原子更新数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原子更新引用"><span class="nav-number">7.3.</span> <span class="nav-text">原子更新引用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原子更新字段类"><span class="nav-number">7.4.</span> <span class="nav-text">原子更新字段类</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java中的并发工具类"><span class="nav-number">8.</span> <span class="nav-text">Java中的并发工具类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#CountDownLatch"><span class="nav-number">8.1.</span> <span class="nav-text">CountDownLatch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CyclicBarrier"><span class="nav-number">8.2.</span> <span class="nav-text">CyclicBarrier</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#semaphore"><span class="nav-number">8.3.</span> <span class="nav-text">semaphore</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Exchanger"><span class="nav-number">8.4.</span> <span class="nav-text">Exchanger</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java中的线程池"><span class="nav-number">9.</span> <span class="nav-text">Java中的线程池</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#线程池的实现原理"><span class="nav-number">9.1.</span> <span class="nav-text">线程池的实现原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线程池的创建"><span class="nav-number">9.2.</span> <span class="nav-text">线程池的创建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#向线程池提交任务"><span class="nav-number">9.3.</span> <span class="nav-text">向线程池提交任务</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Executor框架"><span class="nav-number">10.</span> <span class="nav-text">Executor框架</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Executor框架结构"><span class="nav-number">10.1.</span> <span class="nav-text">Executor框架结构</span></a></li></ol></li></ol></div>
             
 
           </div>
