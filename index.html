@@ -296,6 +296,146 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/07/ElasticSearch/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZKaiKing">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/photo.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZKaiKing-blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/07/07/ElasticSearch/" itemprop="url">ElasticSearch实战与原理解析</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-07T10:29:27+08:00">
+                2020-07-07
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2020-07-07T10:31:35+08:00">
+                2020-07-07
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          ElasticSearch简介ElasticSearch提供了搜索、分析、存储数据三大功能，其主要特点是：分布式、零配置、易装易用、自动发现、索引自动分片、索引副本机制、RestFul风格接口等。
+ElasticSearch底层依赖于Lucene库，采用Lucene构建索引，提供搜索功能。
+倒排索引
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/07/07/ElasticSearch/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/15/Java并发编程的艺术/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -343,8 +483,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2020-06-16T16:13:16+08:00">
-                2020-06-16
+              <time title="Post modified" itemprop="dateModified" datetime="2020-06-26T13:33:11+08:00">
+                2020-06-26
               </time>
             
           </span>
@@ -379,13 +519,11 @@
       
         
           
-          synchronizesynchronize实现同步的基础：Java中每个对象都可作为锁；具体表现为三种状态
-
-对象是普通同步方法，锁是当前的实例对象
-对象是静态同步方法，锁是当前类的Class对象
-对于同步方法块，锁是synchronize括号里配置的对象
-
-synchronize用的锁是存在Ja
+          基本概念上下文切换CPU时间分片导致，任务间是切换，即任务从保存到再加载就是一次上下文切换。
+上下文切换影响多线程的执行速度，如何减少上下文的切换：
+1、无锁并发编程、2、CAS算法（atomic包使用CAS算法更新数据，不需要加锁）
+3、使用最少线程   4、协程
+死锁多个锁资源之间互相等待彼此锁
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1540,151 +1678,6 @@ Thread 是一个类。Thread本身就实现了Ru
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/18/Java8新特征-Lambda表达式与Stream-API/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ZKaiKing">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/photo.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ZKaiKing-blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/18/Java8新特征-Lambda表达式与Stream-API/" itemprop="url">Java8新特征-Lambda表达式与Stream-API</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-18T10:47:53+08:00">
-                2019-11-18
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2019-11-18T14:11:42+08:00">
-                2019-11-18
-              </time>
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          Java8 新特性
-速度更快 更换了数据结构，内存结构（JVM）
-*代码更少了（Lambda表达式） *
-*强大的Stream API *
-便于并行 fork join (串行切换并行)
-最大化减少空指针异常 Optional
-
-Lambda表达式 在说 Lambda 之前，首先要说的是函数式接口。
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/11/18/Java8新特征-Lambda表达式与Stream-API/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1737,7 +1730,7 @@ Lambda表达式 在说 Lambda 之前，首先要说的是函数式接口。
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1750,7 +1743,7 @@ Lambda表达式 在说 Lambda 之前，首先要说的是函数式接口。
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>

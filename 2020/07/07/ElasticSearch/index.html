@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="-mybatis-plus,">
+  <meta name="keywords" content="-ElasticSearch,">
 
 
 
@@ -79,21 +79,20 @@
 
 
 
-<meta name="description" content="MyBatis-Plus（简称 MP）是一个 MyBatis 的增强工具，在 MyBatis 的基础上只做增强不做改变，为简化开发、提高效率而生。mybatis-plus的特性​    ①无侵入：只做增强不做改变，引入它不会对现有工程产生影响，如丝般顺滑​    ②损耗小：启动即会自动注入基本 CURD，性能基本无损耗，直接面向对象操作​    ③强大的 CRUD 操作：内置通用 Mapper、通">
-<meta name="keywords" content="-mybatis-plus">
+<meta name="description" content="ElasticSearch简介ElasticSearch提供了搜索、分析、存储数据三大功能，其主要特点是：分布式、零配置、易装易用、自动发现、索引自动分片、索引副本机制、RestFul风格接口等。 ElasticSearch底层依赖于Lucene库，采用Lucene构建索引，提供搜索功能。 倒排索引在倒排索引中， 有词条（term）、词典（term dictionary）、倒排表（post Lis">
+<meta name="keywords" content="-ElasticSearch">
 <meta property="og:type" content="article">
-<meta property="og:title" content="mybatis-plus学习">
-<meta property="og:url" content="http://yoursite.com/2019/10/14/mybatis-plus个人见解/index.html">
+<meta property="og:title" content="ElasticSearch实战与原理解析">
+<meta property="og:url" content="http://yoursite.com/2020/07/07/ElasticSearch/index.html">
 <meta property="og:site_name" content="ZKaiKing-blog">
-<meta property="og:description" content="MyBatis-Plus（简称 MP）是一个 MyBatis 的增强工具，在 MyBatis 的基础上只做增强不做改变，为简化开发、提高效率而生。mybatis-plus的特性​    ①无侵入：只做增强不做改变，引入它不会对现有工程产生影响，如丝般顺滑​    ②损耗小：启动即会自动注入基本 CURD，性能基本无损耗，直接面向对象操作​    ③强大的 CRUD 操作：内置通用 Mapper、通">
+<meta property="og:description" content="ElasticSearch简介ElasticSearch提供了搜索、分析、存储数据三大功能，其主要特点是：分布式、零配置、易装易用、自动发现、索引自动分片、索引副本机制、RestFul风格接口等。 ElasticSearch底层依赖于Lucene库，采用Lucene构建索引，提供搜索功能。 倒排索引在倒排索引中， 有词条（term）、词典（term dictionary）、倒排表（post Lis">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://yoursite.com/img/04_first.png">
-<meta property="og:image" content="http://yoursite.com/img/04_second.png">
-<meta property="og:updated_time" content="2019-10-16T05:43:38.424Z">
+<meta property="og:image" content="http://yoursite.com/img/ElasticSearch%E6%9E%B6%E6%9E%84.png">
+<meta property="og:updated_time" content="2020-07-07T02:31:35.774Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="mybatis-plus学习">
-<meta name="twitter:description" content="MyBatis-Plus（简称 MP）是一个 MyBatis 的增强工具，在 MyBatis 的基础上只做增强不做改变，为简化开发、提高效率而生。mybatis-plus的特性​    ①无侵入：只做增强不做改变，引入它不会对现有工程产生影响，如丝般顺滑​    ②损耗小：启动即会自动注入基本 CURD，性能基本无损耗，直接面向对象操作​    ③强大的 CRUD 操作：内置通用 Mapper、通">
-<meta name="twitter:image" content="http://yoursite.com/img/04_first.png">
+<meta name="twitter:title" content="ElasticSearch实战与原理解析">
+<meta name="twitter:description" content="ElasticSearch简介ElasticSearch提供了搜索、分析、存储数据三大功能，其主要特点是：分布式、零配置、易装易用、自动发现、索引自动分片、索引副本机制、RestFul风格接口等。 ElasticSearch底层依赖于Lucene库，采用Lucene构建索引，提供搜索功能。 倒排索引在倒排索引中， 有词条（term）、词典（term dictionary）、倒排表（post Lis">
+<meta name="twitter:image" content="http://yoursite.com/img/ElasticSearch%E6%9E%B6%E6%9E%84.png">
 
 
 
@@ -123,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/10/14/mybatis-plus个人见解/">
+  <link rel="canonical" href="http://yoursite.com/2020/07/07/ElasticSearch/">
 
 
 
 
 
-  <title>mybatis-plus学习 | ZKaiKing-blog</title>
+  <title>ElasticSearch实战与原理解析 | ZKaiKing-blog</title>
   
 
 
@@ -303,7 +302,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/14/mybatis-plus个人见解/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/07/ElasticSearch/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ZKaiKing">
@@ -320,7 +319,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">mybatis-plus学习</h1>
+          <h1 class="post-title" itemprop="name headline">ElasticSearch实战与原理解析</h1>
         
 
         <div class="post-meta">
@@ -332,8 +331,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-14T10:34:37+08:00">
-                2019-10-14
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-07T10:29:27+08:00">
+                2020-07-07
               </time>
             
 
@@ -348,8 +347,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-10-16T13:43:38+08:00">
-                2019-10-16
+              <time title="Post modified" itemprop="dateModified" datetime="2020-07-07T10:31:35+08:00">
+                2020-07-07
               </time>
             
           </span>
@@ -382,68 +381,60 @@
       
 
       
-        <h2 id="MyBatis-Plus（简称-MP）是一个-MyBatis-的增强工具，在-MyBatis-的基础上只做增强不做改变，为简化开发、提高效率而生。"><a href="#MyBatis-Plus（简称-MP）是一个-MyBatis-的增强工具，在-MyBatis-的基础上只做增强不做改变，为简化开发、提高效率而生。" class="headerlink" title="MyBatis-Plus（简称 MP）是一个 MyBatis 的增强工具，在 MyBatis 的基础上只做增强不做改变，为简化开发、提高效率而生。"></a><a href="https://mp.baomidou.com/guide/" target="_blank" rel="noopener">MyBatis-Plus</a>（简称 MP）是一个 <a href="http://www.mybatis.org/mybatis-3/" target="_blank" rel="noopener">MyBatis</a> 的增强工具，在 MyBatis 的基础上只做增强不做改变，为简化开发、提高效率而生。</h2><h3 id="mybatis-plus的特性"><a href="#mybatis-plus的特性" class="headerlink" title="mybatis-plus的特性"></a>mybatis-plus的特性</h3><p>​    ①无侵入：只做增强不做改变，引入它不会对现有工程产生影响，如丝般顺滑<br>​    ②损耗小：启动即会自动注入基本 CURD，性能基本无损耗，直接面向对象操作<br>​    ③强大的 CRUD 操作：内置通用 Mapper、通用 Service，仅仅通过少量配置即可实现单表大部分 CRUD 操作，更有强大的条件构造器，满足各类使用需求<br>​    ④支持 Lambda 形式调用：通过 Lambda 表达式，方便的编写各类查询条件，无需再担心字段写错<br>​    ⑤支持主键自动生成：支持多达 4 种主键策略（内含分布式唯一 ID 生成器 - Sequence），可自由配置，完美解决主键问题<br>​    ⑥支持 ActiveRecord 模式：支持 ActiveRecord 形式调用，实体类只需继承 Model 类即可进行强大的 CRUD 操作<br>​    ⑦支持自定义全局通用操作：支持全局通用方法注入（ Write once, use anywhere ）<br>​    ⑧内置代码生成器：采用代码或者 Maven 插件可快速生成 Mapper 、 Model 、 Service 、 Controller 层代码，支持模板引擎，更有超多自定义配置等您来使用<br>​    ⑨内置分页插件：基于 MyBatis 物理分页，开发者无需关心具体操作，配置好插件之后，写分页等同于普通 List 查询<br>​    ⑩分页插件支持多种数据库：支持 MySQL、MariaDB、Oracle、DB2、H2、HSQL、SQLite、Postgre、SQLServer2005、SQLServer 等多种数据库</p>
-<h2 id="主要核心知识："><a href="#主要核心知识：" class="headerlink" title="主要核心知识："></a>主要核心知识：</h2><h3 id="Mapper-CRUD接口"><a href="#Mapper-CRUD接口" class="headerlink" title="Mapper CRUD接口"></a>Mapper CRUD接口</h3><p>说明:</p>
+        <h1 id="ElasticSearch简介"><a href="#ElasticSearch简介" class="headerlink" title="ElasticSearch简介"></a>ElasticSearch简介</h1><p>ElasticSearch提供了搜索、分析、存储数据三大功能，其主要特点是：分布式、零配置、易装易用、自动发现、索引自动分片、索引副本机制、RestFul风格接口等。</p>
+<p>ElasticSearch底层依赖于Lucene库，采用Lucene构建索引，提供搜索功能。</p>
+<h1 id="倒排索引"><a href="#倒排索引" class="headerlink" title="倒排索引"></a>倒排索引</h1><p>在倒排索引中， 有词条（term）、词典（term dictionary）、倒排表（post List)三个概念</p>
+<p>词条：索引中最小的存储和查询单元，在中文语境中，一个词组通常指一个词条</p>
+<p>词典：又称字典，是词条的集合，词典一般由网页或文章集合中出现的所有词构成的字符串集合</p>
+<p>倒排表：倒排表记录的是词出现在哪些文档里，出现的位置和频率等</p>
+<p>ElasticSearch基于Lucene实现的，词典与倒排表是分俩部分存储的，词典存储在内存中，倒排表存储在磁盘中</p>
+<h1 id="ElasticSearch核心概念"><a href="#ElasticSearch核心概念" class="headerlink" title="ElasticSearch核心概念"></a>ElasticSearch核心概念</h1><p>ElasticSearch核心概念有：Node、Cluster、Shards、Replicas、Index、Type、Document、Settings、Mapping和Analyzer</p>
 <ul>
-<li><p>通用 CRUD 封装<a href="https://gitee.com/baomidou/mybatis-plus/blob/3.0/mybatis-plus-core/src/main/java/com/baomidou/mybatisplus/core/mapper/BaseMapper.java" target="_blank" rel="noopener">BaseMapper</a>接口，为 <code>Mybatis-Plus</code> 启动时自动解析实体表关系映射转换为 <code>Mybatis</code> 内部对象注入容器</p>
+<li><p>Node（节点）：是组成ElasticSearch集群的基本服务单元，集群中运行的ElasticSearch服务器都称为节点。</p>
+<p>节点的状态有（红、绿、黄）三种状态</p>
 </li>
-<li><p>泛型 <code>T</code> 为任意实体对象</p>
+<li><p>Cluster（集群）：有一个或多个节点组成，各个节点协同工作，共享数据。同一集群内节点名称不能重复，但集群名称一定要相同</p>
 </li>
-<li><p>参数 <code>Serializable</code> 为任意类型主键 <code>Mybatis-Plus</code> 不推荐使用复合主键约定每一张表都有自己的唯一 <code>id</code> 主键</p>
-</li>
-<li><p>对象 <code>Wrapper</code> 为 <a href="https://mp.baomidou.com/guide/wrapper.html" target="_blank" rel="noopener">条件构造器</a></p>
-<p>实际上是在Mybatis的mapper扫描文件进行了CURD增强，</p>
-<p>CRUD方法基本是insert、delete（ById,ByMap、BatchIds)、</p>
-<p>update（ById)、<strong>select（ById、BathchIds、ByMap、One、Count、List、Maps、Objs、Page、MapsPage)</strong></p>
-<p><em>基本是通过Id,条件进行CRUD</em></p>
+<li><p>Shards(分片)：索引的数据量太大时，受限于单个节点的内存、磁盘处理能力等。将一个索引上的数据进行水平拆分，拆分出来的数据部分称为一个分片。一般每个分片放在不同的服务器上</p>
 </li>
 </ul>
-<h3 id="Service-CRUD接口"><a href="#Service-CRUD接口" class="headerlink" title="Service CRUD接口"></a>Service CRUD接口</h3><p>说明:</p>
+<p>​      底层实际上每个分片是Lucene中的一个索引文件，因此一个分片有一个主分片和0到多个副本分片</p>
+<p>​      ElasticSearch进行索引时，是对多个分片信息进行索引后进行汇总，则分片一旦设置则不可更改，默认是5个分片，索引写入数据时，是通过路由来确定具体写入哪个分片的</p>
 <ul>
-<li>通用 Service CRUD <strong>封装<a href="https://gitee.com/baomidou/mybatis-plus/blob/3.0/mybatis-plus-extension/src/main/java/com/baomidou/mybatisplus/extension/service/IService.java" target="_blank" rel="noopener">IService</a>接口</strong>，进一步封装 CRUD 采用 <code>get 查询单行</code> <code>remove 删除</code> <code>list 查询集合</code> <code>page 分页</code> 前缀命名方式区分 <code>Mapper</code> 层避免混淆，</li>
-<li>泛型 <code>T</code> 为任意实体对象</li>
-<li>建议如果存在自定义通用 Service 方法的可能，请创建自己的 <code>IBaseService</code> 继承 <code>Mybatis-Plus</code> 提供的基类</li>
-<li>对象 <code>Wrapper</code> 为 <a href="https://mp.baomidou.com/guide/wrapper.html" target="_blank" rel="noopener">条件构造器</a></li>
+<li>Replicas（备份）：也称为副本，指对主分片进行备份，ElasticSearch构建索引时，先在主分片完成数据的索引，然后数据会从主分片分发备份分片上进行索引</li>
+<li>Index（索引）：ElasticSearch中索引由一个和多个分片组成，使用索引时，需要通过索引名称在集群中进行唯一标识</li>
+<li>Type（类别）：索引内部逻辑分区，后面会取消Type</li>
+<li>Document（文档）：索引中每一条数据叫做一个文档，一个文档通过_id在索引中进行唯一标识。</li>
+<li>Settings：对集群中索引定义信息，比如一个索引的分片数、副本数等</li>
+<li>Mapping：Mapping中保存定义索引中字段（Field)的存储类型，分词方式、是否存储等信息，类型数据库中的Schema</li>
+<li>Analyzer：Analyzer表示的是字段分词方式的定义，一个Analyzer通常由一个Tokenizer和零到多个Filter组成。默认的标准的Analyzer包含一个标准的Tokenizer和三个Filter、即Standard Token Filter、Lower case Token Filter和Stop Token Filter</li>
 </ul>
-<hr>
-<h3 id="条件构造器说明"><a href="#条件构造器说明" class="headerlink" title="条件构造器说明:"></a>条件构造器说明:</h3><p><img src="/img/04_first.png" alt="条件构造器关系图"></p>
-<h4 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h4><ol>
-<li>上图绿色框为抽象类abstract</li>
-<li>蓝色框为正常class类，可new对象</li>
-<li>黄色箭头指向为父子类关系，箭头指向为父类</li>
-</ol>
-<ul>
-<li>方法入参<code>boolean condition</code>表示该条件<strong>是否</strong>加入最后生成的sql中</li>
-<li>方法均为从上往下补全个别<code>boolean</code>类型的入参,默认为<code>true</code></li>
-<li>出现的泛型<code>Param</code>均为<code>Wrapper</code>的子类实例(均具有<code>AbstractWrapper</code>的所有方法)</li>
-<li><strong>方法在入参中出现的<code>R</code>为泛型,在普通wrapper中是<code>String</code>,在LambdaWrapper中是</strong>函数<strong>(例:<code>Entity::getId</code>,<code>Entity</code>为实体类,<code>getId</code>为字段<code>id</code>的</strong>getMethod)</li>
-<li>方法入参中的<code>R column</code>均表示数据库字段,当<code>R</code>具体类型为<code>String</code>时则为数据库字段名(<strong>字段名是数据库关键字的自己用转义符包裹!</strong>)!而不是实体类数据字段名!!!,另当<code>R</code>具体类型为<code>SFunction</code>时项目runtime不支持eclipse自家的编译器!!!</li>
-<li>举例均为<strong>使用普通wrapper,入参为<code>Map</code>和<code>List</code>的均以<code>json</code>形式表现!</strong></li>
-<li>使用中如果<strong>入参的<code>Map</code>或者<code>List</code>为</strong>空<strong>,则不会加入最后生成的sql中!!!</strong></li>
-<li>有任何疑问就点开源码看,看不懂<strong>函数</strong>的<a href="https://www.jianshu.com/p/613a6118e2e0" target="_blank" rel="noopener">lambda 表达式详解</a></li>
-</ul>
-<p><img src="/img/04_second.png" alt="函数名及其举例"></p>
-<h4 id="QueryWrapper"><a href="#QueryWrapper" class="headerlink" title="QueryWrapper"></a>QueryWrapper</h4><p>###说明:继承自 AbstractWrapper ,自身的内部属性 entity 也用于生成 where 条件及 LambdaQueryWrapper, 可以通过 new QueryWrapper().lambda() 方法获取</p>
-<hr>
-<p><strong>SELECT</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select(String... sqlSelect)</span><br><span class="line">select(Predicate&lt;TableFieldInfo&gt; predicate)</span><br><span class="line">select(Class&lt;T&gt; entityClass, Predicate&lt;TableFieldInfo&gt; predicate)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>设置查询字段</li>
-</ul>
-<p>说明:</p>
-<p>以上方分法为两类.<br>第二类方法为:过滤查询字段(主键除外),入参不包含 class 的调用前需要<code>wrapper</code>内的<code>entity</code>属性有值! 这两类方法重复调用以最后一次为准</p>
-<ul>
-<li><p>例: <code>select(&quot;id&quot;, &quot;name&quot;, &quot;age&quot;)</code></p>
-</li>
-<li><p>例: <code>select(i -&gt; i.getProperty().startsWith(&quot;test&quot;))</code></p>
-</li>
-</ul>
-<hr>
-<p>使用MP入门：</p>
-<p> ①定义一个JavaBean对象，用于封装数据库信息</p>
-<p> ②定义一个（BeanName)Mapper接口，该接口继承BaseMapper<t> 并传入相对应的Bean对象</t></p>
-<p>③可直接在查询地方定义一个查询构造器Wrapper实现类（QueryWrapper或LambdaQueryWrapper）用于复杂查询，将其传入实例化（容器中拿）的mapper的方法条件中，获取查询后的数据。</p>
+<h1 id="ElasticSearch架构"><a href="#ElasticSearch架构" class="headerlink" title="ElasticSearch架构"></a>ElasticSearch架构</h1><p><img src="/img/ElasticSearch%E6%9E%B6%E6%9E%84.png" alt="ElasticSearch架构"></p>
+<p>ElasticSearch架构自底向上分为五层，分别为核心层、数据处理层、发现与脚本层、协议层和应用层。</p>
+<p>:japanese_ogre:在ElasticSearch内部，通过集群中配置一个相同的集群名称，就能将不同的节点连接到一个集群中，这是通过ElasticSearch节点自动发现机制实现的</p>
+<h1 id="分片与路由"><a href="#分片与路由" class="headerlink" title="分片与路由"></a>分片与路由</h1><p>ElasticSearch对文档的新建、索引和删除请求等写操作，必须在主分片上面完成之后才能被复制到相关的副本分片。Elasticsearch为了加快写入的速度，写入过程往往是并发实施的。为了解决在并发写的过程中出现的数据冲突的问题，Elasticsearch通过乐观锁进行控制，每个文档都有一个version （版本号），当文档被修改时版本号递增。Elasticsearch引入了路由功能，即数据在写入时，通过路由将数据写入指定分片Elasticsearch默认会搜索所有分片上的数据，最后在主节点上汇总各个分片数据并进行排序处理后，返回最终的结果数据。</p>
+<h1 id="段"><a href="#段" class="headerlink" title="段"></a>段</h1><p>”段“是Elasticsearch从Lucene中继承的概念。在索引中，索引文件被拆分为多个子文件，其中每个子文件就叫做段，每个段都是一个 倒排索引的小单元。</p>
+<p>段具有不变性，一旦索引的数据被写入硬盘，就不能再修改。</p>
+<p>:question:为什么要引入分段呢</p>
+<p>如果全部文档集合仅构建在一个很大的倒排索引文件中，且数据量还在不断增加，当进行修改时，我们需要全量更新当前的倒排索引文件，这会使得数据更新时效性很差，且耗费大量资源，显然这不是我们希望的。其实在Lucene中，分段的存储模式可以避免在读写操作时使用锁，从而大大提升Elasticsearch的读写性能。这有点类似CurrentHashMap中“分段锁”的概念，俩者都是为了减少锁的使用，提高并发。</p>
+<h2 id="提交点"><a href="#提交点" class="headerlink" title="提交点"></a>提交点</h2><p>当分段被写入磁盘后会生成一个提交点，提交点意味着一个用来记录所有段信息的文件已经生成。因此，一个段一旦拥有了提交点，就表示从此该段仅有读的权限，永远失去了写的权限。<br>当段在内存中时，此时分段拥有只写的权限，数据还会不断写入，而不具备读数据的权限，意味着这部分数据不能被Elasticsearch用户检索到。<br>那么，既然索引文件分段存储并且不可修改，那么新增、更新和删除如何处理呢？<br>其实新增是比较容易处理的。既然数据是新的，那么只需在当前文档新增一个段即可。<br>删除数据时，由于分段不可修改的特性，Elasticsearch不会把文档从旧的段中移除，因而是新增一个.del文件，.del文件中会记录这些被删除文档的段信息。被标记删除的文档仍然可以被查询匹配到，但它会在最终结果被返回前通过.del文件将其从结果集中移除。<br>当更新数据时，由于分段不可修改的特性，Elasticsearch无法通过修改旧的段来反映文档的更新，于是，更新操作变成了两个操作的结合，即先删除、后新增。Elasticsearch会将旧的文档从.del文件中标记删除，然后将文档的新版本索引到一个新的段中。在查询数据时，两个版本的文档都会被一个查询匹配到，但被删除的旧版本文档在结果集返回前就会被移除。<br>综上所述，段作为不可修改是具有一定优势的，段的优势主要表现在：不需要锁，从而提升Elasticsearch的读写性能。</p>
+<h2 id="段合并"><a href="#段合并" class="headerlink" title="段合并"></a>段合并</h2><p>Elasticsearch引入段合并机制。段合并机制在后台定期进行，从而小的段被合并到大的段，然后这些大的段再被合并到更大的段。<br>在段合并过程中，Elasticsearch会将那些旧的已删除文档从文件系统中清除。被删除的文档不会被拷贝到新的大段中，当然，在合并的过程中不会中断索引和搜索。<br>段合并是自动进行索引和搜索的，在合并进程中，会选择一小部分大小相似的段，在后台将它们合并到更大的段中，这些段既可以是未提交的，也可以是已提交的。<br>在合并结束后，老的段会被删除，新的段被Flush到磁盘，同时写入一个包含新段且排除旧的和较小的段的新提交点。打开新的段之后，可以用来搜索。<br>由于段合并的计算量较大，对磁盘I/O的消耗也较大，因此段合并会影响正常的数据写入速率，因此Elasticsearch不会放任自流，让段合并影响搜索性能。Elasticsearch在默认情况下会对合并流程进行资源限制，这就是搜索服务仍然有足够的资源仍然可以执行的原因。</p>
+<h1 id="事务日志机制"><a href="#事务日志机制" class="headerlink" title="事务日志机制"></a>事务日志机制</h1><p>Elasticsearch引入事务日志（Translog）机制。事务日志用于记录所有还没有持久化到磁盘的数据。<br>于是，在添加了事务日志机制后，数据写入索引的流程如下所示。<br>（1）新文档被索引之后，先被写入内存中。为了防止数据丢失，Elasticsearch会追加一份数据到事务日志中。<br>（2）新的文档持续在被写入内存时，同时也会记录到事务日志中。当然，此时的新数据还不能被检索和查询。<br>（3）当达到默认的刷新时间或内存中的数据达到一定量后，Elasticsearch会触发一次刷新，将内存中的数据以一个新段形式刷新到文件缓存系统中并清空内存。这时新段虽未被提交到磁盘，但已经可以对外提供文档的检索功能且不被修改。<br>（4）随着新文档索引不断被写入，当日志数据大小超过某个值（如512MB），或者超过一定时间（如30 min）时，Elasticsearch会触发一次Flush。<br>此时，内存中的数据被写入一个新段，同时被写入文件缓存系统，文件缓存系统中的数据通过Fsync刷新到磁盘中，生成提交点。而日志文件被删除，创建一个空的新日志。</p>
+<h1 id="高级客户端"><a href="#高级客户端" class="headerlink" title="高级客户端"></a>高级客户端</h1><p>高级客户端基于初级客户端来实现。<br>高级客户端的主要目标是公开特定的API方法，这些API方法将接收请求作为参数并返回响应结果，以便由客户端本身处理请求和响应结果。</p>
+<p>高级客户端也有同步、异步两种API调用方式。其中，以同步调用方式调用后直接返回响应对象，而异步调用方式则需要配置一个监听器参数才能调用，该参数在收到响应或错误后会得到相应的结果通知。</p>
+<h1 id="高级客户端文档相关API"><a href="#高级客户端文档相关API" class="headerlink" title="高级客户端文档相关API"></a>高级客户端文档相关API</h1><p>在Elasticsearch中，高级客户端支持以下文档相关的API：<br>（1）Single document APIs——单文档操作API。<br>（2）Index API——文档索引API。<br>（3）Get API——文档获取API。<br>（4）Exists API——文档存在性判断API。<br>（5）Delete API——文档删除API。<br>（6）Update API——文档更新API。<br>（7）Term Vectors API——词向量API。<br>（8）Bulk API——批量处理API。<br>（9）Multi-Get API——多文档获取API。<br>（10）ReIndex API——重新索引API。<br>（11）Update By Query API——查询更新API。<br>（12）Delete By Query API——查询删除API。<br>（13）Multi Term Vectors API——多词条向量API。</p>
+<h2 id="文档索引"><a href="#文档索引" class="headerlink" title="文档索引"></a>文档索引</h2><p>Elasticsearch是面向文档的，它可以存储整个文档。<br>但Elasticsearch对文档的操作不仅限于存储，Elasticsearch还会索引每个文档的内容使之可以被搜索。用户可以对文档数据进行索引、搜索、排序和过滤等操作</p>
+<p>构建Json文档：1、String构建 2、Map构建  3、利用Jackson序列化Java bean构建  4、使用内置的帮助类XContentFactory.jso</p>
+<p>IndexReques:构建文档请求—–&gt;构建文档响应</p>
+<p>IndexRequest中，除三个参数外(index-type-id)，还有一些可选参数。可选参数包含路由、超时时间、版本、版本类型和索引管道名称等。</p>
+<h2 id="文档搜索查询"><a href="#文档搜索查询" class="headerlink" title="文档搜索查询"></a>文档搜索查询</h2><p>在执行文档索引查询请求前，需要构建文档索引查询请求，即GetRequest。GetRequest有两个必选参数，即索引名称和文档ID</p>
+<h2 id="删除文档索引"><a href="#删除文档索引" class="headerlink" title="删除文档索引"></a>删除文档索引</h2><p>在执行删除文档索引请求前，需要构建删除文档索引请求，即DeleteRequest。在DeleteRequest中有两个必选参数，即索引名称和文档ID</p>
+<h2 id="更新文档索引"><a href="#更新文档索引" class="headerlink" title="更新文档索引"></a>更新文档索引</h2><p>在执行更新索引文档请求前，需要构建更新文档索引请求，即UpdateRequest。UpdateRequest有两个必选参数，即索引名称和文档ID</p>
+<h1 id="文档处理过程解析"><a href="#文档处理过程解析" class="headerlink" title="文档处理过程解析"></a>文档处理过程解析</h1><p>写入磁盘的倒排索引是不可变的。</p>
+<p>Lucene中的索引其实是ElasticSearch中的分片，ElasticSearch中的索引就是分片的集合。当ElasticSearch搜索索引时，它发送查询请求给该索引下的所有分片，然后过滤这些结果，最后聚合成全局的结果。</p>
+<p>为了避免混淆，Elasticsearch引入了per-segment search的概念。一个段（segment）就一个是有完整功能的倒排索引。Lucene中的索引指的是段的集合，再加上提交点（commit point，包括所有段的文件）。新的文档在被写入磁盘的段之前，需要先写入内存区的索引。<br>一个per-segment search的工作流程如下所示：<br>（1）新的文档首先被写入内存区的索引。<br>（2）内存中的索引不断被提交，新段不断产生。当新的提交点产生时就将这些新段的数据写入磁盘，包括新段的名称。<br>写入磁盘是文件同步写入的，也就是说，所有的写操作都需要等待文件系统内存的数据同步到磁盘，确保它们可以被物理写入。<br>（3）新段被打开，于是它包含的文档就可以被检索到。<br>（4）内存被清除，等待接收新的文档。<br>当一个请求被接收，所有段依次被查询时。所有段上的term统计信息会被聚合，确保每个term和文档的相关性被正确计算。通过这种方式，新的文档就能够以较小的代价加入索引。<br>段是不可变的，那么Elasticsearch是如何删除和更新文档数据的呢？<br>段的不可变特性，意味着文档既不能从旧的段中移除，旧的段中的文档也不能被更新。于是Elasticsearch在每一个提交点都引入一个.del文件，包含了段上已经被删除的文档。<br>当一个文档被删除时，它实际上只是在.del文件中被标记为删除。在进行文档查询时，被删除的文档依然可以被匹配查询，但是在最终返回之前会从结果中删除。<br>当一个文档被更新时，旧版本的文档会被标记为删除，新版本的文档在新的段中被索引。当对文档进行查询时，该文档的不同版本都会匹配一个查询请求，但是较旧的版本会从结果中被删除。<br>被删除的文件越积累越多，每个段消耗的如文件句柄、内存、CPU等资源越来越大。如果每次搜索请求都需要依次检查每个段，则段越多，查询就越慢。这些势必会影响Elasticsearch的性能，那么Elasticsearch是如何处理的呢？Elasticsearch引入了段合并段。在段合并时，我们会展示被删除的文件是如何从文件系统中清除的。<br>Elasticsearch通过后台合并段的方式解决了上述问题，在段合并过程中，小段被合并成大段，大段再合并成更大的段。在合并段时，被删除的文档不会被合并到大段中。<br>在索引过程中，refresh会创建新的段，并打开它。合并过程是在后台选择一些小的段，把它们合并成大的段。在这个过程中不会中断索引和搜索。当新段合并后，即可打开供搜索；而旧段会被删除。</p>
+<h1 id="批量请求"><a href="#批量请求" class="headerlink" title="批量请求"></a>批量请求</h1><p>BulkRequest可用于通过单次请求执行多个操作请求，如文档索引、文档更新、文档删除等操作。</p>
+<p>:articulated_lorry:：<a href="https://www.cnblogs.com/technologykai/articles/10900071.html" target="_blank" rel="noopener">优质文章</a></p>
 
       
     </div>
@@ -461,7 +452,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/mybatis-plus/" rel="tag"># -mybatis-plus</a>
+            <a href="/tags/ElasticSearch/" rel="tag"># -ElasticSearch</a>
           
         </div>
       
@@ -474,8 +465,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/10/05/virtualBox-进行Net后SSH注意事项/" rel="next" title="virtualBox 进行Net后SSH注意事项">
-                <i class="fa fa-chevron-left"></i> virtualBox 进行Net后SSH注意事项
+              <a href="/2020/06/15/Java并发编程的艺术/" rel="next" title="Java并发编程的艺术">
+                <i class="fa fa-chevron-left"></i> Java并发编程的艺术
               </a>
             
           </div>
@@ -483,10 +474,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/10/16/swagger2学习/" rel="prev" title="swagger2学习">
-                swagger2学习 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -671,7 +658,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#MyBatis-Plus（简称-MP）是一个-MyBatis-的增强工具，在-MyBatis-的基础上只做增强不做改变，为简化开发、提高效率而生。"><span class="nav-number">1.</span> <span class="nav-text">MyBatis-Plus（简称 MP）是一个 MyBatis 的增强工具，在 MyBatis 的基础上只做增强不做改变，为简化开发、提高效率而生。</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#mybatis-plus的特性"><span class="nav-number">1.1.</span> <span class="nav-text">mybatis-plus的特性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主要核心知识："><span class="nav-number">2.</span> <span class="nav-text">主要核心知识：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Mapper-CRUD接口"><span class="nav-number">2.1.</span> <span class="nav-text">Mapper CRUD接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Service-CRUD接口"><span class="nav-number">2.2.</span> <span class="nav-text">Service CRUD接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#条件构造器说明"><span class="nav-number">2.3.</span> <span class="nav-text">条件构造器说明:</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#介绍"><span class="nav-number">2.3.1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#QueryWrapper"><span class="nav-number">2.3.2.</span> <span class="nav-text">QueryWrapper</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ElasticSearch简介"><span class="nav-number">1.</span> <span class="nav-text">ElasticSearch简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#倒排索引"><span class="nav-number">2.</span> <span class="nav-text">倒排索引</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ElasticSearch核心概念"><span class="nav-number">3.</span> <span class="nav-text">ElasticSearch核心概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ElasticSearch架构"><span class="nav-number">4.</span> <span class="nav-text">ElasticSearch架构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分片与路由"><span class="nav-number">5.</span> <span class="nav-text">分片与路由</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#段"><span class="nav-number">6.</span> <span class="nav-text">段</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#提交点"><span class="nav-number">6.1.</span> <span class="nav-text">提交点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#段合并"><span class="nav-number">6.2.</span> <span class="nav-text">段合并</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#事务日志机制"><span class="nav-number">7.</span> <span class="nav-text">事务日志机制</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#高级客户端"><span class="nav-number">8.</span> <span class="nav-text">高级客户端</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#高级客户端文档相关API"><span class="nav-number">9.</span> <span class="nav-text">高级客户端文档相关API</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#文档索引"><span class="nav-number">9.1.</span> <span class="nav-text">文档索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文档搜索查询"><span class="nav-number">9.2.</span> <span class="nav-text">文档搜索查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除文档索引"><span class="nav-number">9.3.</span> <span class="nav-text">删除文档索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更新文档索引"><span class="nav-number">9.4.</span> <span class="nav-text">更新文档索引</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文档处理过程解析"><span class="nav-number">10.</span> <span class="nav-text">文档处理过程解析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#批量请求"><span class="nav-number">11.</span> <span class="nav-text">批量请求</span></a></li></ol></div>
             
 
           </div>

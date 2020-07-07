@@ -79,13 +79,13 @@
 
 
 
-<meta name="description" content="synchronizesynchronize实现同步的基础：Java中每个对象都可作为锁；具体表现为三种状态  对象是普通同步方法，锁是当前的实例对象 对象是静态同步方法，锁是当前类的Class对象 对于同步方法块，锁是synchronize括号里配置的对象  synchronize用的锁是存在Java的对象头Mark Work里。 Java中锁一共有4种状态，级别从低到依次为：无锁状态、偏向锁状">
+<meta name="description" content="基本概念上下文切换CPU时间分片导致，任务间是切换，即任务从保存到再加载就是一次上下文切换。 上下文切换影响多线程的执行速度，如何减少上下文的切换： 1、无锁并发编程、2、CAS算法（atomic包使用CAS算法更新数据，不需要加锁） 3、使用最少线程   4、协程 死锁多个锁资源之间互相等待彼此锁资源，导致程序之间无法释放锁资源也无法获取锁资源的现象。 避免死锁的常见方法： 1、避免一个线程同时">
 <meta name="keywords" content="-并发编程">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java并发编程的艺术">
 <meta property="og:url" content="http://yoursite.com/2020/06/15/Java并发编程的艺术/index.html">
 <meta property="og:site_name" content="ZKaiKing-blog">
-<meta property="og:description" content="synchronizesynchronize实现同步的基础：Java中每个对象都可作为锁；具体表现为三种状态  对象是普通同步方法，锁是当前的实例对象 对象是静态同步方法，锁是当前类的Class对象 对于同步方法块，锁是synchronize括号里配置的对象  synchronize用的锁是存在Java的对象头Mark Work里。 Java中锁一共有4种状态，级别从低到依次为：无锁状态、偏向锁状">
+<meta property="og:description" content="基本概念上下文切换CPU时间分片导致，任务间是切换，即任务从保存到再加载就是一次上下文切换。 上下文切换影响多线程的执行速度，如何减少上下文的切换： 1、无锁并发编程、2、CAS算法（atomic包使用CAS算法更新数据，不需要加锁） 3、使用最少线程   4、协程 死锁多个锁资源之间互相等待彼此锁资源，导致程序之间无法释放锁资源也无法获取锁资源的现象。 避免死锁的常见方法： 1、避免一个线程同时">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/img/%E9%94%81%E4%BC%98%E7%BC%BA%E7%82%B9.png">
 <meta property="og:image" content="http://yoursite.com/img/%E7%BA%BF%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1.png">
@@ -94,12 +94,14 @@
 <meta property="og:image" content="http://yoursite.com/img/LOCK%E9%94%81API.png">
 <meta property="og:image" content="http://yoursite.com/img/%E9%98%BB%E5%A1%9E%E9%98%9F%E5%88%97%E6%93%8D%E4%BD%9C%E6%96%B9%E6%B3%95.png">
 <meta property="og:image" content="http://yoursite.com/img/%E7%BA%BF%E7%A8%8B%E6%B1%A0%E6%B5%81%E7%A8%8B%E5%9B%BE.png">
+<meta property="og:image" content="http://yoursite.com/img/JDK%E7%B1%BB%E4%B8%AD%E7%BA%BF%E7%A8%8B%E6%B1%A0%E6%A1%86%E6%9E%B6%E5%9B%BE.png">
+<meta property="og:image" content="http://yoursite.com/img/%E5%88%9B%E5%BB%BA%E7%BA%BF%E7%A8%8B%E6%B1%A0API.png">
 <meta property="og:image" content="http://yoursite.com/img/%E4%BB%BB%E5%8A%A1%E7%9A%84%E4%BF%A9%E7%BA%A7%E8%B0%83%E5%BA%A6%E6%A8%A1%E5%9E%8B.png">
 <meta property="og:image" content="http://yoursite.com/img/Executor%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8%E7%A4%BA%E6%84%8F%E5%9B%BE.png">
-<meta property="og:updated_time" content="2020-06-16T08:13:16.431Z">
+<meta property="og:updated_time" content="2020-06-26T05:33:11.980Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java并发编程的艺术">
-<meta name="twitter:description" content="synchronizesynchronize实现同步的基础：Java中每个对象都可作为锁；具体表现为三种状态  对象是普通同步方法，锁是当前的实例对象 对象是静态同步方法，锁是当前类的Class对象 对于同步方法块，锁是synchronize括号里配置的对象  synchronize用的锁是存在Java的对象头Mark Work里。 Java中锁一共有4种状态，级别从低到依次为：无锁状态、偏向锁状">
+<meta name="twitter:description" content="基本概念上下文切换CPU时间分片导致，任务间是切换，即任务从保存到再加载就是一次上下文切换。 上下文切换影响多线程的执行速度，如何减少上下文的切换： 1、无锁并发编程、2、CAS算法（atomic包使用CAS算法更新数据，不需要加锁） 3、使用最少线程   4、协程 死锁多个锁资源之间互相等待彼此锁资源，导致程序之间无法释放锁资源也无法获取锁资源的现象。 避免死锁的常见方法： 1、避免一个线程同时">
 <meta name="twitter:image" content="http://yoursite.com/img/%E9%94%81%E4%BC%98%E7%BC%BA%E7%82%B9.png">
 
 
@@ -355,8 +357,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2020-06-16T16:13:16+08:00">
-                2020-06-16
+              <time title="Post modified" itemprop="dateModified" datetime="2020-06-26T13:33:11+08:00">
+                2020-06-26
               </time>
             
           </span>
@@ -389,7 +391,20 @@
       
 
       
-        <h1 id="synchronize"><a href="#synchronize" class="headerlink" title="synchronize"></a>synchronize</h1><p>synchronize实现同步的基础：Java中每个对象都可作为锁；具体表现为三种状态</p>
+        <h1 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h1><h2 id="上下文切换"><a href="#上下文切换" class="headerlink" title="上下文切换"></a>上下文切换</h2><p>CPU时间分片导致，任务间是切换，即任务从保存到再加载就是一次上下文切换。</p>
+<p>上下文切换影响多线程的执行速度，如何减少上下文的切换：</p>
+<p>1、无锁并发编程、2、<strong>CAS算法（atomic包使用CAS算法更新数据，不需要加锁）</strong></p>
+<p>3、使用最少线程   4、协程</p>
+<h2 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h2><p>多个锁资源之间互相等待彼此锁资源，导致程序之间无法释放锁资源也无法获取锁资源的现象。</p>
+<p>避免死锁的常见方法：</p>
+<p>1、避免一个线程同时获取多个锁</p>
+<p>2、避免一个线程占用多个资源，尽量保证每个锁只占用一个资源</p>
+<p>3、尝试使用定时锁（lock.trylock(timeout))</p>
+<h2 id="小总结"><a href="#小总结" class="headerlink" title="小总结"></a>小总结</h2><p>为何同个JVM模型中多个会出现数据不一致？</p>
+<p>深究原因是当前操作系统中，多核多CPU情况下， 处理器不直接与内存进行通信，而是系统内存 数据读取到内部缓存（L1、L2、L3)后再进行操作，并且该操作时间未知。</p>
+<p>内存屏障:一组处理器指令，实现对内存操作的顺序限制</p>
+<p>缓存命中：如果进行高速缓存行填充操作的内存地址仍然是下次处理器访问的地址，则处理器从缓存中读取数据而不是内存。</p>
+<h1 id="synchronize"><a href="#synchronize" class="headerlink" title="synchronize"></a>synchronize</h1><p>synchronize实现同步的基础：Java中每个对象都可作为锁；具体表现为三种状态</p>
 <ul>
 <li>对象是普通同步方法，锁是当前的实例对象</li>
 <li>对象是静态同步方法，锁是当前类的Class对象</li>
@@ -504,6 +519,8 @@
 
 <p>那么如何原子性的更新char、float、double？</p>
 <p> 可利用CAS是实现。</p>
+<p>CAS实现原子操作 三大问题：</p>
+<p>1、ABA问题 2、循环时间长开销大  3、只能保证一个共享变量的原子操作</p>
 <h2 id="原子更新数组"><a href="#原子更新数组" class="headerlink" title="原子更新数组"></a>原子更新数组</h2><p>提供四个类：AtomicIntegerArray、AtomicLongArray、AtomicReferenceArray、Atomic</p>
 <p>三个类主要提供原子方式更新数组里的整数。以AtomicIntegerArray为例</p>
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int addAndGet(int i,int delta):以原子方式将输入值与数组中索引i的元素相加。</span><br><span class="line">boolean compareAndSet(int i,int expect,int update):如果当前索值等于预期值，则以原子方式将数组中的索引值设置为update值</span><br></pre></td></tr></table></figure>
@@ -527,7 +544,9 @@
 <p>线程池中的线程执行任务分俩种情况</p>
 <p>1、在execute()方法中创建一个线程时，会让这个线程执行当前任务。</p>
 <p>2、这个线程执行完任务后，会反复从BlockingQueue获取任务来执行。</p>
-<h2 id="线程池的创建"><a href="#线程池的创建" class="headerlink" title="线程池的创建"></a>线程池的创建</h2><p>可通过ThreadPoolExecutor来创建线程池，需要注意几个参数。</p>
+<h2 id="线程池的创建"><a href="#线程池的创建" class="headerlink" title="线程池的创建"></a>线程池的创建</h2><p><img src="/img/JDK%E7%B1%BB%E4%B8%AD%E7%BA%BF%E7%A8%8B%E6%B1%A0%E6%A1%86%E6%9E%B6%E5%9B%BE.png" alt="JDK类中线程池框架图"></p>
+<p><img src="/img/%E5%88%9B%E5%BB%BA%E7%BA%BF%E7%A8%8B%E6%B1%A0API.png" alt="创建线程池API"></p>
+<p>可通过ThreadPoolExecutor来创建线程池，需要注意几个参数。</p>
 <ul>
 <li><p>corePoolSize:核心线程数，当提交一个任务时，线程池会创建一个线程来执行任务，即使其他空闲的基本线程能够执行新任务也会创建新线程。等到需要执行的任务数大于核心线程数就不再创建。</p>
 </li>
@@ -611,6 +630,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/07/07/ElasticSearch/" rel="prev" title="ElasticSearch实战与原理解析">
+                ElasticSearch实战与原理解析 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -727,7 +750,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -740,7 +763,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
@@ -795,7 +818,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#synchronize"><span class="nav-number">1.</span> <span class="nav-text">synchronize</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java内存模型"><span class="nav-number">2.</span> <span class="nav-text">Java内存模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#重排序"><span class="nav-number">2.1.</span> <span class="nav-text">重排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#happens-before"><span class="nav-number">2.2.</span> <span class="nav-text">happens-before</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#volatile"><span class="nav-number">3.</span> <span class="nav-text">volatile</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#volatile的内存语意"><span class="nav-number">3.1.</span> <span class="nav-text">volatile的内存语意</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#volatile的内存语意的实现"><span class="nav-number">3.2.</span> <span class="nav-text">volatile的内存语意的实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#锁的内存含义"><span class="nav-number">3.3.</span> <span class="nav-text">锁的内存含义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#锁内存含义的实现"><span class="nav-number">3.4.</span> <span class="nav-text">锁内存含义的实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#concurrent包的实现"><span class="nav-number">3.5.</span> <span class="nav-text">concurrent包的实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#final域的内存语意"><span class="nav-number">3.6.</span> <span class="nav-text">final域的内存语意</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#线程"><span class="nav-number">4.</span> <span class="nav-text">线程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#线程的状态"><span class="nav-number">4.1.</span> <span class="nav-text">线程的状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线程间的通信"><span class="nav-number">4.2.</span> <span class="nav-text">线程间的通信</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java中的锁"><span class="nav-number">5.</span> <span class="nav-text">Java中的锁</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#LOCK接口"><span class="nav-number">5.1.</span> <span class="nav-text">LOCK接口</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java并发容器和框架"><span class="nav-number">6.</span> <span class="nav-text">Java并发容器和框架</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#阻塞队列"><span class="nav-number">6.1.</span> <span class="nav-text">阻塞队列</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#13个原子操作类"><span class="nav-number">7.</span> <span class="nav-text">13个原子操作类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#原子更新基本类"><span class="nav-number">7.1.</span> <span class="nav-text">原子更新基本类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原子更新数组"><span class="nav-number">7.2.</span> <span class="nav-text">原子更新数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原子更新引用"><span class="nav-number">7.3.</span> <span class="nav-text">原子更新引用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原子更新字段类"><span class="nav-number">7.4.</span> <span class="nav-text">原子更新字段类</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java中的并发工具类"><span class="nav-number">8.</span> <span class="nav-text">Java中的并发工具类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#CountDownLatch"><span class="nav-number">8.1.</span> <span class="nav-text">CountDownLatch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CyclicBarrier"><span class="nav-number">8.2.</span> <span class="nav-text">CyclicBarrier</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#semaphore"><span class="nav-number">8.3.</span> <span class="nav-text">semaphore</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Exchanger"><span class="nav-number">8.4.</span> <span class="nav-text">Exchanger</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java中的线程池"><span class="nav-number">9.</span> <span class="nav-text">Java中的线程池</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#线程池的实现原理"><span class="nav-number">9.1.</span> <span class="nav-text">线程池的实现原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线程池的创建"><span class="nav-number">9.2.</span> <span class="nav-text">线程池的创建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#向线程池提交任务"><span class="nav-number">9.3.</span> <span class="nav-text">向线程池提交任务</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Executor框架"><span class="nav-number">10.</span> <span class="nav-text">Executor框架</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Executor框架结构"><span class="nav-number">10.1.</span> <span class="nav-text">Executor框架结构</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基本概念"><span class="nav-number">1.</span> <span class="nav-text">基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#上下文切换"><span class="nav-number">1.1.</span> <span class="nav-text">上下文切换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#死锁"><span class="nav-number">1.2.</span> <span class="nav-text">死锁</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小总结"><span class="nav-number">1.3.</span> <span class="nav-text">小总结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#synchronize"><span class="nav-number">2.</span> <span class="nav-text">synchronize</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java内存模型"><span class="nav-number">3.</span> <span class="nav-text">Java内存模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#重排序"><span class="nav-number">3.1.</span> <span class="nav-text">重排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#happens-before"><span class="nav-number">3.2.</span> <span class="nav-text">happens-before</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#volatile"><span class="nav-number">4.</span> <span class="nav-text">volatile</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#volatile的内存语意"><span class="nav-number">4.1.</span> <span class="nav-text">volatile的内存语意</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#volatile的内存语意的实现"><span class="nav-number">4.2.</span> <span class="nav-text">volatile的内存语意的实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#锁的内存含义"><span class="nav-number">4.3.</span> <span class="nav-text">锁的内存含义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#锁内存含义的实现"><span class="nav-number">4.4.</span> <span class="nav-text">锁内存含义的实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#concurrent包的实现"><span class="nav-number">4.5.</span> <span class="nav-text">concurrent包的实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#final域的内存语意"><span class="nav-number">4.6.</span> <span class="nav-text">final域的内存语意</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#线程"><span class="nav-number">5.</span> <span class="nav-text">线程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#线程的状态"><span class="nav-number">5.1.</span> <span class="nav-text">线程的状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线程间的通信"><span class="nav-number">5.2.</span> <span class="nav-text">线程间的通信</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java中的锁"><span class="nav-number">6.</span> <span class="nav-text">Java中的锁</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#LOCK接口"><span class="nav-number">6.1.</span> <span class="nav-text">LOCK接口</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java并发容器和框架"><span class="nav-number">7.</span> <span class="nav-text">Java并发容器和框架</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#阻塞队列"><span class="nav-number">7.1.</span> <span class="nav-text">阻塞队列</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#13个原子操作类"><span class="nav-number">8.</span> <span class="nav-text">13个原子操作类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#原子更新基本类"><span class="nav-number">8.1.</span> <span class="nav-text">原子更新基本类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原子更新数组"><span class="nav-number">8.2.</span> <span class="nav-text">原子更新数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原子更新引用"><span class="nav-number">8.3.</span> <span class="nav-text">原子更新引用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原子更新字段类"><span class="nav-number">8.4.</span> <span class="nav-text">原子更新字段类</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java中的并发工具类"><span class="nav-number">9.</span> <span class="nav-text">Java中的并发工具类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#CountDownLatch"><span class="nav-number">9.1.</span> <span class="nav-text">CountDownLatch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CyclicBarrier"><span class="nav-number">9.2.</span> <span class="nav-text">CyclicBarrier</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#semaphore"><span class="nav-number">9.3.</span> <span class="nav-text">semaphore</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Exchanger"><span class="nav-number">9.4.</span> <span class="nav-text">Exchanger</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java中的线程池"><span class="nav-number">10.</span> <span class="nav-text">Java中的线程池</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#线程池的实现原理"><span class="nav-number">10.1.</span> <span class="nav-text">线程池的实现原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线程池的创建"><span class="nav-number">10.2.</span> <span class="nav-text">线程池的创建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#向线程池提交任务"><span class="nav-number">10.3.</span> <span class="nav-text">向线程池提交任务</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Executor框架"><span class="nav-number">11.</span> <span class="nav-text">Executor框架</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Executor框架结构"><span class="nav-number">11.1.</span> <span class="nav-text">Executor框架结构</span></a></li></ol></li></ol></div>
             
 
           </div>
