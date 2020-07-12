@@ -1,0 +1,1258 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="-书籍总结,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="[shell小总结]  《Linux系统命令及Shell脚本实践指南》书籍小总结 Bashshell简介Shell是指一种命令行解释器，是为用户和操作系统之间通信提供的一种接口。 Bash Shell有两种工作模式，分别是互动模式和脚本模式。所谓互动模式就是由系统管理人员直接通过键盘输入命令，并等待其执行完毕后再执行下一条命令；而另一种模式是设计出一个脚本文件，将所有需要执行的命令写在该文件中，由">
+<meta name="keywords" content="-书籍总结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="shell脚本实践指南(上)">
+<meta property="og:url" content="http://yoursite.com/2020/07/12/shell脚本实践指南-上/index.html">
+<meta property="og:site_name" content="ZKaiKing-blog">
+<meta property="og:description" content="[shell小总结]  《Linux系统命令及Shell脚本实践指南》书籍小总结 Bashshell简介Shell是指一种命令行解释器，是为用户和操作系统之间通信提供的一种接口。 Bash Shell有两种工作模式，分别是互动模式和脚本模式。所谓互动模式就是由系统管理人员直接通过键盘输入命令，并等待其执行完毕后再执行下一条命令；而另一种模式是设计出一个脚本文件，将所有需要执行的命令写在该文件中，由">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-07-12T14:06:30.235Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="shell脚本实践指南(上)">
+<meta name="twitter:description" content="[shell小总结]  《Linux系统命令及Shell脚本实践指南》书籍小总结 Bashshell简介Shell是指一种命令行解释器，是为用户和操作系统之间通信提供的一种接口。 Bash Shell有两种工作模式，分别是互动模式和脚本模式。所谓互动模式就是由系统管理人员直接通过键盘输入命令，并等待其执行完毕后再执行下一条命令；而另一种模式是设计出一个脚本文件，将所有需要执行的命令写在该文件中，由">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/07/12/shell脚本实践指南-上/">
+
+
+
+
+
+  <title>shell脚本实践指南(上) | ZKaiKing-blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+<script type="text/javascript" src="/js/src/clicksocialvalue.js"></script>
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ZKaiKing-blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/12/shell脚本实践指南-上/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZKaiKing">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/photo.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZKaiKing-blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">shell脚本实践指南(上)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-12T22:05:23+08:00">
+                2020-07-12
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2020-07-12T22:06:30+08:00">
+                2020-07-12
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>[<strong>shell小总结</strong>]  《Linux系统命令及Shell脚本实践指南》书籍小总结</p>
+<h1 id="Bashshell简介"><a href="#Bashshell简介" class="headerlink" title="Bashshell简介"></a>Bashshell简介</h1><p>Shell是指一种命令行解释器，是为用户和操作系统之间通信提供的一种接口。</p>
+<p>Bash Shell有两种工作模式，分别是互动模式和脚本模式。所谓互动模式就是由系统管理人员直接通过键盘输入命令，并等待其执行完毕后再执行下一条命令；而另一种模式是设计出一个脚本文件，将所有需要执行的命令写在该文件中，由Bash Shell读取并执行</p>
+<h1 id="shell的内建命令"><a href="#shell的内建命令" class="headerlink" title="shell的内建命令"></a>shell的内建命令</h1><p>一个Shell脚本永远是以“#!”开头的，这是一个脚本开始的标记，它是在告诉系统执行这个文件需要使用某个解释器，后面的/bin/bash就是指明了解释器的具体位置。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#！bin/bash#备注echo &quot;hello shell&quot;</span><br></pre></td></tr></table></figure>
+
+<p>Shell内建命令，就是由Bash自身提供的命令，而不是文件系统中的某个可执行文件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">例如，用于进入或者切换目录的cd命令，虽然我们一直在使用它，但如果不加以注意很难意识到它与普通命令的性质是不一样的：该命令并不是某个外部文件，只要在Shell中你就一定可以运行这个命令。打个比方，就像使用语言互相沟通是人类与生俱来的能力，但是我们有时却需要使用移动电话来进行远距离的沟通，那么人类本身具备的语言能力就是“内建”的能力，而移动电话却是一个外部的工具。</span><br></pre></td></tr></table></figure>
+
+<p>⚡️知识盲点：内建命令会比外部命令执行得更快，执行外部命令时不但会触发磁盘I/O，还需要fork出一个单独的进程来执行，执行完成后再退出。而执行内建命令相当于调用当前Shell进程的一个函数。</p>
+<p>👹可通过 <code>type  命令</code>判断一个命令是会否是内建命令</p>
+<p>shell编程常用内建命令</p>
+<h2 id="1、声明变量：declare、typeset"><a href="#1、声明变量：declare、typeset" class="headerlink" title="1、声明变量：declare、typeset"></a>1、声明变量：declare、typeset</h2><p>这两个命令都是用来声明变量的，作用完全相同,Shell又被称为弱类型编程语言，声明变量时并不需要指明类型。使用-r声明变量为只读</p>
+<p>2、打印字符： echo</p>
+<p>3、跳出循环：break</p>
+<p>从一个循环（for、while、until或者select）中退出。break后可以跟一个数字n，代表跳出n层循环，n必须大于1，如果n比当前循环层数还要大，则跳出所有循环。</p>
+<h2 id="4、循环控制：continue"><a href="#4、循环控制：continue" class="headerlink" title="4、循环控制：continue"></a>4、循环控制：continue</h2><p>停止当前循环，并执行外层循环（for、while、until或者select）的下一次循环。continue后可以跟上一个数字n，代表跳至外部第n层循环。n必须大于1，如果n比当前循环层数还要大，将跳至最外层的循环</p>
+<h2 id="5、执行命令来取代当前shell：exec"><a href="#5、执行命令来取代当前shell：exec" class="headerlink" title="5、执行命令来取代当前shell：exec"></a>5、执行命令来取代当前shell：exec</h2><p>内建命令exec并不启动新的Shell，而是用要被执行的命令替换当前的Shell进程，并且将老进程的环境清理掉，而且exec命令后的其他命令将不再执行。</p>
+<h2 id="6、退出shell：exit"><a href="#6、退出shell：exit" class="headerlink" title="6、退出shell：exit"></a>6、退出shell：exit</h2><p>在当前Shell中直接运行该命令的后果是退出本次登录。在Shell脚本中使用exit代表退出当前脚本。该命令可以接受的参数是一个状态值n，代表退出的状态。如果不指定，默认状态值是0。</p>
+<h2 id="7、声明全局变量：export"><a href="#7、声明全局变量：export" class="headerlink" title="7、声明全局变量：export"></a>7、声明全局变量：export</h2><p>用户登录到系统后，系统将启动一个Shell，用户可以在该Shell中声明变量，也可以创建并运行Shell脚本，通常，如果说登录时的Shell是父Shell，则在该Shell中运行的Shell是该Shell的子Shell。当子Shell运行完毕后，将返回执行该脚本的父Shell。从这种意义上来说，用户可以有许多Shell，每个Shell都是由父Shell创建的。 在父Shell中创建变量时，这些变量并不会被其子Shell进程所知，也就是说变量默认情况下是“私有”的，或称“局部变量”。使用export命令可以将变量导出，使得该Shell的子Shell都可以使用该变量，这个过程称为变量输出。</p>
+<p><strong>即便子Shell确实读取到了父Shell中变量var的值，也只是值的传递，如果在子Shell中尝试改变var的值，改变的只是var在子Shell中的值，父Shell中的该值并不会因此受到影响</strong></p>
+<h2 id="8、终止进程：kill"><a href="#8、终止进程：kill" class="headerlink" title="8、终止进程：kill"></a>8、终止进程：kill</h2><p>Linux操作系统包括3种不同类型的进程，第一种是交互进程，这是由一个Shell启动的进程，既可以在前台运行，也可以在后台运行；第二种是批处理进程，与终端没有联系，是一个进程序列；第三种是监控进程，也称系统守护进程，它们往往在系统启动时启动，并保持在后台运行。</p>
+<p>kill命令用来终止进程，其工作的原理是向系统的内核发送一个系统操作信号和某个程序的进程标识号，然后系统内核就可以对进程标识号指定的进程进行操作。</p>
+<h2 id="9、整数运算：let"><a href="#9、整数运算：let" class="headerlink" title="9、整数运算：let"></a>9、整数运算：let</h2><p>let是shell内建的整数运算命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let I=2+2  ----&gt;I=4let L=15/7 ---&gt;L=2（整数计算，所以计算结果也是整数）#let也支持类C的计算方式let i++   （i自增1）let i--   （i自减1）let i+=10 （i值等于i增加10）</span><br></pre></td></tr></table></figure>
+
+<h2 id="10、声明局部变量：local"><a href="#10、声明局部变量：local" class="headerlink" title="10、声明局部变量：local"></a>10、声明局部变量：local</h2><p>该命令用于在脚本中声明局部变量，典型的用法是用于函数体内，其作用域也在声明该变量的函数体中。<strong>如果试图在函数外使用local声明变量，则会提示错误。</strong></p>
+<h2 id="11、从标准输入读取一行到变量-：read"><a href="#11、从标准输入读取一行到变量-：read" class="headerlink" title="11、从标准输入读取一行到变量 ：read"></a>11、从标准输入读取一行到变量 ：read</h2><p>开发的脚本必须具有交互性，也就是在运行过程中依赖人工输入才能继续。read是按行读取的，用回车符区分一行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#根据输入的箱数计算一共有多少瓶啤酒[root@localhost ~]# cat read.sh#!/bin/bashdeclare Necho &quot;12 bottles of beer in a box&quot;echo-n &quot;How many box do you want:&quot;read Necho &quot;$((N*12)) bottle in total&quot;#运行效果[root@localhost ~]# bash read.sh12 bottles of beer in a boxHow many box do you want:10  #这里输入数字120 bottle in total</span><br><span class="line">#read使用-p参数简化后的代码read-p &quot;How many box do you want:&quot; N</span><br></pre></td></tr></table></figure>
+
+<h2 id="12、定义函数返回值：-return"><a href="#12、定义函数返回值：-return" class="headerlink" title="12、定义函数返回值： return"></a>12、定义函数返回值： return</h2><p>典型的用于函数中，常见用法是return n，其中n是一个指定的数字，使函数以指定值退出。如果没有指定n值，则返回状态是函数体中执行的最后一个命令的退出状态。</p>
+<h2 id="13、-向左移动位置参数：shift"><a href="#13、-向左移动位置参数：shift" class="headerlink" title="13、*向左移动位置参数：shift"></a>13、*向左移动位置参数：shift</h2><p>想搞清楚shift的用法，首先需要了解脚本“位置参数”的概念。假设一个脚本在运行时可以接受参数，那么从左到右第一个参数被记作$1，第二个参数为$2，以此类推，第n个参数为$N。所有参数记作$@或$*，参数的总个数记作$#，而脚本本身记作$0。</p>
+<p>shift命令可以对脚本的参数做“偏移”操作。假设脚本有A、B、C这3个参数，那么$1为A，$2为B，$3为C；shift一次后，$1为B，$2为C；再次shift后$1为C</p>
+<h2 id="14、-显示并设置进程资源限度：ulimit"><a href="#14、-显示并设置进程资源限度：ulimit" class="headerlink" title="14、*显示并设置进程资源限度：ulimit"></a>14、*显示并设置进程资源限度：ulimit</h2><p>系统的可用资源是有限的，如果不限制用户和进程对系统资源的使用，则很容易陷入资源耗尽的地步，而使用ulimit可以控制进程对可用资源的访问。默认情况下Linux系统的各个资源都做了软硬限制，其中硬限制的作用是控制软限制（换言之，软限制不能高于硬限制）。使用ulimit-a可以查看当前系统的软限制（使用命令ulimit-a-H可查看系统的硬限制）。</p>
+<h1 id="shell编程基础"><a href="#shell编程基础" class="headerlink" title="shell编程基础"></a>shell编程基础</h1><h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><p>变量就是其值可以变化的量。从变量的实质来说，变量名是指向一片用于存储数据的内存空间。变量有局部变量、环境变量之分。Shell变量是一种弱类型的变量，也就是说在声明变量时并不需要指定其变量类型。在脚本中，往往需要使用变量来存储有用信息，比如文件名、路径名、数值等，通过这些变量可以控制脚本的运行行为。</p>
+<h2 id="局部变量"><a href="#局部变量" class="headerlink" title="局部变量"></a>局部变量</h2><p>局部变量就是<strong>指在某个Shell中生效的变量，对其他Shell来说无效</strong>，而且会随着当前Shell的消失而消失，局部变量的作用域被限定在声明它们的Shell中，可以使用local内建命令来“显式”的声明局部变量，但仅限于函数内使用。换言之，每个Shell都有自己的变量空间，彼此互不影响。而环境变量不仅仅是对于该Shell生效，对其子Shell也同样生效。</p>
+<h2 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h2><p>环境变量通常又称“全局变量”，以区别于局部变量。在Shell脚本中，变量默认就是全局的，无论在脚本的任何位置声明，但是为了让子Shell继承当前Shell的变量，则可以使用export内建命令将其导出为环境变量。</p>
+<h2 id="变量赋值与取值"><a href="#变量赋值与取值" class="headerlink" title="变量赋值与取值"></a>变量赋值与取值</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#定义变量：变量名=变量值#注意点一：变量名和变量值之间用等号紧紧相连，之间没有任何空格[root@localhost ~]# name=john  #定义变量#如果不注意，等号任何一边出现空格就会出错[root@localhost ~]# name = john-bash: name: command not found[root@localhost ~]# name=&quot;john&quot;  #这样也是可以的#注意点二：当变量中有空格时必须用引号括起，否则会出现错误#其中的引号可以是双引号，也可以是单引号[root@localhost ~]# name=&quot;john wang&quot;#[root@localhost ~]# name=john wang#-bash: wang: command not found</span><br></pre></td></tr></table></figure>
+
+<p>⛑注意点：当变量中有空格时必须用引号括起，否则会出现错误,引号可以是双引号，也可以是单引号</p>
+<p>变量的取值也很简单，只需要在变量名前加上$符号既可，严谨一点的写法是${}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#使用$&#123;&#125;获取变量值是一种相对比较保险的方式[root@localhost ~]# name=&quot;sue &quot;#这里本是想打印名字，后面跟Hello的，但Shell试图将nameHello解释为一个变量。#从Shell语法来说，也确实应该将nameHello解释为变量[root@localhost ~]# echo $nameHello                  #因为变量nameHello未声明，所以值为空[root@localhost ~]# echo $&#123;name&#125;Hellosue Hello#注意点三：如果变量值引用的是其他变量，则必须使用双引号。因为单引号会阻止Shell解释特殊字符$[root@localhost ~]# name=john[root@localhost ~]# name1=&quot;$name&quot;[root@localhost ~]# echo $name1john[root@localhost ~]# name1=&apos;$name&apos;[root@localhost ~]# echo $name1$name</span><br></pre></td></tr></table></figure>
+
+<p>⛑注意点：如果变量值引用的是其他变量，则必须使用双引号。因为单引号会阻止Shell解释特殊字符$</p>
+<h2 id="取消变量"><a href="#取消变量" class="headerlink" title="取消变量"></a>取消变量</h2><p>取消变量指的是将变量从内存中释放，使用的命令是unset，后面跟变量名。函数也是可以被取消的，所以unset后面还可以跟上函数名以取消函数。</p>
+<h2 id="位置参数"><a href="#位置参数" class="headerlink" title="位置参数"></a>位置参数</h2><p>Shell中还有一些<strong>预先定义的特殊只读变量，它们的值只有在脚本运行时才能确定。</strong>首先是“位置参数”，位置参数的命名简单直接，比如，脚本本身为$0，第一个参数为$1，第二个参数为$2，第三个为$3，以此类推。当位置参数的个数大于9时，需要用${}括起来标识，比如说第10个位置参数应该记为${10}。另外，$#表示脚本参数的个数总和，$@或$*表示脚本的所有参数。脚本或命令返回值：$?</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# cat posion.sh#!/bin/bashecho &quot;This script&apos;s name is: $0&quot;echo &quot;$# parameters in total&quot;echo &quot;All parameters list as: $@&quot;echo &quot;The first parameter is $1&quot;echo &quot;The second parameter is $2&quot;echo &quot;The third parameter is $3&quot;[root@localhost ~]# bash posion.sh para1 para2 para3This script&apos;s name is: posion.sh3 parameters in totalAll parameters list as: para1 para2 para3The first parameter is para1The second parameter is para2The third parameter is para3</span><br></pre></td></tr></table></figure>
+
+<p>Linux中规定正常退出的命令和脚本应该以0作为其返回值，任何非0的返回值都表示命令未正确退出或未正常执行。</p>
+<p>$?永远是上一个命令的返回值，所以要查看某个命令的返回值必须在运行该命令后立即查看$?</p>
+<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><p>Shell中的数组对元素个数没有限制，但只支持一维数组，这一点和很多语言不同。</p>
+<p>操作就是数组取值，其格式为：${数组名[索引]}</p>
+<p>${Array[@]}得到的是以空格隔开的元素值，而${Array[*]}的输出是一整个字符串。</p>
+<h2 id="只读变量"><a href="#只读变量" class="headerlink" title="只读变量"></a>只读变量</h2><p>只读变量又称常量，是通过readonly内建命令创建的变量。这种变量在声明时就要求赋值，并且之后无法修改，这和之前讲到的使用declare-r声明只读变量的效果是一致的。</p>
+<h2 id="变量的作用域"><a href="#变量的作用域" class="headerlink" title="变量的作用域"></a>变量的作用域</h2><p>变量的作用域又叫“命名空间”，表示变量（identifier，标识符）的上下文。相同的变量可以在多个命名空间中定义，并且彼此之间互不干涉，所以在一个新的命名空间中可以自定义任何变量，因为所定义的变量都只在各自的命名空间中。在Linux系统中，不同进程ID的Shell默认为一个不同的命名空间。</p>
+<p>Shell变量的作用域是在本Shell内，属于本Shell的全局变量，也就是从定义该变量的地方开始到Shell结束，或到主动使用unset删除了该变量的地方为止。在变量的作用域内，该变量都是可见的，在函数内对变量也是可以访问、可修改的，</p>
+<p>Shell默认以Shell的进程ID作为一个命名空间，所以即便是在函数中声明变量，该变量也会在全局生效，为了解决这种问题，在函数内部声明的临时变量需要用local指定其为只在函数内生效的“局部变量”，这样这些变量将只存在于局部的命名空间内，从而不会对全局变量有影响。</p>
+<h2 id="转义和引用"><a href="#转义和引用" class="headerlink" title="转义和引用"></a>转义和引用</h2><p>📸 为什么需要进行转义与引用？</p>
+<p>Shell中有两类字符，一类是普通字符，在Shell中除了本身的字面意思外没有其他特殊意义，即普通纯文本（literal）；另一类即元字符（meta），是Shell的保留字符，在Shell中有着特殊意义。<strong>为了消除这些特殊字符的功能，就必须对其进行转义和引用。</strong></p>
+<h3 id="🐳-转义"><a href="#🐳-转义" class="headerlink" title="🐳 转义"></a>🐳 转义</h3><p>转义是指使用转义符引用单个字符，从而使其表达单纯的字符的字面含义。<strong>Shell中的转义符是反斜线“\”</strong>，使用转义符的<strong>目的是使义符后面的字符单纯地作为字符出现，而不解释其特殊的含义。</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#试图打印“$Dollar”字符串的错误演示[root@localhost ~]# echo $Dollar                 ---&gt; 此处打印为空，因为Shell尝试打印出变量Dollar的值，但是这个变量并没有声明，所以打印空行#使用转义字符转义$字符[root@localhost ~]# echo \$Dollar$Dollar#更多的例子#打印乘号。如果不用转义符转义*号，则*号会作为一般的通配符使用，结果是将工作目录中的所有目录和文件名替换它[root@localhost ~]# echo 8 \* 8 =648 * 8 =64#句子中含有引号。如果不用转义符转义&apos;单引号，则Shell会等待出现另一个单引号才能结束echo进程[root@localhost ~]# echo john\&apos;s catjohn&apos;s cat</span><br></pre></td></tr></table></figure>
+
+<h3 id="🚙引用"><a href="#🚙引用" class="headerlink" title="🚙引用"></a>🚙引用</h3><p>引用是指将字符串用某种符号括起来，以防止特殊字符被解析为其他意思。转义符也是一种引用。<strong>Shell中一共有4种引用符，分别是双引号、单引号、反引号（在键盘上和波浪号位于同一个键）和转义符。</strong>其中双引号又叫“部分引用”或“弱引用”，可以引用除$符、反引号、转义符之外的所有字符；单引号又叫“全引用”或“强引用”，可以引用所有字符；反引号则会将反引号括起的内容解释为系统命令。</p>
+<h4 id="部分引用"><a href="#部分引用" class="headerlink" title="部分引用"></a>部分引用</h4><p>部分引用是指用<strong>双引号（“  ”）括起来的引用</strong>。在这种引用方式中，$符、反引号（`）、转义符（\）这3种特殊字符依然会被解析为特殊意义。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#声明变量VAR03，并用echo打印出来。第一次直接打印，第二次用引号括起来，从输出内容看好像没什么区别[root@localhost ~]# VAR03=100[root@localhost ~]# echo $VAR03100[root@localhost ~]# echo &quot;$VAR03&quot;100#声明变量VAR03，内容为字符串，ABC之间有多个空格[root@localhost ~]# VAR04=&quot;A   B   C&quot;#直接打印变量时，输出内容只保留了每个字母间一个空格[root@localhost ~]# echo $VAR04A B C#使用引号括起的输出内容和变量定义时的内容是完全一致的[root@localhost ~]# echo &quot;$VAR04&quot;A   B   C</span><br></pre></td></tr></table></figure>
+
+<h4 id="全引用"><a href="#全引用" class="headerlink" title="全引用"></a>全引用</h4><p>全引用是指用<strong>单引号（‘  ’）括起来的引用</strong>。单引号中的任何字符都只当作是普通字符（除了单引号本身，也就是说单引号中间无法再包含单引号，即便用转义符转义单引号也不行）。所有在单引号中的字符都只能代表其作为字符的字面意义。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# echo &apos;$VAR03&apos;$VAR03[root@localhost ~]# echo &apos;$VAR04&apos;$VAR04</span><br><span class="line">如何区分部分引用与全引用？单引号和双引号在很多时候是一样的，只是要记住，在双引号中的$符、反引号、转义符还是会被解析成其特殊含义，而在单引号中所有的字符都只是字面意思。</span><br><span class="line">[root@localhost ~]# echo &quot;Current directory is $PWD&quot;Current directory is /root[root@localhost ~]# echo &apos;Current directory is $PWD&apos;Current directory is $PWD</span><br></pre></td></tr></table></figure>
+
+<h4 id="命令替换（重点）"><a href="#命令替换（重点）" class="headerlink" title="命令替换（重点）"></a>命令替换（重点）</h4><p><strong>命令替换是指将命令的标准输出作为值赋给某个变量</strong>。Shell中有两种方式可以完成命令替换，一种是反引号（`），一种是$()</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# `命令`[root@localhost ~]# $(命令)</span><br></pre></td></tr></table></figure>
+
+<p>如果被引用的命令输出的内容包括多行，此时若不通过引用的方式输出变量，则输出的内容中将会删除换行符，文件名之间会使用系统默认的空来填充，即输出的内容只占一行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# LS=`ls-l`#不引用变量值的输出[root@localhost ~]# echo $LStotal 36-rw------- 1 root root 1017 Jan 2 2009 anaconda-ks.cfg-rw-r--r-- 1 root root 18590 Jan 2 2009 install.log-rw-r--r-- 1 root root 0 Jan 2 2009 install.log.syslog#引用变量值的输出[root@localhost ~]# echo &quot;$LS&quot;total 36-rw------- 1 root root  1017 Jan  2  2009 anaconda-ks.cfg-rw-r--r-- 1 root root 18590 Jan  2  2009 install.log-rw-r--r-- 1 root root     0 Jan  2  2009 install.log.syslog</span><br></pre></td></tr></table></figure>
+
+<p><strong>反引号的部分都可以使用$()进行替换，因为它们是等价的。但反引号毕竟和单引号看起来类似，有时候会对查看代码造成困难，而使用$()就相对清晰，能有效地避免这种混乱。</strong>但是有些情景是必须使用$()的：<strong>$()支持嵌套，而反引号不行。</strong></p>
+<p>$()仅在Bash Shell中有效，而反引号可在多种UNIX Shell中使用。</p>
+<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><p>Shell中的运算符主要有比较运算符（用于整数比较）、字符串运算符（用于字符串测试）、文件操作运算符（用于文件测试）、逻辑运算符、算术运算符、位运算符、自增自减运算符等。</p>
+<h3 id="算数运算符"><a href="#算数运算符" class="headerlink" title="算数运算符"></a>算数运算符</h3><p>算术运算符指的是加、减、乘、除、余、幂等常见的算术运算，以及加等、减等、乘等、除等、余等复合算术运算。要特别注意的是，<strong>Shell只支持整数计算，也就是所有可能产生小数的运算都会舍去小数部分。</strong></p>
+<p><strong>常见的算术运算大多需要结合Shell的内建命令let来使用。</strong></p>
+<h3 id="自增自减"><a href="#自增自减" class="headerlink" title="自增自减"></a>自增自减</h3><p>自增自减运算主要包括前置自增、前置自减、后置自增、后置自减等。前置自增或前置自减操作会首先修改变量的值，然后再将变量的值传递出去；后置自增或后置自减则会首先将变量的值传递出去，然后再修改变量的值。自增符为“++”，自减符为“–”，操作对象只能是变量，不能是常数或表达式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# cat add_minus.sh#!/bin/bashAdd_01=10Add_02=10#Add_01前置自增#也就是先将Add_01自增1变为11，然后赋值给Add_03，即为11let &quot;Add_03=(++Add_01)&quot;#Add_02后置自增#也就是先将当前值赋给Add_04，即10，然后Add_02自增1，即为11let &quot;Add_04=(Add_02++)&quot;#打印各变量的值#按照上面的计算方式，Add_01、Add_02、Add_03为11，Add_04为10echo Add_01 is:$Add_01echo Add_02 is:$Add_02echo Add_03 is:$Add_03echo Add_04 is:$Add_04[root@localhost ~]# bash add_minus.shAdd_01 is:11Add_02 is:11Add_03 is:11Add_04 is:10</span><br></pre></td></tr></table></figure>
+
+<h3 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符"></a>位运算符</h3><p>位运算是基于内存中二进制数据的运算，也就是基于位的运算。常见的位运算有左移运算、右移运算、按位与、按位或、按位非、按位异或等运算。</p>
+<ul>
+<li>位运算的左移、右移元素其实就是整数在内存中的“左右移动”，其中左移运算符为&lt;&lt;，右移运算符为&gt;&gt;</li>
+<li>按位与运算（&amp;），是将两个整数写成二进制的形式，然后同位置相比较，只有当对应的二进制值都为1时，结果才为1。</li>
+<li>按位或运算（|），是将两个整数写成二进制的形式，然后同位置相比较，只要对应的位置有1，结果就为1</li>
+<li>按位异或运算（^），是将两个整数写成二进制的形式，然后同位置相比较，只要对应的位置同为0或同为1，结果就为0，否则为1。</li>
+</ul>
+<h3 id="使用expr做运算-易错点"><a href="#使用expr做运算-易错点" class="headerlink" title="使用expr做运算(易错点)"></a>使用expr做运算(易错点)</h3><p>expr命令也可用于整数运算。和其他算术运算方式不同，<strong>expr要求操作数和操作符之间使用空格隔开（否则只会打印出字符串），所以特殊的操作符要使用转义符转义（比如*）</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">操作符和操作数之间没有空格则只会打印出字符串[root@localhost ~]# expr 1+11+1#使用空格隔开后可以正常计算[root@localhost ~]# expr 1 + 12#特殊符号（元字符）需要用转义符转义，否则出错[root@localhost ~]# expr 2 * 2expr: syntax error[root@localhost ~]# expr 2 \* 24</span><br></pre></td></tr></table></figure>
+
+<h3 id="算术拓展（重难点）"><a href="#算术拓展（重难点）" class="headerlink" title="算术拓展（重难点）"></a>算术拓展（重难点）</h3><p>算术扩展是Shell提供的整数变量的运算机制，是Shell的内建命令之一。其基本语法如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$((算术表达式))</span><br></pre></td></tr></table></figure>
+
+<p>其中的算术表达式由变量和运算符组成，常见的用法是显示输出和变量赋值。若表达式中的变量没有定义，则在计算时，其值会被假设为0（但是并不会真的因此赋0值给该变量）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#显示输出：echo $((算术表达式))#例子：计算2*i+1的值[root@localhost ~]# i=2[root@localhost ~]# echo $((2*i+1)) #注意这里变量i前并没有$符5[root@localhost ~]# echo $((2*(i+1))) #用括号改变运算优先级6#变量赋值var=$((算术表达式))#例子：将2*i+1的值赋值给变量var[root@localhost ~]# var=$((2*i+1))[root@localhost ~]# echo $var5#未定义的变量参与算术表达式求值[root@localhost ~]# echo $((2*(j+1)))2</span><br></pre></td></tr></table></figure>
+
+<h1 id="测试与判断"><a href="#测试与判断" class="headerlink" title="测试与判断"></a>测试与判断</h1><h2 id="测试（重难点）"><a href="#测试（重难点）" class="headerlink" title="测试（重难点）"></a>测试（重难点）</h2><p>程序运行中经常需要根据实际情况来运行特定的命令或代码段。比如，判断某个文件或目录是否存在，如果文件或目录不存在，可能需要首先创建文件或目录。举例说，要判断文件/var/log/message文件是否存在，可以先ls该文件，然后用$?来判断，如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#ls一个存在的文件[root@localhost ~]# ls /var/log/messages/var/log/messages#如果ls成功，则$?返回值为0，说明该文件存在[root@localhost ~]# echo $?0#ls一个不存在的文件，命令本身会报错[root@localhost ~]# ls /var/log/messages01ls: /var/log/messages01: No such file or directory#这里$?的返回值是非0的，在不考虑文件权限的情况下，返回非0值说明文件是不存在的[root@localhost ~]# echo $?2</span><br></pre></td></tr></table></figure>
+
+<p>上述的办法确实是一种办法，但是这意味着在很多情况下都<strong>需要自己来实现这个“判断”的过程，判断为真则返回0，为假则返回非0值。</strong>这种判断行为被称作“测试”。</p>
+<h3 id="测试结构"><a href="#测试结构" class="headerlink" title="测试结构"></a>测试结构</h3><p>测试的第一种使用方式是直接使用test命令，该命令的格式如下：</p>
+<p><code>test expression</code> 其中expression是一个表达式，可以是算术比较、字符串比较、文本和文件属性比较等。第二种测试方式是使用“[”启动一个测试，再写expression，再以“]”结束测试。<strong>需要注意的是，左边的括号“[”后有个空格，右括号“]”前面也有个空格，如果任意一边少了空格都会造成Shell报错。为增加代码的可读性，推荐使用第二种方式</strong>，而且这种方式更容易与if、case、while这些条件判断的关键字连用，该测试结构如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[ expression ]</span><br></pre></td></tr></table></figure>
+
+<p>👹在一些实际开发脚本中，有时候可看见<code>[  表达式  ]</code> 进行判断文件存在，环境等问题。</p>
+<h3 id="文件测试"><a href="#文件测试" class="headerlink" title="文件测试"></a>文件测试</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-e FILE：测试文件是否存在-f FILE：测试文件是否为普通文件-d FILE：测试指定路径是否为目录-r FILE：测试当前用户对指定文件是否有读权限-w FILE：测试当前用户对指定文件是否有写权限-x FILE：测试当前用户对指定文件是否有执行权限Example：[ -e /etc/passwd ][ -x /etc/shadow ]</span><br><span class="line">$?：上一个命令的执行状态返回值$#：参数的个数$*：参数列表$@：参数列表</span><br><span class="line">#!/bin/bashif [ -e $1 ];then         #位置参数不用在脚本中设置，执行脚本时添加位置参数   echo fileelse   echo no such filefi[root@localhost script]# bash file2.sh /etc/fstab     #指定/etc/fstab这个位置参数</span><br></pre></td></tr></table></figure>
+
+<h3 id="字符串测试"><a href="#字符串测试" class="headerlink" title="字符串测试"></a>字符串测试</h3><p>Shell中的字符串比较主要有等于、不等于、大于、小于、是否为空等测试</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#定义非空字符串str2，值为hello[root@localhost ~]# str2=&quot;hello&quot;#测试str2是否为空，为空返回0，不为空返回非0，此处返回1[root@localhost ~]# [-z &quot;$str2&quot; ][root@localhost ~]# echo $?1#测试str2是否非空，非空返回0[root@localhost ~]# [-n &quot;$str2&quot; ][root@localhost ~]# echo $?0#比较str1和str2是否相同，相同则返回0，否则返回非0，此处返回1[root@localhost ~]# [ &quot;$str1&quot; = &quot;$str2&quot; ][root@localhost ~]# echo $?1#比较str1和str2是否不同，不同则返回0[root@localhost ~]# [ &quot;$str1&quot; != &quot;$str2&quot; ][root@localhost ~]# echo $?0#比较str1和str1的大小，需要注意的是，&gt;和&lt;都需要进行转义[root@localhost ~]# [ &quot;$str1&quot; \&gt; &quot;$str2&quot; ][root@localhost ~]# echo $?1[root@localhost ~]# [ &quot;$str1&quot; \&lt; &quot;$str2&quot; ][root@localhost ~]# echo $?0#如果不想用转义符，则可以用[[]]括起表达式[root@localhost ~]# [[ &quot;$str1&quot; &gt; &quot;$str2&quot; ]][root@localhost ~]# echo $?1[root@localhost ~]# [[ &quot;$str1&quot; &lt; &quot;$str2&quot; ]][root@localhost ~]# echo $?0</span><br></pre></td></tr></table></figure>
+
+<h3 id="整数比较"><a href="#整数比较" class="headerlink" title="整数比较"></a>整数比较</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">数字判断一些命令：#-gt是大于#-lt是小于#-eq是等于#-ne是不等于#-ge是大于等于#le是小于等于   </span><br><span class="line">[root@localhost ~]# num1=10[root@localhost ~]# num2=10[root@localhost ~]# num3=9[root@localhost ~]# num4=11[root@localhost ~]# [ &quot;$num1&quot;-eq &quot;$num2&quot; ][root@localhost ~]# echo $?0[root@localhost ~]# [ &quot;$num1&quot;-gt &quot;$num3&quot; ][root@localhost ~]# echo $?0[root@localhost ~]# [ &quot;$num1&quot;-lt &quot;$num4&quot; ][root@localhost ~]# echo $?0[root@localhost ~]# [ &quot;$num1&quot;-ge &quot;$num2&quot; ][root@localhost ~]# echo $?0[root@localhost ~]# [ &quot;$num1&quot;-le &quot;$num2&quot; ][root@localhost ~]# echo $?0[root@localhost ~]# [ &quot;$num1&quot;-ne &quot;$num3&quot; ][root@localhost ~]# echo $?0</span><br></pre></td></tr></table></figure>
+
+<h3 id="逻辑测试与逻辑判断"><a href="#逻辑测试与逻辑判断" class="headerlink" title="逻辑测试与逻辑判断"></a>逻辑测试与逻辑判断</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#例一：逻辑非的使用#测试值为真的表达式在使用逻辑非后，表达式变为假，反之亦然[root@localhost ~]# [ !-e /var/log/messages ][root@localhost ~]# echo $?1#例二：逻辑与的使用#表达式都为真，整个表达式才返回真，否则返回假[root@localhost ~]# [-e /var/log/messages-a-e /var/log/messages01 ][root@localhost ~]# echo $?1#例三：逻辑或的使用#测试表达式中只要有真，则整个表达式返回真[root@localhost ~]# [-e /var/log/messages-o-e /var/log/messages01 ][root@localhost ~]# echo $?0#逻辑与运算expression1 &amp;&amp; expression2 &amp;&amp; expression3#逻辑与测试[ expression1-a expression2-a expression3 ]#逻辑或运算expression1 || expression2 || expression3#逻辑或测试[ expression1-o expression2-o expression3 ]</span><br></pre></td></tr></table></figure>
+
+<h2 id="判断"><a href="#判断" class="headerlink" title="判断"></a>判断</h2><p>有了测试，就要有获得测试结果的机制，并根据测试结果运行不同的代码段，这样程序就可以从简单的命令罗列变得更“智能”一些，从而实现程序的流程控制。<strong>在Shell中，流程控制分为两大类，一类是“循环”，一类是“判断选择”。属于“循环”的有for、while、until，属于“判断选择”，关键字是if、case。</strong></p>
+<h3 id="if判断"><a href="#if判断" class="headerlink" title="if判断"></a>if判断</h3><p>语法结构为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if expression; then        commandfi</span><br></pre></td></tr></table></figure>
+
+<p>🎪小测试：演示一个程序，该程序会根据输入的学生成绩打印对应的等级：大于等于80分的为A；大于等于60分、小于80分的为B、小于60分的为C。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# cat score01.sh#!/bin/bashecho-n &quot;Please input a score:&quot;read SCOREif [ &quot;$SCORE&quot;-lt 60 ]; then        echo &quot;C&quot;fiif [ &quot;$SCORE&quot;-lt 80-a &quot;$SCORE&quot;-ge 60 ]; then        echo &quot;B&quot;fiif [ &quot;$SCORE&quot;-ge 80 ]; then        echo &quot;A&quot; fi#脚本运行结果，依次输入95、75、45时，脚本分别打印了正确的成绩等级[root@localhost ~]# bash score01.shPlease input a score:95A[root@localhost ~]# bash score01.shPlease input a score:75B[root@localhost ~]# bash score01.shPlease input a score:45C</span><br></pre></td></tr></table></figure>
+
+<h3 id="if-else-判断结构"><a href="#if-else-判断结构" class="headerlink" title="if/else 判断结构"></a>if/else 判断结构</h3><p>语法结构：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if expression; then        commandelse        commandfi</span><br></pre></td></tr></table></figure>
+
+<p>🎪小测试：判断某个文件是否存在</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#检查文件是否存在[root@localhost ~]# cat check_file.sh#!/bin/bashFILE=/var/log/messages#FILE=/var/log/messages01if [-e $FILE ]; then        echo &quot;$FILE exists&quot;else        echo &quot;$FILE not exist&quot;fi#当FILE=/var/log/messages时运行结果如下[root@localhost ~]# bash check_file.sh/var/log/messages exists#当FILE=/var/log/messages01时运行结果如下[root@localhost ~]# bash check_file.sh/var/log/messages01 not exist</span><br></pre></td></tr></table></figure>
+
+<h3 id="if-elif-else判断结构"><a href="#if-elif-else判断结构" class="headerlink" title="if/elif/else判断结构"></a>if/elif/else判断结构</h3><p>进行<strong>多层if/else嵌套</strong>时，推荐使用if/elif/else结构</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if expression1; then         command1elif expression2; then         Command2elif expression3; then         Command3...fi</span><br></pre></td></tr></table></figure>
+
+<h3 id="case判断结构"><a href="#case判断结构" class="headerlink" title="case判断结构"></a>case判断结构</h3><p>和if/elif/else判断结构一样，case判断结构也可以用于多种可能情况下的分支选择。其语法结构如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">case VAR invar1) command1 ;;var2) command2 ;;var3) command3 ;;...*) command ;;esac</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/书籍总结/" rel="tag"># -书籍总结</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/07/07/ElasticSearch/" rel="next" title="ElasticSearch实战与原理解析">
+                <i class="fa fa-chevron-left"></i> ElasticSearch实战与原理解析
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/photo.png" alt="ZKaiKing">
+            
+              <p class="site-author-name" itemprop="name">ZKaiKing</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                个人相关平台
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://github.com/ZKaiKing" title="GitHub" target="_blank">GitHub</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://leetcode-cn.com/u/xiao-hu-zi-2/" title="LeeCode" target="_blank">LeeCode</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.nowcoder.com/profile/204442994" title="nowCoder" target="_blank">nowCoder</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Bashshell简介"><span class="nav-number">1.</span> <span class="nav-text">Bashshell简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#shell的内建命令"><span class="nav-number">2.</span> <span class="nav-text">shell的内建命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、声明变量：declare、typeset"><span class="nav-number">2.1.</span> <span class="nav-text">1、声明变量：declare、typeset</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、循环控制：continue"><span class="nav-number">2.2.</span> <span class="nav-text">4、循环控制：continue</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5、执行命令来取代当前shell：exec"><span class="nav-number">2.3.</span> <span class="nav-text">5、执行命令来取代当前shell：exec</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6、退出shell：exit"><span class="nav-number">2.4.</span> <span class="nav-text">6、退出shell：exit</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7、声明全局变量：export"><span class="nav-number">2.5.</span> <span class="nav-text">7、声明全局变量：export</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8、终止进程：kill"><span class="nav-number">2.6.</span> <span class="nav-text">8、终止进程：kill</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9、整数运算：let"><span class="nav-number">2.7.</span> <span class="nav-text">9、整数运算：let</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10、声明局部变量：local"><span class="nav-number">2.8.</span> <span class="nav-text">10、声明局部变量：local</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11、从标准输入读取一行到变量-：read"><span class="nav-number">2.9.</span> <span class="nav-text">11、从标准输入读取一行到变量 ：read</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12、定义函数返回值：-return"><span class="nav-number">2.10.</span> <span class="nav-text">12、定义函数返回值： return</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#13、-向左移动位置参数：shift"><span class="nav-number">2.11.</span> <span class="nav-text">13、*向左移动位置参数：shift</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#14、-显示并设置进程资源限度：ulimit"><span class="nav-number">2.12.</span> <span class="nav-text">14、*显示并设置进程资源限度：ulimit</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#shell编程基础"><span class="nav-number">3.</span> <span class="nav-text">shell编程基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#变量"><span class="nav-number">3.1.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#局部变量"><span class="nav-number">3.2.</span> <span class="nav-text">局部变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#环境变量"><span class="nav-number">3.3.</span> <span class="nav-text">环境变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量赋值与取值"><span class="nav-number">3.4.</span> <span class="nav-text">变量赋值与取值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#取消变量"><span class="nav-number">3.5.</span> <span class="nav-text">取消变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#位置参数"><span class="nav-number">3.6.</span> <span class="nav-text">位置参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组"><span class="nav-number">3.7.</span> <span class="nav-text">数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#只读变量"><span class="nav-number">3.8.</span> <span class="nav-text">只读变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量的作用域"><span class="nav-number">3.9.</span> <span class="nav-text">变量的作用域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#转义和引用"><span class="nav-number">3.10.</span> <span class="nav-text">转义和引用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#🐳-转义"><span class="nav-number">3.10.1.</span> <span class="nav-text">🐳 转义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#🚙引用"><span class="nav-number">3.10.2.</span> <span class="nav-text">🚙引用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#部分引用"><span class="nav-number">3.10.2.1.</span> <span class="nav-text">部分引用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#全引用"><span class="nav-number">3.10.2.2.</span> <span class="nav-text">全引用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#命令替换（重点）"><span class="nav-number">3.10.2.3.</span> <span class="nav-text">命令替换（重点）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运算符"><span class="nav-number">3.11.</span> <span class="nav-text">运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#算数运算符"><span class="nav-number">3.11.1.</span> <span class="nav-text">算数运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自增自减"><span class="nav-number">3.11.2.</span> <span class="nav-text">自增自减</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#位运算符"><span class="nav-number">3.11.3.</span> <span class="nav-text">位运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用expr做运算-易错点"><span class="nav-number">3.11.4.</span> <span class="nav-text">使用expr做运算(易错点)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算术拓展（重难点）"><span class="nav-number">3.11.5.</span> <span class="nav-text">算术拓展（重难点）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#测试与判断"><span class="nav-number">4.</span> <span class="nav-text">测试与判断</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#测试（重难点）"><span class="nav-number">4.1.</span> <span class="nav-text">测试（重难点）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#测试结构"><span class="nav-number">4.1.1.</span> <span class="nav-text">测试结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件测试"><span class="nav-number">4.1.2.</span> <span class="nav-text">文件测试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串测试"><span class="nav-number">4.1.3.</span> <span class="nav-text">字符串测试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#整数比较"><span class="nav-number">4.1.4.</span> <span class="nav-text">整数比较</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#逻辑测试与逻辑判断"><span class="nav-number">4.1.5.</span> <span class="nav-text">逻辑测试与逻辑判断</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#判断"><span class="nav-number">4.2.</span> <span class="nav-text">判断</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#if判断"><span class="nav-number">4.2.1.</span> <span class="nav-text">if判断</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#if-else-判断结构"><span class="nav-number">4.2.2.</span> <span class="nav-text">if/else 判断结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#if-elif-else判断结构"><span class="nav-number">4.2.3.</span> <span class="nav-text">if/elif/else判断结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#case判断结构"><span class="nav-number">4.2.4.</span> <span class="nav-text">case判断结构</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-[object Object]"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ZKaiKing</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
